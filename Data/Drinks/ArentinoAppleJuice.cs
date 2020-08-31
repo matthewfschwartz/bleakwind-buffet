@@ -15,6 +15,16 @@ namespace Data.Drinks
     {
         private Size drinkSize = new Size();
         private double price = 0;
+
+        /// <summary>
+        /// Get the size and set the size
+        /// </summary>
+        public Size Size
+        {
+            get { return drinkSize; }
+            set { drinkSize = value; }
+        }
+
         /// <summary>
         /// Gets price of the drink
         /// Sets price of the drink according to the size

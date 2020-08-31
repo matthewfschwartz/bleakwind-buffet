@@ -14,6 +14,15 @@ namespace Data.Drinks
     public class CandlehearthCoffee
     {
         private Size drinkSize = new Size();
+        /// <summary>
+        /// Get the size and set the size
+        /// </summary>
+        public Size Size
+        {
+            get { return drinkSize; }
+            set { drinkSize = value; }
+        }
+
         private double price = 0;
         /// <summary>
         /// Gets price of the drink

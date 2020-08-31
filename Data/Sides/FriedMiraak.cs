@@ -15,6 +15,16 @@ namespace Data.Sides
     {
         private Size size = Size.Small;
         private double price = 1.78;
+
+        /// <summary>
+        /// Get the size and set the size
+        /// </summary>
+        public Size Size
+        {
+            get { return size; }
+            set { size = value; }
+        }
+
         /// <summary>
         /// Gets price of the side
         /// Sets price of the side according to the size
