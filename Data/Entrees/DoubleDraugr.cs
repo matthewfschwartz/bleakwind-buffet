@@ -8,7 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Data.Entrees
+namespace BleakwindBuffet.Data.Entrees
 {
     public class DoubleDraugr
     {
@@ -42,6 +42,7 @@ namespace Data.Entrees
             get { return bun; }
             set
             {
+                bun = value;
                 if (!value)
                 {
                     specialInstructions.Add("Hold bun");
@@ -50,7 +51,7 @@ namespace Data.Entrees
                 {
                     specialInstructions.Remove("Hold bun");
                 }
-                bun = value;
+                
             }
         }
 
@@ -65,6 +66,7 @@ namespace Data.Entrees
             get { return ketchup; }
             set
             {
+                ketchup = value;
                 if (!value)
                 {
                     specialInstructions.Add("Hold ketchup");
@@ -73,7 +75,7 @@ namespace Data.Entrees
                 {
                     specialInstructions.Remove("Hold ketchup");
                 }
-                ketchup = value;
+                
             }
         }
 
@@ -88,6 +90,7 @@ namespace Data.Entrees
             get { return mustard; }
             set
             {
+                mustard = value;
                 if (!value)
                 {
                     specialInstructions.Add("Hold mustard");
@@ -96,7 +99,7 @@ namespace Data.Entrees
                 {
                     specialInstructions.Remove("Hold mustard");
                 }
-                mustard = value;
+                
             }
         }
 
@@ -111,6 +114,7 @@ namespace Data.Entrees
             get { return pickle; }
             set
             {
+                pickle = value;
                 if (!value)
                 {
                     specialInstructions.Add("Hold pickle");
@@ -119,7 +123,7 @@ namespace Data.Entrees
                 {
                     specialInstructions.Remove("Hold pickle");
                 }
-                pickle = value;
+                
             }
         }
 
@@ -134,6 +138,7 @@ namespace Data.Entrees
             get { return cheese; }
             set
             {
+                cheese = value;
                 if (!value)
                 {
                     specialInstructions.Add("Hold cheese");
@@ -142,7 +147,7 @@ namespace Data.Entrees
                 {
                     specialInstructions.Remove("Hold cheese");
                 }
-                cheese = value;
+                
             }
         }
 
@@ -157,6 +162,7 @@ namespace Data.Entrees
             get { return tomato; }
             set
             {
+                tomato = value;
                 if (!value)
                 {
                     specialInstructions.Add("Hold tomato");
@@ -165,7 +171,7 @@ namespace Data.Entrees
                 {
                     specialInstructions.Remove("Hold tomato");
                 }
-                tomato = value;
+                
             }
         }
 
@@ -180,6 +186,7 @@ namespace Data.Entrees
             get { return lettuce; }
             set
             {
+                lettuce = value;
                 if (!value)
                 {
                     specialInstructions.Add("Hold lettuce");
@@ -188,7 +195,7 @@ namespace Data.Entrees
                 {
                     specialInstructions.Remove("Hold lettuce");
                 }
-                lettuce = value;
+                
             }
         }
 
@@ -203,6 +210,7 @@ namespace Data.Entrees
             get { return mayo; }
             set
             {
+                mayo = value;
                 if (!value)
                 {
                     specialInstructions.Add("Hold mayo");
@@ -211,7 +219,7 @@ namespace Data.Entrees
                 {
                     specialInstructions.Remove("Hold mayo");
                 }
-                mayo = value;
+                
             }
         }
 

@@ -9,12 +9,11 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Data.Sides
+namespace BleakwindBuffet.Data.Sides
 {
     public class DragonbornWaffleFries
     {
         private Size size = Size.Small;
-        private double price = 0.42;
 
         /// <summary>
         /// Get the size and set the size
@@ -27,57 +26,56 @@ namespace Data.Sides
 
         /// <summary>
         /// Gets price of the side
-        /// Sets price of the side according to the size
         /// </summary>
+        /// <exception cref="System.NotImplementedException">
+        /// Thrown if size is unknown
+        /// </exception>
         public double Price
         {
-            get { return price; }
-            set
+            get
             {
-                if (size == Size.Small)
+                switch (size)
                 {
-                    price = 0.42;
-                }
-                else if (size == Size.Medium)
-                {
-                    price = 0.76;
-                }
-                else
-                {
-                    price = 0.96;
+                    case Size.Small: return 0.42;
+                    case Size.Medium: return 0.76;
+                    case Size.Large: return 0.96;
+                    default: throw new NotImplementedException($"Unknown size {Size}");
                 }
             }
         }
 
-        private uint calories = 77;
         /// <summary>
         /// Gets the calories in the side
-        /// Sets the calories in the side based on size
-        /// </summary>
+        /// </summary>        
+        /// <exception cref="System.NotImplementedException">
+        /// Thrown if size is unknown
+        /// </exception>
         public uint Calories
         {
-            get { return calories; }
-            set
+            get
             {
-                if (size == Size.Small)
+                switch (size)
                 {
-                    calories = 77;
-                }
-                else if (size == Size.Medium)
-                {
-                    calories = 89;
-                }
-                else
-                {
-                    calories = 100;
+                    case Size.Small: return 77;
+                    case Size.Medium: return 89;
+                    case Size.Large: return 100;
+                    default: throw new NotImplementedException($"Unknown size {Size}");
                 }
             }
         }
 
         /// <summary>
-        /// 
+        /// Always returns an empty list (no special instructions for waffle fries)
         /// </summary>
-        /// <returns></returns>
+        public List<string> SpecialInstructions
+        {
+            get { return new List<string>(); }
+        }
+
+        /// <summary>
+        /// Overrides the ToString method to print the item name
+        /// </summary>
+        /// <returns>Returns a string containing the item name</returns>
         public override string ToString()
         {
             return $"{size} Dragonborn Waffle Fries";

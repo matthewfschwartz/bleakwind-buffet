@@ -8,7 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Data.Entrees
+namespace BleakwindBuffet.Data.Entrees
 {
     public class PhillyPoacher
     {
@@ -42,6 +42,7 @@ namespace Data.Entrees
             get { return sirloin; }
             set
             {
+                sirloin = value;
                 if (!sirloin)
                 {
                     specialInstructions.Add("Hold sirloin");
@@ -50,7 +51,7 @@ namespace Data.Entrees
                 {
                     specialInstructions.Remove("Hold sirloin");
                 }
-                sirloin = value;
+                
             }
         }
 
@@ -65,6 +66,7 @@ namespace Data.Entrees
             get { return onion; }
             set
             {
+                onion = value;
                 if (!onion)
                 {
                     specialInstructions.Add("Hold onions");
@@ -73,7 +75,7 @@ namespace Data.Entrees
                 {
                     specialInstructions.Remove("Hold onions");
                 }
-                onion = value;
+                
             }
         }
 
@@ -88,6 +90,7 @@ namespace Data.Entrees
             get { return roll; }
             set
             {
+                roll = value;
                 if (!roll)
                 {
                     specialInstructions.Add("Hold roll");
@@ -96,7 +99,7 @@ namespace Data.Entrees
                 {
                     specialInstructions.Remove("Hold roll");
                 }
-                roll = value;
+                
             }
         }
 

@@ -8,7 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Data.Entrees
+namespace BleakwindBuffet.Data.Entrees
 {
     public class GardenOrcOmelette
     {
@@ -42,6 +42,7 @@ namespace Data.Entrees
             get { return broccoli; }
             set
             {
+                broccoli = value;
                 if (!broccoli)
                 {
                     specialInstructions.Add("Hold broccoli");
@@ -50,7 +51,7 @@ namespace Data.Entrees
                 {
                     specialInstructions.Remove("Hold broccoli");
                 }
-                broccoli = value;
+                
             }
         }
 
@@ -66,6 +67,7 @@ namespace Data.Entrees
             get { return mushrooms; }
             set
             {
+                mushrooms = value;
                 if (!mushrooms)
                 {
                     specialInstructions.Add("Hold mushrooms");
@@ -74,7 +76,7 @@ namespace Data.Entrees
                 {
                     specialInstructions.Remove("Hold mushrooms");
                 }
-                mushrooms = value;
+                
             }
         }
 
@@ -90,6 +92,7 @@ namespace Data.Entrees
             get { return tomato; }
             set
             {
+                tomato = value;
                 if (!tomato)
                 {
                     specialInstructions.Add("Hold tomato");
@@ -98,7 +101,7 @@ namespace Data.Entrees
                 {
                     specialInstructions.Remove("Hold tomato");
                 }
-                tomato = value;
+                
             }
         }
 
@@ -114,6 +117,7 @@ namespace Data.Entrees
             get { return cheddar; }
             set
             {
+                cheddar = value;
                 if (!cheddar)
                 {
                     specialInstructions.Add("Hold cheddar");
@@ -122,7 +126,7 @@ namespace Data.Entrees
                 {
                     specialInstructions.Remove("Hold cheddar");
                 }
-                cheddar = value;
+                
             }
         }
 

@@ -9,66 +9,56 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Data.Drinks
+namespace BleakwindBuffet.Data.Drinks
 {
     public class CandlehearthCoffee
     {
-        private Size drinkSize = new Size();
+        private Size size = Size.Small;
         /// <summary>
         /// Get the size and set the size
         /// </summary>
         public Size Size
         {
-            get { return drinkSize; }
-            set { drinkSize = value; }
+            get { return size; }
+            set { size = value; }
         }
 
-        private double price = 0;
         /// <summary>
         /// Gets price of the drink
-        /// Sets price of the drink according to the size
         /// </summary>
+        /// <exception cref="System.NotImplementedException">
+        /// Thrown if size is unknown
+        /// </exception>
         public double Price
         {
-            get { return price; }
-            set
+            get
             {
-                if (drinkSize == Size.Small)
+                switch (size)
                 {
-                    price = 0.75;
-                }
-                else if (drinkSize == Size.Medium)
-                {
-                    price = 1.25;
-                }
-                else
-                {
-                    price = 1.75;
+                    case Size.Small: return 0.75;
+                    case Size.Medium: return 1.25;
+                    case Size.Large: return 1.75;
+                    default: throw new NotImplementedException($"Unknown size {Size}");
                 }
             }
         }
 
-        private uint calories = 0;
         /// <summary>
         /// Gets the calories in a drink
-        /// Sets the calories in a drink based on size
         /// </summary>
+        /// <exception cref="System.NotImplementedException">
+        /// Thrown if size is unknown
+        /// </exception>
         public uint Calories
         {
-            get { return calories; }
-            set
+            get
             {
-                if (drinkSize == Size.Small)
+                switch (size)
                 {
-                    calories = 7;
-                }
-                else if (drinkSize == Size.Medium)
-                {
-                    calories = 10;
-                }
-                else
-                {
-                    calories = 20;
+                    case Size.Small: return 7;
+                    case Size.Medium: return 10;
+                    case Size.Large: return 20;
+                    default: throw new NotImplementedException($"Unknown size {Size}");
                 }
             }
         }
@@ -84,7 +74,8 @@ namespace Data.Drinks
             get { return ice; }
             set
             {
-                if (!ice)
+                ice = value;
+                if (ice)
                 {
                     specialInstructions.Add("Add ice");
                 }
@@ -92,7 +83,7 @@ namespace Data.Drinks
                 {
                     specialInstructions.Remove("Add ice");
                 }
-                ice = value;
+                
             }
         }
 
@@ -107,7 +98,8 @@ namespace Data.Drinks
             get { return roomForCream; }
             set
             {
-                if (!roomForCream)
+                roomForCream = value;
+                if (roomForCream)
                 {
                     specialInstructions.Add("Add cream");
                 }
@@ -115,7 +107,7 @@ namespace Data.Drinks
                 {
                     specialInstructions.Remove("Add cream");
                 }
-                roomForCream = value;
+               
             }
         }
 
@@ -151,11 +143,11 @@ namespace Data.Drinks
         {
             if (decaf == false)
             {
-                return $"{drinkSize} Candleheart Coffee";
+                return $"{size} Candlehearth Coffee";
             }
             else
             {
-                return $"{drinkSize} Decaf Candleheart Coffee";
+                return $"{size} Decaf Candlehearth Coffee";
             }
         }
     }

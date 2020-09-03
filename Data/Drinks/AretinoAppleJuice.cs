@@ -1,7 +1,7 @@
 ﻿/*
  * Author: Matthew Schwartz
- * Class name: AretineAppleJuice.cs
- * Purpose: Get and set properties for a Arentino Apple Juice object
+ * Class name: AretinoAppleJuice.cs
+ * Purpose: Get and set properties for a Aretino Apple Juice object
  */
 
 using BleakwindBuffet.Data.Enums;
@@ -9,67 +9,57 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Data.Drinks
+namespace BleakwindBuffet.Data.Drinks
 {
-    public class ArentinoAppleJuice
+    public class AretinoAppleJuice
     {
-        private Size drinkSize = new Size();
-        private double price = 0;
+        private Size size = Size.Small;
 
         /// <summary>
         /// Get the size and set the size
         /// </summary>
         public Size Size
         {
-            get { return drinkSize; }
-            set { drinkSize = value; }
+            get { return size; }
+            set { size = value; }
         }
 
         /// <summary>
         /// Gets price of the drink
-        /// Sets price of the drink according to the size
         /// </summary>
+        /// <exception cref="System.NotImplementedException">
+        /// Thrown if size is unknown
+        /// </exception>
         public double Price
         {
-            get { return price; }
-            set
+            get
             {
-                if (drinkSize == Size.Small)
+                switch (size)
                 {
-                    price = 0.62;
-                }
-                else if (drinkSize == Size.Medium)
-                {
-                    price = 0.87;
-                }
-                else
-                {
-                    price = 1.01;
+                    case Size.Small: return 0.62;
+                    case Size.Medium: return 0.87;
+                    case Size.Large: return 1.01;
+                    default: throw new NotImplementedException($"Unknown size {Size}");
                 }
             }
         }
 
-        private uint calories = 0;
         /// <summary>
         /// Gets the calories in a drink
-        /// Sets the calories in a drink based on size
         /// </summary>
+        /// <exception cref="System.NotImplementedException">
+        /// Thrown if size is unknown
+        /// </exception>
         public uint Calories
         {
-            get { return calories; }
-            set
+            get
             {
-                if (drinkSize == Size.Small)
+                switch (size)
                 {
-                    calories = 44;
-                }
-                else if (drinkSize == Size.Medium)
-                {
-                    calories = 88;
-                }
-                else
-                {
-                    calories = 132;
+                    case Size.Small: return 44;
+                    case Size.Medium: return 88;
+                    case Size.Large: return 132;
+                    default: throw new NotImplementedException($"Unknown size {Size}");
                 }
             }
         }
@@ -85,7 +75,8 @@ namespace Data.Drinks
             get { return ice; }
             set
             {
-                if (!ice)
+                ice = value;
+                if (ice)
                 {
                     specialInstructions.Add("Add ice");
                 }
@@ -93,7 +84,7 @@ namespace Data.Drinks
                 {
                     specialInstructions.Remove("Add ice");
                 }
-                ice = value;
+                
             }
         }
 
@@ -112,7 +103,7 @@ namespace Data.Drinks
         /// <returns>Returns the size and flavor of the drink with the drink name</returns>
         public override string ToString()
         {
-            return $"{drinkSize} Arentino Apple Juice";
+            return $"{size} Aretino Apple Juice";
         }
     }
 }

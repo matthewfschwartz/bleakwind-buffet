@@ -9,12 +9,12 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Data.Sides
+namespace BleakwindBuffet.Data.Sides
 {
     public class MadOtarGrits
     {
         private Size size = Size.Small;
-        private double price = 1.22;
+
         /// <summary>
         /// Get the size and set the size
         /// </summary>
@@ -26,57 +26,56 @@ namespace Data.Sides
 
         /// <summary>
         /// Gets price of the side
-        /// Sets price of the side according to the size
         /// </summary>
+        /// <exception cref="System.NotImplementedException">
+        /// Thrown if size is unknown
+        /// </exception>
         public double Price
         {
-            get { return price; }
-            set
+            get
             {
-                if (size == Size.Small)
+                switch (size)
                 {
-                    price = 1.22;
-                }
-                else if (size == Size.Medium)
-                {
-                    price = 1.58;
-                }
-                else
-                {
-                    price = 1.93;
+                    case Size.Small: return 1.22;
+                    case Size.Medium: return 1.58;
+                    case Size.Large: return 1.93;
+                    default: throw new NotImplementedException($"Unknown size {Size}");
                 }
             }
         }
 
-        private uint calories = 105;
         /// <summary>
         /// Gets the calories in the side
-        /// Sets the calories in the side based on size
         /// </summary>
+        /// <exception cref="System.NotImplementedException">
+        /// Thrown if size is unknown
+        /// </exception>
         public uint Calories
         {
-            get { return calories; }
-            set
+            get
             {
-                if (size == Size.Small)
+                switch (size)
                 {
-                    calories = 105;
-                }
-                else if (size == Size.Medium)
-                {
-                    calories = 142;
-                }
-                else
-                {
-                    calories = 179;
+                    case Size.Small: return 105;
+                    case Size.Medium: return 142;
+                    case Size.Large: return 179;
+                    default: throw new NotImplementedException($"Unknown size {Size}");
                 }
             }
         }
 
         /// <summary>
-        /// 
+        /// Always returns an empty list (no special instructions for grits)
         /// </summary>
-        /// <returns></returns>
+        public List<string> SpecialInstructions
+        {
+            get { return new List<string>(); }
+        }
+
+        /// <summary>
+        /// Overrides the ToString method to print the item name
+        /// </summary>
+        /// <returns>Returns a string containing the item name</returns>
         public override string ToString()
         {
             return $"{size} Mad Otar Grits";

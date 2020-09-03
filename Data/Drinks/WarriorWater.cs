@@ -9,38 +9,58 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Data.Drinks
+namespace BleakwindBuffet.Data.Drinks
 {
     public class WarriorWater
     {
-        private Size drinkSize = new Size();
+        private Size size = Size.Small;
         /// <summary>
         /// Get the size and set the size
         /// </summary>
         public Size Size
         {
-            get { return drinkSize; }
-            set { drinkSize = value; }
+            get { return size; }
+            set { size = value; }
         }
 
-        private double price = 0;
         /// <summary>
-        /// Gets price of the drink
-        /// Sets price of the drink according to the size
+        /// The price of a drink
         /// </summary>
+        /// <exception cref="System.NotImplementedException">
+        /// Thrown if size is unknown
+        /// </exception>
         public double Price
         {
-            get { return price; }
+            get 
+            { 
+                switch(size)
+                {
+                    case Size.Small: return 0;
+                    case Size.Medium: return 0;
+                    case Size.Large: return 0;
+                    default: throw new NotImplementedException($"Unknown size {Size}");
+                }
+            }
         }
 
-        private uint calories = 0;
         /// <summary>
         /// Gets the calories in a drink
-        /// Sets the calories in a drink based on size
         /// </summary>
+        /// <exception cref="System.NotImplementedException">
+        /// Thrown if size is unknown
+        /// </exception>
         public uint Calories
         {
-            get { return calories; }
+            get
+            {
+                switch (size)
+                {
+                    case Size.Small: return 0;
+                    case Size.Medium: return 0;
+                    case Size.Large: return 0;
+                    default: throw new NotImplementedException($"Unknown size {Size}");
+                }
+            }
         }
 
         /// <summary>
@@ -54,6 +74,7 @@ namespace Data.Drinks
             get { return ice; }
             set
             {
+                ice = value;
                 if (!ice)
                 {
                     specialInstructions.Add("Hold ice");
@@ -62,7 +83,7 @@ namespace Data.Drinks
                 {
                     specialInstructions.Remove("Hold ice");
                 }
-                ice = value;
+                
             }
         }
 
@@ -73,7 +94,8 @@ namespace Data.Drinks
             get { return lemon; }
             set
             {
-                if (!lemon)
+                lemon = value;
+                if (lemon)
                 {
                     specialInstructions.Add("Add lemon");
                 }
@@ -81,7 +103,7 @@ namespace Data.Drinks
                 {
                     specialInstructions.Remove("Add lemon");
                 }
-                lemon = value;
+                
             }
         }
 
@@ -100,7 +122,7 @@ namespace Data.Drinks
         /// <returns>Returns the size and flavor of the drink with the drink name</returns>
         public override string ToString()
         {
-            return $"{drinkSize} Warrior Water";
+            return $"{size} Warrior Water";
         }
     }
 }

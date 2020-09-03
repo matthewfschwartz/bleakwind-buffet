@@ -8,7 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Data.Entrees
+namespace BleakwindBuffet.Data.Entrees
 {
     public class SmokehouseSkeleton
     {
@@ -45,6 +45,7 @@ namespace Data.Entrees
             }
             set
             {
+                sausageLink = value;
                 if (!sausageLink)
                 {
                     specialInstructions.Add("Hold sausage");
@@ -53,7 +54,7 @@ namespace Data.Entrees
                 {
                     specialInstructions.Remove("Hold sausage");
                 }
-                sausageLink = value;
+                
             }
         }
 
@@ -68,6 +69,7 @@ namespace Data.Entrees
             get { return egg; }
             set
             {
+                egg = value;
                 if (!egg)
                 {
                     specialInstructions.Add("Hold eggs");
@@ -76,7 +78,7 @@ namespace Data.Entrees
                 {
                     specialInstructions.Remove("Hold eggs");
                 }
-                egg = value;
+                
             }
         }
 
@@ -91,6 +93,7 @@ namespace Data.Entrees
             get { return hashBrowns; }
             set
             {
+                hashBrowns = value;
                 if (!hashBrowns)
                 {
                     specialInstructions.Add("Hold hash browns");
@@ -99,7 +102,7 @@ namespace Data.Entrees
                 {
                     specialInstructions.Remove("Hold hash browns");
                 }
-                hashBrowns = value;
+                
             }
         }
 
@@ -114,6 +117,7 @@ namespace Data.Entrees
             get { return pancake; }
             set
             {
+                pancake = value;
                 if (!pancake)
                 {
                     specialInstructions.Add("Hold pancakes");
@@ -122,7 +126,7 @@ namespace Data.Entrees
                 {
                     specialInstructions.Remove("Hold pancakes");
                 }
-                pancake = value;
+                
             }
         }
 

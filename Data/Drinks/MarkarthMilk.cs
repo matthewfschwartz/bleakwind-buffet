@@ -9,67 +9,57 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Data.Drinks
+namespace BleakwindBuffet.Data.Drinks
 {
     public class MarkarthMilk
     {
-        private Size drinkSize = new Size();
-        private double price = 0;
+        private Size size = Size.Small;
 
         /// <summary>
         /// Get the size and set the size
         /// </summary>
         public Size Size
         {
-            get { return drinkSize; }
-            set { drinkSize = value; }
+            get { return size; }
+            set { size = value; }
         }
 
         /// <summary>
         /// Gets price of the drink
-        /// Sets price of the drink according to the size
         /// </summary>
+        /// <exception cref="System.NotImplementedException">
+        /// Thrown if size is unknown
+        /// </exception>
         public double Price
         {
-            get { return price; }
-            set
+            get
             {
-                if (drinkSize == Size.Small)
+                switch (size)
                 {
-                    price = 1.05;
-                }
-                else if (drinkSize == Size.Medium)
-                {
-                    price = 1.11;
-                }
-                else
-                {
-                    price = 1.22;
+                    case Size.Small: return 1.05;
+                    case Size.Medium: return 1.11;
+                    case Size.Large: return 1.22;
+                    default: throw new NotImplementedException($"Unknown size {Size}");
                 }
             }
         }
 
-        private uint calories = 0;
         /// <summary>
         /// Gets the calories in a drink
-        /// Sets the calories in a drink based on size
         /// </summary>
+        /// <exception cref="System.NotImplementedException">
+        /// Thrown if size is unknown
+        /// </exception>
         public uint Calories
         {
-            get { return calories; }
-            set
+            get
             {
-                if (drinkSize == Size.Small)
+                switch (size)
                 {
-                    calories = 56;
-                }
-                else if (drinkSize == Size.Medium)
-                {
-                    calories = 72;
-                }
-                else
-                {
-                    calories = 93;
+                    case Size.Small: return 56;
+                    case Size.Medium: return 72;
+                    case Size.Large: return 93;
+                    default: throw new NotImplementedException($"Unknown size {Size}");
                 }
             }
         }
@@ -85,7 +75,8 @@ namespace Data.Drinks
             get { return ice; }
             set
             {
-                if (!ice)
+                ice = value;
+                if (ice)
                 {
                     specialInstructions.Add("Add ice");
                 }
@@ -93,7 +84,7 @@ namespace Data.Drinks
                 {
                     specialInstructions.Remove("Add ice");
                 }
-                ice = value;
+                
             }
         }
 
@@ -112,7 +103,7 @@ namespace Data.Drinks
         /// <returns>Returns the size and flavor of the drink with the drink name</returns>
         public override string ToString()
         {
-            return $"{drinkSize} Markarth Milk";
+            return $"{size} Markarth Milk";
         }
     }
 }

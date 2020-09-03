@@ -9,66 +9,56 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Data.Drinks
+namespace BleakwindBuffet.Data.Drinks
 {
     public class SailorSoda
     {
-        private Size drinkSize = new Size();
+        private Size size = Size.Small;
         /// <summary>
         /// Get the size and set the size
         /// </summary>
         public Size Size
         {
-            get { return drinkSize; }
-            set { drinkSize = value; }
+            get { return size; }
+            set { size = value; }
         }
 
-        private double price = 0;
         /// <summary>
         /// Gets price of the drink
-        /// Sets price of the drink according to the size
         /// </summary>
+        /// <exception cref="System.NotImplementedException">
+        /// Thrown if size is unknown
+        /// </exception>
         public double Price 
         {
-            get { return price; }
-            set
+            get
             {
-                if (drinkSize == Size.Small)
+                switch (size)
                 {
-                    price = 1.42;
-                }
-                else if (drinkSize == Size.Medium)
-                {
-                    price = 1.74;
-                }
-                else
-                {
-                    price = 2.07;
+                    case Size.Small: return 1.42;
+                    case Size.Medium: return 1.74;
+                    case Size.Large: return 2.07;
+                    default: throw new NotImplementedException($"Unknown size {Size}");
                 }
             }
         }
 
-        private uint calories = 0;
         /// <summary>
         /// Gets the calories in a drink
-        /// Sets the calories in a drink based on size
         /// </summary>
+        /// <exception cref="System.NotImplementedException">
+        /// Thrown if size is unknown
+        /// </exception>
         public uint Calories
         {
-            get { return calories; }
-            set
+            get
             {
-                if (drinkSize == Size.Small)
+                switch (size)
                 {
-                    calories = 117;
-                }
-                else if (drinkSize == Size.Medium)
-                {
-                    calories = 153;
-                }
-                else
-                {
-                    calories = 205;
+                    case Size.Small: return 117;
+                    case Size.Medium: return 153;
+                    case Size.Large: return 205;
+                    default: throw new NotImplementedException($"Unknown size {Size}");
                 }
             }
         }
@@ -84,6 +74,7 @@ namespace Data.Drinks
             get { return ice; }
             set
             {
+                ice = value;
                 if (!ice)
                 {
                     specialInstructions.Add("Hold ice");
@@ -92,7 +83,7 @@ namespace Data.Drinks
                 {
                     specialInstructions.Remove("Hold ice");
                 }
-                ice = value;
+                
             }
         }
 
@@ -119,7 +110,7 @@ namespace Data.Drinks
         /// <returns>Returns the size and flavor of the drink with the drink name</returns>
         public override string ToString()
         {
-            return $"{drinkSize} {flavor} Sailor Soda";
+            return $"{size} {flavor} Sailor Soda";
         }
     }
 }
