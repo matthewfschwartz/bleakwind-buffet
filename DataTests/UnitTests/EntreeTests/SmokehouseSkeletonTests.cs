@@ -1,5 +1,5 @@
 ﻿/*
- * Author: Zachery Brunner
+ * Author: Matthew Schwartz
  * Class: SmokehouseSkeletonTests.cs
  * Purpose: Test the SmokehouseSkeleton.cs class in the Data library
  */
@@ -11,8 +11,14 @@ using System;
 
 namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
 {
+    /// <summary>
+    /// Class to test SmokehouseSkeleton.cs class
+    /// </summary>
     public class SmokehouseSkeletonTests
-    {        
+    {
+        /// <summary>
+        /// Makes sure smokehouse skeleton has sausage by default
+        /// </summary>
         [Fact]
         public void ShouldInlcudeSausageByDefault()
         {
@@ -20,6 +26,9 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
             Assert.True(s.SausageLink);
         }
 
+        /// <summary>
+        /// Makes sure smokehouse skeleton has eggs by default
+        /// </summary>
         [Fact]
         public void ShouldInlcudeEggByDefault()
         {
@@ -27,6 +36,9 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
             Assert.True(s.Egg);
         }
 
+        /// <summary>
+        /// Makes sure smokehouse skeleton has hashbrowns by default
+        /// </summary>
         [Fact]
         public void ShouldInlcudeHashbrownsByDefault()
         {
@@ -34,6 +46,9 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
             Assert.True(s.HashBrowns);
         }
 
+        /// <summary>
+        /// Makes sure smokehouse skeleton has pancakes by default
+        /// </summary>
         [Fact]
         public void ShouldInlcudePancakeByDefault()
         {
@@ -41,6 +56,9 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
             Assert.True(s.Pancake);
         }
 
+        /// <summary>
+        /// Makes sure we can remove or add sausage
+        /// </summary>
         [Fact]
         public void ShouldBeAbleToSetSausage()
         {
@@ -51,6 +69,9 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
             Assert.True(s.SausageLink);
         }
 
+        /// <summary>
+        /// Makes sure we can remove or add eggs
+        /// </summary>
         [Fact]
         public void ShouldBeAbleToSetEgg()
         {
@@ -61,6 +82,9 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
             Assert.True(s.Egg);
         }
 
+        /// <summary>
+        /// Makes sure we can remove or add hashbrowns
+        /// </summary>
         [Fact]
         public void ShouldBeAbleToSetHashbrowns()
         {
@@ -71,6 +95,9 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
             Assert.True(s.HashBrowns);
         }
 
+        /// <summary>
+        /// Makes sure we can remove or add pancakes
+        /// </summary>
         [Fact]
         public void ShouldBeAbleToSetPancake()
         {
@@ -81,6 +108,9 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
             Assert.True(s.Pancake);
         }
 
+        /// <summary>
+        /// Makes sure smokehouse skeleton has the right price
+        /// </summary>
         [Fact]
         public void ShouldReturnCorrectPrice()
         {
@@ -88,6 +118,9 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
             Assert.Equal(5.62, s.Price);
         }
 
+        /// <summary>
+        /// Makes sure smokehouse skeleton has the right calorie count
+        /// </summary>
         [Fact]
         public void ShouldReturnCorrectCalories()
         {
@@ -95,6 +128,13 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
             Assert.Equal((uint)602, s.Calories);
         }
 
+        /// <summary>
+        /// Makes sure smokehouse skeleton special instructions has the right list members
+        /// </summary>
+        /// <param name="includeSausage">Whether the customer wants sausage or not</param>
+        /// <param name="includeEgg">Whether the customer wants eggs or not</param>
+        /// <param name="includeHashbrowns">Whether the customer wants hashbrowns or not</param>
+        /// <param name="includePancake">Whether the customer wants pancakes or not</param>
         [Theory]
         [InlineData(true, true, true, true)]
         [InlineData(false, false, false, false)]
@@ -116,6 +156,9 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
             if (!includePancake) Assert.Contains("Hold pancakes", s.SpecialInstructions);
         }
 
+        /// <summary>
+        /// Makes sure smokehouse skeleton has the right name
+        /// </summary>
         [Fact]
         public void ShouldReturnCorrectToString()
         {

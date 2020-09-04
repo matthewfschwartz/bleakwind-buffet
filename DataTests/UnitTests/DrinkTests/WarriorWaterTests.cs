@@ -14,8 +14,14 @@ using BleakwindBuffet.Data.Drinks;
 
 namespace BleakwindBuffet.DataTests.UnitTests.DrinkTests
 {
+    /// <summary>
+    /// Class for testing WarriorWater.cs class
+    /// </summary>
     public class WarriorWaterTests
     {
+        /// <summary>
+        /// Makes sure a warrior water drink includes ice by default
+        /// </summary>
         [Fact]
         public void ShouldIncludeIceByDefault()
         {
@@ -23,6 +29,9 @@ namespace BleakwindBuffet.DataTests.UnitTests.DrinkTests
             Assert.True(w.Ice);
         }
 
+        /// <summary>
+        /// Makes sure a warrior water drink does not include lemon by default
+        /// </summary>
         [Fact]
         public void ShouldNotIncludeLemonByDefault()
         {
@@ -30,6 +39,9 @@ namespace BleakwindBuffet.DataTests.UnitTests.DrinkTests
             Assert.False(w.Lemon);
         }
 
+        /// <summary>
+        /// Makes sure a warrior water drink is size small by default
+        /// </summary>
         [Fact]
         public void ShouldBySmallByDefault()
         {
@@ -37,6 +49,9 @@ namespace BleakwindBuffet.DataTests.UnitTests.DrinkTests
             Assert.Equal(Size.Small, w.Size);
         }
 
+        /// <summary>
+        /// Makes sure we can remove or add ice from a warrior water drink
+        /// </summary>
         [Fact]
         public void ShouldBeAbleToSetIce()
         {
@@ -47,6 +62,9 @@ namespace BleakwindBuffet.DataTests.UnitTests.DrinkTests
             Assert.True(w.Ice);
         }
 
+        /// <summary>
+        /// Makes sure we can add or remove lemon from a warrior water drink
+        /// </summary>
         [Fact]
         public void ShouldBeAbleToSetLemon()
         {
@@ -57,6 +75,9 @@ namespace BleakwindBuffet.DataTests.UnitTests.DrinkTests
             Assert.False(w.Lemon);
         }
 
+        /// <summary>
+        /// Makes sure we can change the size of a warrior water drink
+        /// </summary>
         [Fact]
         public void ShouldBeAbleToSetSize()
         {
@@ -69,6 +90,11 @@ namespace BleakwindBuffet.DataTests.UnitTests.DrinkTests
             Assert.Equal(Size.Small, w.Size);
         }
 
+        /// <summary>
+        /// Makes sure a warrior water drink is the correct price based on size
+        /// </summary>
+        /// <param name="size">Size of the warrior water drink</param>
+        /// <param name="price">The price we expect a warrior water to be based on its size</param>
         [Theory]
         [InlineData(Size.Small, 0)]
         [InlineData(Size.Medium, 0)]
@@ -80,6 +106,11 @@ namespace BleakwindBuffet.DataTests.UnitTests.DrinkTests
             Assert.Equal(price, w.Price);
         }
 
+        /// <summary>
+        /// Makes sure the warrior water drink is the correct calories based on size
+        /// </summary>
+        /// <param name="size">Size of the warrior water drink</param>
+        /// <param name="cal">Expected number of calories that a warrior water drink should be based on its size</param>
         [Theory]
         [InlineData(Size.Small, 0)]
         [InlineData(Size.Medium, 0)]
@@ -91,6 +122,11 @@ namespace BleakwindBuffet.DataTests.UnitTests.DrinkTests
             Assert.Equal(cal, w.Calories);
         }
 
+        /// <summary>
+        /// Makes sure our warrior water has the correct special instructions
+        /// </summary>
+        /// <param name="includeIce">Whether a customer wants ice or not</param>
+        /// <param name="includeLemon">Whether a customer wants lemon or not</param>
         [Theory]
         [InlineData(true, true)]
         [InlineData(false, true)]
@@ -107,6 +143,11 @@ namespace BleakwindBuffet.DataTests.UnitTests.DrinkTests
             if (!includeLemon) Assert.DoesNotContain("Add lemon", w.SpecialInstructions);
         }
 
+        /// <summary>
+        /// Makes sure our warrior water drink has the correct name
+        /// </summary>
+        /// <param name="size">The size of the warrior water drink</param>
+        /// <param name="name">The name we expect the warrior water drink to have based on its size</param>
         [Theory]
         [InlineData(Size.Small, "Small Warrior Water")]
         [InlineData(Size.Medium, "Medium Warrior Water")]

@@ -1,5 +1,5 @@
 ﻿/*
- * Author: Zachery Brunner
+ * Author: Matthew Schwartz
  * Class: MadOtarGritsTests.cs
  * Purpose: Test the MadOtarGrits.cs class in the Data library
  */
@@ -11,15 +11,24 @@ using BleakwindBuffet.Data.Sides;
 
 namespace BleakwindBuffet.DataTests.UnitTests.SideTests
 {
+    /// <summary>
+    /// Class to test MadOtarGrits.cs class
+    /// </summary>
     public class MadOtarGritsTests
     {
+        /// <summary>
+        /// Makes sure mad otar grits are small by default
+        /// </summary>
         [Fact]
         public void ShouldBeSmallByDefault()
         {
             MadOtarGrits m = new MadOtarGrits();
             Assert.Equal(Size.Small, m.Size);
         }
-                
+        
+        /// <summary>
+        /// Makes sure we can change the size of mad otar grits
+        /// </summary>
         [Fact]
         public void ShouldBeAbleToSetSize()
         {
@@ -32,6 +41,9 @@ namespace BleakwindBuffet.DataTests.UnitTests.SideTests
             Assert.Equal(Size.Small, m.Size);
         }
 
+        /// <summary>
+        /// Makes sure list of special instructions for mad otar grits is empty
+        /// </summary>
         [Fact]
         public void ShouldReturnCorrectStringOnSpecialInstructions()
         {
@@ -39,6 +51,11 @@ namespace BleakwindBuffet.DataTests.UnitTests.SideTests
             Assert.Empty(m.SpecialInstructions);
         }
 
+        /// <summary>
+        /// Makes sure mad otar grits have the right price based on their size
+        /// </summary>
+        /// <param name="size">Size of mad otar grits</param>
+        /// <param name="price">Price we expect mad otar grits to have</param>
         [Theory]
         [InlineData(Size.Small, 1.22)]
         [InlineData(Size.Medium, 1.58)]
@@ -50,6 +67,11 @@ namespace BleakwindBuffet.DataTests.UnitTests.SideTests
             Assert.Equal(price, m.Price);
         }
 
+        /// <summary>
+        /// Makes sure mad otar grits have the right calorie count based on their size
+        /// </summary>
+        /// <param name="size">Size of mad otar grits</param>
+        /// <param name="calories">Calorie count we expect mad otar grits to have</param>
         [Theory]
         [InlineData(Size.Small, 105)]
         [InlineData(Size.Medium, 142)]
@@ -61,6 +83,11 @@ namespace BleakwindBuffet.DataTests.UnitTests.SideTests
             Assert.Equal(calories, m.Calories);
         }
 
+        /// <summary>
+        /// Make sure mad otar grits have the right name based on their size
+        /// </summary>
+        /// <param name="size">Size of mad otar grits</param>
+        /// <param name="name">Name we expect mad otar grits to have</param>
         [Theory]
         [InlineData(Size.Small, "Small Mad Otar Grits")]
         [InlineData(Size.Medium, "Medium Mad Otar Grits")]

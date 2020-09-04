@@ -1,5 +1,5 @@
 ﻿/*
- * Author: Zachery Brunner
+ * Author: Matthew Schwartz
  * Class: MarkarthMilkTests.cs
  * Purpose: Test the MarkarthMilk.cs class in the Data library
  */
@@ -11,8 +11,14 @@ using BleakwindBuffet.Data.Drinks;
 
 namespace BleakwindBuffet.DataTests.UnitTests.DrinkTests
 {
+    /// <summary>
+    /// Class to test the MarkarthMilk.cs class
+    /// </summary>
     public class MarkarthMilkTests
     {
+        /// <summary>
+        /// Makes sure that an unmodified markarth milk object doesn't have ice by default
+        /// </summary>
         [Fact]
         public void ShouldNotIncludeIceByDefault()
         {
@@ -20,6 +26,9 @@ namespace BleakwindBuffet.DataTests.UnitTests.DrinkTests
             Assert.False(m.Ice);
         }
 
+        /// <summary>
+        /// Makes sure that an unmodified markarth milk object is size small by default
+        /// </summary>
         [Fact]
         public void ShouldBySmallByDefault()
         {
@@ -27,6 +36,9 @@ namespace BleakwindBuffet.DataTests.UnitTests.DrinkTests
             Assert.Equal(Size.Small, m.Size);
         }
 
+        /// <summary>
+        /// Makes sure that a markarth milk object is able to have ice added to it
+        /// </summary>
         [Fact]
         public void ShouldByAbleToSetIce()
         {
@@ -37,6 +49,9 @@ namespace BleakwindBuffet.DataTests.UnitTests.DrinkTests
             Assert.False(m.Ice);
         }
 
+        /// <summary>
+        /// Makes sure that a markarth milk object is able to change sizes
+        /// </summary>
         [Fact]
         public void ShouldBeAbleToSetSize()
         {
@@ -49,6 +64,11 @@ namespace BleakwindBuffet.DataTests.UnitTests.DrinkTests
             Assert.Equal(Size.Small, m.Size);
         }
 
+        /// <summary>
+        /// Makes sure that as a markarth milk object chanegs size, the price changes accordingly
+        /// </summary>
+        /// <param name="size">The size of a markarth milk drink</param>
+        /// <param name="price">The expected price of a markarth milk drink</param>
         [Theory]
         [InlineData(Size.Small, 1.05)]
         [InlineData(Size.Medium, 1.11)]
@@ -60,6 +80,11 @@ namespace BleakwindBuffet.DataTests.UnitTests.DrinkTests
             Assert.Equal(price, m.Price);
         }
 
+        /// <summary>
+        /// Makes sure that as a markarth milk object chanegs size, the calories change accordingly
+        /// </summary>
+        /// <param name="size">The size of a markarth milk drink</param>
+        /// <param name="cal">The expected number of calories of a markarth milk drink</param>
         [Theory]
         [InlineData(Size.Small, 56)]
         [InlineData(Size.Medium, 72)]
@@ -71,6 +96,10 @@ namespace BleakwindBuffet.DataTests.UnitTests.DrinkTests
             Assert.Equal(cal, m.Calories);
         }
 
+        /// <summary>
+        /// Makes sure that markarth milk object has the correct special instructions based on whether there is ice or no ice
+        /// </summary>
+        /// <param name="includeIce">Whether or not the markarth milk has ice or not</param>
         [Theory]
         [InlineData(true)]
         [InlineData(false)]
@@ -82,6 +111,11 @@ namespace BleakwindBuffet.DataTests.UnitTests.DrinkTests
             if (!includeIce) Assert.DoesNotContain("Add ice", m.SpecialInstructions);
         }
 
+        /// <summary>
+        /// Makes sure the markarth milk object returns the right name based on its size
+        /// </summary>
+        /// <param name="size">The size of a markarth milk drink</param>
+        /// <param name="name">The expected name of the markarth milk drink (what we expect from Tostring())</param>
         [Theory]
         [InlineData(Size.Small, "Small Markarth Milk")]
         [InlineData(Size.Medium, "Medium Markarth Milk")]

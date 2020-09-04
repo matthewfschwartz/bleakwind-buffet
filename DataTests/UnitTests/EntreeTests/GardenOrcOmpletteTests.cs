@@ -1,5 +1,5 @@
 ﻿/*
- * Author: Zachery Brunner
+ * Author: Matthew Schwartz
  * Class: GardenOrcOmeletteTests.cs
  * Purpose: Test the GardenOrcOmelette.cs class in the Data library
  */
@@ -11,8 +11,14 @@ using System.Runtime.InteropServices;
 
 namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
 {
+    /// <summary>
+    /// Class to test GardenOrcOmelette.cs class
+    /// </summary>
     public class GardenOrcOmeletteTests
     {
+        /// <summary>
+        /// Makes sure omelette has broccoli by default
+        /// </summary>
         [Fact]
         public void ShouldInlcudeBroccoliByDefault()
         {
@@ -20,6 +26,9 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
             Assert.True(g.Broccoli);
         }
 
+        /// <summary>
+        /// Makes sure omelette has mushrooms by default
+        /// </summary>
         [Fact]
         public void ShouldInlcudeMushroomsByDefault()
         {
@@ -27,6 +36,9 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
             Assert.True(g.Mushrooms);
         }
 
+        /// <summary>
+        /// Makes sure omelette has tomato by default
+        /// </summary>
         [Fact]
         public void ShouldInlcudeTomatoByDefault()
         {
@@ -34,6 +46,9 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
             Assert.True(g.Tomato);
         }
 
+        /// <summary>
+        /// Makes sure omelette has cheddar by default
+        /// </summary>
         [Fact]
         public void ShouldInlcudeCheddarByDefault()
         {
@@ -41,6 +56,9 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
             Assert.True(g.Cheddar);
         }
 
+        /// <summary>
+        /// Makes sure we can remove or add broccoli
+        /// </summary>
         [Fact]
         public void ShouldBeAbleToSetBroccoli()
         {
@@ -51,6 +69,9 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
             Assert.True(g.Broccoli);
         }
 
+        /// <summary>
+        /// Makes sure we can remove or add mushrooms
+        /// </summary>
         [Fact]
         public void ShouldBeAbleToSetMushrooms()
         {
@@ -61,6 +82,9 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
             Assert.True(g.Mushrooms);
         }
 
+        /// <summary>
+        /// Makes sure we can remove or add tomato
+        /// </summary>
         [Fact]
         public void ShouldBeAbleToSetTomato()
         {
@@ -71,6 +95,9 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
             Assert.True(g.Tomato);
         }
 
+        /// <summary>
+        /// Makes sure we can remove or add cheddar
+        /// </summary>
         [Fact]
         public void ShouldBeAbleToSetCheddar()
         {
@@ -81,6 +108,9 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
             Assert.True(g.Cheddar);
         }
 
+        /// <summary>
+        /// Makes sure omelette has the right price
+        /// </summary>
         [Fact]
         public void ShouldReturnCorrectPrice()
         {
@@ -88,6 +118,9 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
             Assert.Equal(4.57, g.Price);
         }
 
+        /// <summary>
+        /// Makes sure omelette has the right calorie count
+        /// </summary>
         [Fact]
         public void ShouldReturnCorrectCalories()
         {
@@ -95,6 +128,13 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
             Assert.Equal((uint)404, g.Calories);
         }
 
+        /// <summary>
+        /// Makes sure omelette has the right special instructions list
+        /// </summary>
+        /// <param name="includeBroccoli">Whether the customer wants broccoli or not</param>
+        /// <param name="includeMushrooms">Whether the customer wants mushrooms or not</param>
+        /// <param name="includeTomato">Whether the customer wants tomato or not</param>
+        /// <param name="includeCheddar">Whether the customer wants cheddar or not</param>
         [Theory]
         [InlineData(true, true, true, true)]
         [InlineData(false, false, false, false)]
@@ -116,6 +156,9 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
             if (!includeCheddar) Assert.Contains("Hold cheddar", g.SpecialInstructions);
         }
 
+        /// <summary>
+        /// Makes sure omelette has the right name
+        /// </summary>
         [Fact]
         public void ShouldReturnCorrectToString()
         {

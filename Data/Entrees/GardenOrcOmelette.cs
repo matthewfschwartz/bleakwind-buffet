@@ -10,6 +10,9 @@ using System.Text;
 
 namespace BleakwindBuffet.Data.Entrees
 {
+    /// <summary>
+    /// Class for defining a Garden Orc Omelette object
+    /// </summary>
     public class GardenOrcOmelette
     {
         private double price = 4.57;

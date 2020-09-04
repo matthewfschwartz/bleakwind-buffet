@@ -1,5 +1,5 @@
 ﻿/*
- * Author: Zachery Brunner
+ * Author: Matthew Schwartz
  * Class: DragonbornWaffleFriesTests.cs
  * Purpose: Test the DragonbornWaffleFries.cs class in the Data library
  */
@@ -11,8 +11,14 @@ using BleakwindBuffet.Data.Sides;
 
 namespace BleakwindBuffet.DataTests.UnitTests.SideTests
 {
+    /// <summary>
+    /// Class to test DragonbornWaffleFries.cs class
+    /// </summary>
     public class DragonbornWaffleFriesTests
     {
+        /// <summary>
+        /// Makes sure dragonborn waffle fries are small by default
+        /// </summary>
         [Fact]
         public void ShouldBeSmallByDefault()
         {
@@ -20,6 +26,9 @@ namespace BleakwindBuffet.DataTests.UnitTests.SideTests
             Assert.Equal(Size.Small, d.Size);
         }
 
+        /// <summary>
+        /// Makes sure we can change the size for dragonborn waffle fries
+        /// </summary>
         [Fact]
         public void ShouldBeAbleToSetSize()
         {
@@ -32,6 +41,9 @@ namespace BleakwindBuffet.DataTests.UnitTests.SideTests
             Assert.Equal(Size.Small, d.Size);
         }
 
+        /// <summary>
+        /// Makes sure special instructions list for dragonborn waffle fries is empty
+        /// </summary>
         [Fact]
         public void ShouldReturnCorrectSpecialInstructions()
         {
@@ -40,6 +52,11 @@ namespace BleakwindBuffet.DataTests.UnitTests.SideTests
 
         }
 
+        /// <summary>
+        /// Makes sure dragonborn waffle fries has the right price according to its size
+        /// </summary>
+        /// <param name="size">Size of dragonborn waffle fries</param>
+        /// <param name="price">Price we expect dragonborn waffle fries to have</param>
         [Theory]
         [InlineData(Size.Small, 0.42)]
         [InlineData(Size.Medium, 0.76)]
@@ -51,6 +68,11 @@ namespace BleakwindBuffet.DataTests.UnitTests.SideTests
             Assert.Equal(price, d.Price);
         }
 
+        /// <summary>
+        /// Makes sure dragonborn waffle fries have the right calorie count according to its size
+        /// </summary>
+        /// <param name="size">Size of dragonborn waffle fries</param>
+        /// <param name="calories">Calories we expect dragonborn waffle fries to have</param>
         [Theory]
         [InlineData(Size.Small, 77)]
         [InlineData(Size.Medium, 89)]
@@ -62,6 +84,11 @@ namespace BleakwindBuffet.DataTests.UnitTests.SideTests
             Assert.Equal(calories, d.Calories);
         }
 
+        /// <summary>
+        /// Makes sure dragonborn waffle fries have the right name according to their size
+        /// </summary>
+        /// <param name="size">Size of dragonborn waffle fries</param>
+        /// <param name="name">Name we expect dragonborn waffle fries to have</param>
         [Theory]
         [InlineData(Size.Small, "Small Dragonborn Waffle Fries")]
         [InlineData(Size.Medium, "Medium Dragonborn Waffle Fries")]

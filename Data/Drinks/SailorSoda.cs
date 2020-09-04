@@ -11,6 +11,9 @@ using System.Text;
 
 namespace BleakwindBuffet.Data.Drinks
 {
+    /// <summary>
+    /// Class defining a SailorSoda object
+    /// </summary>
     public class SailorSoda
     {
         private Size size = Size.Small;

@@ -11,6 +11,9 @@ using System.Text;
 
 namespace BleakwindBuffet.Data.Drinks
 {
+    /// <summary>
+    /// Class defining a WarriorWater object
+    /// </summary>
     public class WarriorWater
     {
         private Size size = Size.Small;

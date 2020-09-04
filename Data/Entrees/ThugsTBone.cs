@@ -10,6 +10,9 @@ using System.Text;
 
 namespace BleakwindBuffet.Data.Entrees
 {
+    /// <summary>
+    /// Class for defining a Thugs T-Bone object
+    /// </summary>
     public class ThugsTBone
     {
         private double price = 6.44;

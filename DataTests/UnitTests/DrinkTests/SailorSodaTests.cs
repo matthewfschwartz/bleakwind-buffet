@@ -1,5 +1,5 @@
 ﻿/*
- * Author: Zachery Brunner
+ * Author: Matthew Schwartz
  * Class: SailorSodaTests.cs
  * Purpose: Test the SailorSoda.cs class in the Data library
  */
@@ -13,8 +13,14 @@ using BleakwindBuffet.Data.Drinks;
 
 namespace BleakwindBuffet.DataTests.UnitTests.DrinkTests
 {
+    /// <summary>
+    /// Class to test the SailorSoda.cs class
+    /// </summary>
     public class SailorSodaTests
     {
+        /// <summary>
+        /// Makes sure a sailor soda object has ice by default
+        /// </summary>
         [Fact]
         public void ShouldIncludeIceByDefault()
         {
@@ -22,6 +28,9 @@ namespace BleakwindBuffet.DataTests.UnitTests.DrinkTests
             Assert.True(s.Ice);
         }
 
+        /// <summary>
+        /// Makes sure a sailor soda object is size small by default
+        /// </summary>
         [Fact]
         public void ShouldBeSmallByDefault()
         {
@@ -29,6 +38,9 @@ namespace BleakwindBuffet.DataTests.UnitTests.DrinkTests
             Assert.Equal(Size.Small, s.Size);
         }
 
+        /// <summary>
+        /// Makes sure a sailor soda object is cherry flavor by default
+        /// </summary>
         [Fact]
         public void FlavorShouldBeCherryByDefault()
         {
@@ -36,6 +48,9 @@ namespace BleakwindBuffet.DataTests.UnitTests.DrinkTests
             Assert.Equal(SodaFlavor.Cherry, s.Flavor);
         }
 
+        /// <summary>
+        /// Makes sure we can remove or add ice to a sailor soda object
+        /// </summary>
         [Fact]
         public void ShouldBeAbleToSetIce()
         {
@@ -46,6 +61,9 @@ namespace BleakwindBuffet.DataTests.UnitTests.DrinkTests
             Assert.False(s.Ice);
         }
 
+        /// <summary>
+        /// Makes sure we are able to change the size of a sailor soda object
+        /// </summary>
         [Fact]
         public void ShouldBeAbleToSetSize()
         {
@@ -58,6 +76,9 @@ namespace BleakwindBuffet.DataTests.UnitTests.DrinkTests
             Assert.Equal(Size.Small, s.Size);
         }
 
+        /// <summary>
+        /// Makes sure we are able to change the flavor of a sailor soda object
+        /// </summary>
         [Fact]
         public void ShouldBeAbleToSetFlavor()
         {
@@ -76,6 +97,11 @@ namespace BleakwindBuffet.DataTests.UnitTests.DrinkTests
             Assert.Equal(SodaFlavor.Cherry, s.Flavor);
         }
 
+        /// <summary>
+        /// Makes sure that a sailor soda object has the right price according to its size
+        /// </summary>
+        /// <param name="size">The size of a sailor soda object</param>
+        /// <param name="price">The price we expect a sailor soda object to have</param>
         [Theory]
         [InlineData(Size.Small, 1.42)]
         [InlineData(Size.Medium, 1.74)]
@@ -87,6 +113,11 @@ namespace BleakwindBuffet.DataTests.UnitTests.DrinkTests
             Assert.Equal(price, s.Price);
         }
 
+        /// <summary>
+        /// Makes sure that a sailor soda object has the right calories according to its size
+        /// </summary>
+        /// <param name="size">The size of a sailor soda object</param>
+        /// <param name="cal">The number of calories we expect a sailor soda object to have</param>
         [Theory]
         [InlineData(Size.Small, 117)]
         [InlineData(Size.Medium, 153)]
@@ -98,6 +129,10 @@ namespace BleakwindBuffet.DataTests.UnitTests.DrinkTests
             Assert.Equal(cal, s.Calories);
         }
 
+        /// <summary>
+        /// Makes sure as we modify a sailor soda object, it contains the correct special instructions list
+        /// </summary>
+        /// <param name="includeIce">Whether a customer wants ice or not</param>
         [Theory]
         [InlineData(true)]
         [InlineData(false)]
@@ -109,6 +144,12 @@ namespace BleakwindBuffet.DataTests.UnitTests.DrinkTests
             if(!includeIce) Assert.Contains("Hold ice", s.SpecialInstructions);
         }
         
+        /// <summary>
+        /// Makes sure that as a size and flavor of sailor soda is modified, it retains the correct name
+        /// </summary>
+        /// <param name="flavor">The flavor of a sailor soda object</param>
+        /// <param name="size">The size of a sailor soda object</param>
+        /// <param name="name">The name we expect a sailor soda object to have based on flavor and size</param>
         [Theory]
         [InlineData(SodaFlavor.Cherry, Size.Small, "Small Cherry Sailor Soda")]
         [InlineData(SodaFlavor.Cherry, Size.Medium, "Medium Cherry Sailor Soda")]

@@ -10,6 +10,9 @@ using System.Text;
 
 namespace BleakwindBuffet.Data.Entrees
 {
+    /// <summary>
+    /// Class for defining a Smokehouse Skeleton object
+    /// </summary>
     public class SmokehouseSkeleton
     {
         private double price = 5.62;

@@ -11,6 +11,9 @@ using System.Text;
 
 namespace BleakwindBuffet.Data.Sides
 {
+    /// <summary>
+    /// Class for defining a Dragonborn Waffle Fries object
+    /// </summary>
     public class DragonbornWaffleFries
     {
         private Size size = Size.Small;

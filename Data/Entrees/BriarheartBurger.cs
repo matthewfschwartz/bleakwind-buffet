@@ -10,6 +10,9 @@ using System.Text;
 
 namespace BleakwindBuffet.Data.Entrees
 {
+    /// <summary>
+    /// Class defining a Briarheart Burger object
+    /// </summary>
     public class BriarheartBurger
     {
         private double price = 6.32; 

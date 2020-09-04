@@ -10,6 +10,9 @@ using System.Text;
 
 namespace BleakwindBuffet.Data.Entrees
 {
+    /// <summary>
+    /// Class for defining a Double Draugr object
+    /// </summary>
     public class DoubleDraugr
     {
         private double price = 7.32;

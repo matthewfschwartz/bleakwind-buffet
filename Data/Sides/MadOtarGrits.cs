@@ -11,6 +11,9 @@ using System.Text;
 
 namespace BleakwindBuffet.Data.Sides
 {
+    /// <summary>
+    /// Class for defining a Mad Otar Grits object
+    /// </summary>
     public class MadOtarGrits
     {
         private Size size = Size.Small;

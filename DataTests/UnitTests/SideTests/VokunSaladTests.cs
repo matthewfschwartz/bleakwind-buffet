@@ -1,5 +1,5 @@
 ﻿/*
- * Author: Zachery Brunner
+ * Author: Matthew Schwartz
  * Class: VokunSaladTests.cs
  * Purpose: Test the VokunSalad.cs class in the Data library
  */
@@ -12,8 +12,14 @@ using System.Runtime.InteropServices;
 
 namespace BleakwindBuffet.DataTests.UnitTests.SideTests
 {
+    /// <summary>
+    /// Class to test VokunSalad.cs class
+    /// </summary>
     public class VokunSaladTests
     {
+        /// <summary>
+        /// Makes sure vokun salad is small by default
+        /// </summary>
         [Fact]
         public void ShouldBeSmallByDefault()
         {
@@ -21,6 +27,9 @@ namespace BleakwindBuffet.DataTests.UnitTests.SideTests
             Assert.Equal(Size.Small, v.Size);
         }
 
+        /// <summary>
+        /// Makes sure we can change size of vokun salad
+        /// </summary>
         [Fact]
         public void ShouldBeAbleToSetSize()
         {
@@ -33,6 +42,9 @@ namespace BleakwindBuffet.DataTests.UnitTests.SideTests
             Assert.Equal(Size.Small, v.Size);
         }
 
+        /// <summary>
+        /// Makes sure list of special instructions for vokun salad is empty
+        /// </summary>
         [Fact]
         public void ShouldReturnCorrectSpecialInstructions()
         {
@@ -40,6 +52,11 @@ namespace BleakwindBuffet.DataTests.UnitTests.SideTests
             Assert.Empty(v.SpecialInstructions);
         }
 
+        /// <summary>
+        /// Makes sure vokun salad price is right based on its size
+        /// </summary>
+        /// <param name="size">Size of vokun salad</param>
+        /// <param name="price">Price we expect vokun salad to have</param>
         [Theory]
         [InlineData(Size.Small, 0.93)]
         [InlineData(Size.Medium, 1.28)]
@@ -51,6 +68,11 @@ namespace BleakwindBuffet.DataTests.UnitTests.SideTests
             Assert.Equal(price, v.Price);
         }
 
+        /// <summary>
+        /// Makes sure vokun salad has right calorie count based on its size
+        /// </summary>
+        /// <param name="size">Size of vokun salad</param>
+        /// <param name="calories">Calorie count we expect vokun salad to have</param>
         [Theory]
         [InlineData(Size.Small, 41)]
         [InlineData(Size.Medium, 52)]
@@ -62,6 +84,11 @@ namespace BleakwindBuffet.DataTests.UnitTests.SideTests
             Assert.Equal(calories, v.Calories);
         }
 
+        /// <summary>
+        /// Makes sure vokun salad has the right name based on its size
+        /// </summary>
+        /// <param name="size">Size of vokun salad</param>
+        /// <param name="name">Name we expect vokun salad to have</param>
         [Theory]
         [InlineData(Size.Small, "Small Vokun Salad")]
         [InlineData(Size.Medium, "Medium Vokun Salad")]

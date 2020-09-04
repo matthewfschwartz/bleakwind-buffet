@@ -1,5 +1,5 @@
 ﻿/*
- * Author: Zachery Brunner
+ * Author: Matthew Schwartz
  * Class: DoubleDraugrTests.cs
  * Purpose: Test the DoubleDraugr.cs class in the Data library
  */
@@ -13,8 +13,14 @@ using NuGet.Frameworks;
 
 namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
 {
+    /// <summary>
+    /// Class to test the DoubleDraugr.cs class
+    /// </summary>
     public class DoubleDraugrTests
     {   
+        /// <summary>
+        /// Makes sure double draugr has a bun by default
+        /// </summary>
         [Fact]
         public void ShouldIncludeBunByDefault()
         {
@@ -22,6 +28,9 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
             Assert.True(d.Bun);
         }
 
+        /// <summary>
+        /// Makes sure double draugr has ketchup by default
+        /// </summary>
         [Fact]
         public void ShouldIncludeKetchupByDefault()
         {
@@ -29,6 +38,9 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
             Assert.True(d.Ketchup);
         }
 
+        /// <summary>
+        /// Makes sure double draugr has mustard by default
+        /// </summary>
         [Fact]
         public void ShouldIncludeMustardByDefault()
         {
@@ -36,6 +48,9 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
             Assert.True(d.Mustard);
         }
 
+        /// <summary>
+        /// Makes sure double draugr has pickle by default
+        /// </summary>
         [Fact]
         public void ShouldIncludePickleByDefault()
         {
@@ -43,6 +58,9 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
             Assert.True(d.Pickle);
         }
 
+        /// <summary>
+        /// Makes sure double draugr has cheese by default
+        /// </summary>
         [Fact]
         public void ShouldIncludeCheeseByDefault()
         {
@@ -50,6 +68,9 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
             Assert.True(d.Cheese);
         }
 
+        /// <summary>
+        /// Makes sure double draugr has tomato by default
+        /// </summary>
         [Fact]
         public void ShouldIncludeTomatoByDefault()
         {
@@ -57,6 +78,9 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
             Assert.True(d.Tomato);
         }
 
+        /// <summary>
+        /// Makes sure double draugr has lettuce by default
+        /// </summary>
         [Fact]
         public void ShouldIncludeLettuceByDefault()
         {
@@ -64,6 +88,9 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
             Assert.True(d.Lettuce);
         }
 
+        /// <summary>
+        /// Makes sure double draugr has mayo by default
+        /// </summary>
         [Fact]
         public void ShouldIncludeMayoByDefault()
         {
@@ -71,6 +98,9 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
             Assert.True(d.Mayo);
         }
 
+        /// <summary>
+        /// Makes sure we can remove or add bun
+        /// </summary>
         [Fact]
         public void ShouldBeAbleToSetBun()
         {
@@ -81,6 +111,9 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
             Assert.True(d.Bun);
         }
 
+        /// <summary>
+        /// Makes sure we can remove or add ketchup
+        /// </summary>
         [Fact]
         public void ShouldBeAbleToSetKetchup()
         {
@@ -91,6 +124,9 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
             Assert.True(d.Ketchup);
         }
 
+        /// <summary>
+        /// Make sure we can remove or add mustard
+        /// </summary>
         [Fact]
         public void ShouldBeAbleToSetMustard()
         {
@@ -101,6 +137,9 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
             Assert.True(d.Mustard);
         }
 
+        /// <summary>
+        /// Makes sure we can remove or add pickle
+        /// </summary>
         [Fact]
         public void ShouldBeAbleToSetPickle()
         {
@@ -111,6 +150,9 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
             Assert.True(d.Pickle);
         }
 
+        /// <summary>
+        /// Make sure we can remove or add cheese
+        /// </summary>
         [Fact]
         public void ShouldBeAbleToSetCheese()
         {
@@ -121,6 +163,9 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
             Assert.True(d.Cheese);
         }
 
+        /// <summary>
+        /// Make sure we can remove or add tomato
+        /// </summary>
         [Fact]
         public void ShouldBeAbleToSetTomato()
         {
@@ -131,6 +176,9 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
             Assert.True(d.Tomato);
         }
 
+        /// <summary>
+        /// Makes sure we can remove or add lettuce
+        /// </summary>
         [Fact]
         public void ShouldBeAbleToSetLettuce()
         {
@@ -141,6 +189,9 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
             Assert.True(d.Lettuce);
         }
 
+        /// <summary>
+        /// Makes sure we can remove or add mayo
+        /// </summary>
         [Fact]
         public void ShouldBeAbleToSetMayo()
         {
@@ -151,6 +202,9 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
             Assert.True(d.Mayo);
         }
 
+        /// <summary>
+        /// Makes sure double draugr has the right price
+        /// </summary>
         [Fact]
         public void ShouldReturnCorrectPrice()
         {
@@ -158,6 +212,9 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
             Assert.Equal(7.32, d.Price);
         }
 
+        /// <summary>
+        /// Makes sure double draugr has the right calorie count
+        /// </summary>
         [Fact]
         public void ShouldReturnCorrectCalories()
         {
@@ -165,6 +222,17 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
             Assert.Equal((uint)843, d.Calories);
         }
 
+        /// <summary>
+        /// Makes sure double draugr special instructions contains the right list instructions
+        /// </summary>
+        /// <param name="includeBun">Whether the customer wants a bun or not</param>
+        /// <param name="includeKetchup">Whether the customer wants ketchup or not</param>
+        /// <param name="includeMustard">Whether the customer wants mustard or not</param>
+        /// <param name="includePickle">Whether the customer wants a pickle or not</param>
+        /// <param name="includeCheese">Whether the customer wants cheese or not</param>
+        /// <param name="includeTomato">Whether the customer wants tomato or not</param>
+        /// <param name="includeLettuce">Whether the customer wants lettuce or not</param>
+        /// <param name="includeMayo">Whether the customer wants mayo or not</param>
         [Theory]
         [InlineData(true, true, true, true, true, true, true, true)]
         [InlineData(false, false, false, false, false, false, false, false)]
@@ -199,6 +267,9 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
             if (!includeMayo) Assert.Contains("Hold mayo", d.SpecialInstructions);
         }
 
+        /// <summary>
+        /// Makes sure double draugr has the right name
+        /// </summary>
         [Fact]
         public void ShouldReturnCorrectToString()
         {

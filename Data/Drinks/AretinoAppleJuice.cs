@@ -11,6 +11,9 @@ using System.Text;
 
 namespace BleakwindBuffet.Data.Drinks
 {
+    /// <summary>
+    /// Class defining a AretinoAppleJuice object
+    /// </summary>
     public class AretinoAppleJuice
     {
         private Size size = Size.Small;

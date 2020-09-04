@@ -11,6 +11,9 @@ using System.Text;
 
 namespace BleakwindBuffet.Data.Sides
 {
+    /// <summary>
+    /// Class for defining a Vokun Salad object
+    /// </summary>
     public class VokunSalad
     {
         private Size size = Size.Small;

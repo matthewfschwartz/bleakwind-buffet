@@ -11,6 +11,9 @@ using System.Text;
 
 namespace BleakwindBuffet.Data.Drinks
 {
+    /// <summary>
+    /// Class defining a MarkarthMilk object
+    /// </summary>
     public class MarkarthMilk
     {
         private Size size = Size.Small;

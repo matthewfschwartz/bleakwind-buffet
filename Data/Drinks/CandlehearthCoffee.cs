@@ -11,6 +11,9 @@ using System.Text;
 
 namespace BleakwindBuffet.Data.Drinks
 {
+    /// <summary>
+    /// Class defining a CandlehearthCoffee object
+    /// </summary>
     public class CandlehearthCoffee
     {
         private Size size = Size.Small;

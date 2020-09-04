@@ -10,6 +10,9 @@ using System.Text;
 
 namespace BleakwindBuffet.Data.Entrees
 {
+    /// <summary>
+    /// Class for defining a Thalmor Triple object
+    /// </summary>
     public class ThalmorTriple
     {
         private double price = 8.32;

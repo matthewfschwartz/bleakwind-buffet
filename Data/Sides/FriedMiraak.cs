@@ -11,6 +11,9 @@ using System.Text;
 
 namespace BleakwindBuffet.Data.Sides
 {
+    /// <summary>
+    /// Class for defining a Fried Miraak object
+    /// </summary>
     public class FriedMiraak
     {
         private Size size = Size.Small;
