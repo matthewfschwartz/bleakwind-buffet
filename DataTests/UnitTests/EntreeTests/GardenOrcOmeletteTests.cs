@@ -17,6 +17,26 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
     public class GardenOrcOmeletteTests
     {
         /// <summary>
+        /// Makes sure we can successfully cast into an entree
+        /// </summary>
+        [Fact]
+        public void ShouldBeAnEntree()
+        {
+            GardenOrcOmelette g = new GardenOrcOmelette();
+            Assert.IsAssignableFrom<Entree>(g);
+        }
+
+        /// <summary>
+        /// Verifies that we can successfully cast into an IOrderItem
+        /// </summary>
+        [Fact]
+        public void ShouldBeAnIOrderItem()
+        {
+            GardenOrcOmelette g = new GardenOrcOmelette();
+            Assert.IsAssignableFrom<IOrderItem>(g);
+        }
+
+        /// <summary>
         /// Makes sure omelette has broccoli by default
         /// </summary>
         [Fact]

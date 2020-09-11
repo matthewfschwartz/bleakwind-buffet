@@ -16,6 +16,26 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
     public class PhillyPoacherTests
     {
         /// <summary>
+        /// Makes sure we can successfully cast into an entree
+        /// </summary>
+        [Fact]
+        public void ShouldBeAnEntree()
+        {
+            PhillyPoacher p = new PhillyPoacher();
+            Assert.IsAssignableFrom<Entree>(p);
+        }
+
+        /// <summary>
+        /// Verifies that we can successfully cast into an IOrderItem
+        /// </summary>
+        [Fact]
+        public void ShouldBeAnIOrderItem()
+        {
+            PhillyPoacher p = new PhillyPoacher();
+            Assert.IsAssignableFrom<IOrderItem>(p);
+        }
+
+        /// <summary>
         /// Makes sure philly poacher has sirloin by default
         /// </summary>
         [Fact]

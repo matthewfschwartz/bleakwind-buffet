@@ -13,7 +13,7 @@ namespace BleakwindBuffet.Data.Entrees
     /// <summary>
     /// Class for defining a Thugs T-Bone object
     /// </summary>
-    public class ThugsTBone
+    public class ThugsTBone : Entree, IOrderItem
     {
         private double price = 6.44;
         private uint calories = 982; // Uint is unsigned integer (calories can't be negative)
@@ -21,7 +21,7 @@ namespace BleakwindBuffet.Data.Entrees
         /// <summary>
         /// Gets the price of the t-bone
         /// </summary>
-        public double Price
+        public override double Price
         {
             get { return price; }
         }
@@ -29,7 +29,7 @@ namespace BleakwindBuffet.Data.Entrees
         /// <summary>
         /// Gets the number of calories
         /// </summary>
-        public uint Calories
+        public override uint Calories
         {
             get { return calories; }
         }
@@ -37,7 +37,7 @@ namespace BleakwindBuffet.Data.Entrees
         /// <summary>
         /// Always returns an empty list (no special instructions for t-bone)
         /// </summary>
-        public List<string> SpecialInstructions
+        public override List<string> SpecialInstructions
         {
             get { return new List<string>(); }
         }

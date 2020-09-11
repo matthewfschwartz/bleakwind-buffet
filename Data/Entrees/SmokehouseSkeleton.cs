@@ -13,7 +13,7 @@ namespace BleakwindBuffet.Data.Entrees
     /// <summary>
     /// Class for defining a Smokehouse Skeleton object
     /// </summary>
-    public class SmokehouseSkeleton
+    public class SmokehouseSkeleton : Entree, IOrderItem
     {
         private double price = 5.62;
         private uint calories = 602; // Uint is unsigned integer (calories can't be negative)
@@ -21,7 +21,7 @@ namespace BleakwindBuffet.Data.Entrees
         /// <summary>
         /// Gets the price of the combo
         /// </summary>
-        public double Price
+        public override double Price
         {
             get { return price; }
         }
@@ -29,7 +29,7 @@ namespace BleakwindBuffet.Data.Entrees
         /// <summary>
         /// Gets the number of calories
         /// </summary>
-        public uint Calories
+        public override uint Calories
         {
             get { return calories; }
         }
@@ -137,7 +137,7 @@ namespace BleakwindBuffet.Data.Entrees
         /// Gets any special instructions in cooking the combo meal
         /// </summary>
         private List<string> specialInstructions = new List<string>();
-        public List<string> SpecialInstructions
+        public override List<string> SpecialInstructions
         {
             get
             {

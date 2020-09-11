@@ -17,6 +17,26 @@ namespace BleakwindBuffet.DataTests.UnitTests.DrinkTests
     public class MarkarthMilkTests
     {
         /// <summary>
+        /// Makes sure we can successfully cast into a drink
+        /// </summary>
+        [Fact]
+        public void ShouldBeADrink()
+        {
+            MarkarthMilk m = new MarkarthMilk();
+            Assert.IsAssignableFrom<Drink>(m);
+        }
+
+        /// <summary>
+        /// Verifies that we can successfully cast into an IOrderItem
+        /// </summary>
+        [Fact]
+        public void ShouldBeAnIOrderItem()
+        {
+            MarkarthMilk m = new MarkarthMilk();
+            Assert.IsAssignableFrom<IOrderItem>(m);
+        }
+
+        /// <summary>
         /// Makes sure that an unmodified markarth milk object doesn't have ice by default
         /// </summary>
         [Fact]

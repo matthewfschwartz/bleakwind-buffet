@@ -14,25 +14,15 @@ namespace BleakwindBuffet.Data.Drinks
     /// <summary>
     /// Class defining a WarriorWater object
     /// </summary>
-    public class WarriorWater
+    public class WarriorWater : Drink, IOrderItem
     {
-        private Size size = Size.Small;
-        /// <summary>
-        /// Get the size and set the size
-        /// </summary>
-        public Size Size
-        {
-            get { return size; }
-            set { size = value; }
-        }
-
         /// <summary>
         /// The price of a drink
         /// </summary>
         /// <exception cref="System.NotImplementedException">
         /// Thrown if size is unknown
         /// </exception>
-        public double Price
+        public override double Price
         {
             get 
             { 
@@ -52,7 +42,7 @@ namespace BleakwindBuffet.Data.Drinks
         /// <exception cref="System.NotImplementedException">
         /// Thrown if size is unknown
         /// </exception>
-        public uint Calories
+        public override uint Calories
         {
             get
             {
@@ -114,7 +104,7 @@ namespace BleakwindBuffet.Data.Drinks
         /// Gets any special instructions
         /// </summary>
         private List<string> specialInstructions = new List<string>();
-        public List<string> SpecialInstructions
+        public override List<string> SpecialInstructions
         {
             get { return new List<string>(specialInstructions); }
         }

@@ -14,18 +14,8 @@ namespace BleakwindBuffet.Data.Drinks
     /// <summary>
     /// Class defining a AretinoAppleJuice object
     /// </summary>
-    public class AretinoAppleJuice
+    public class AretinoAppleJuice : Drink, IOrderItem
     {
-        private Size size = Size.Small;
-
-        /// <summary>
-        /// Get the size and set the size
-        /// </summary>
-        public Size Size
-        {
-            get { return size; }
-            set { size = value; }
-        }
 
         /// <summary>
         /// Gets price of the drink
@@ -33,7 +23,7 @@ namespace BleakwindBuffet.Data.Drinks
         /// <exception cref="System.NotImplementedException">
         /// Thrown if size is unknown
         /// </exception>
-        public double Price
+        public override double Price
         {
             get
             {
@@ -42,7 +32,7 @@ namespace BleakwindBuffet.Data.Drinks
                     case Size.Small: return 0.62;
                     case Size.Medium: return 0.87;
                     case Size.Large: return 1.01;
-                    default: throw new NotImplementedException($"Unknown size {Size}");
+                    default: throw new NotImplementedException($"Unknown size {size}");
                 }
             }
         }
@@ -53,7 +43,7 @@ namespace BleakwindBuffet.Data.Drinks
         /// <exception cref="System.NotImplementedException">
         /// Thrown if size is unknown
         /// </exception>
-        public uint Calories
+        public override uint Calories
         {
             get
             {
@@ -62,7 +52,7 @@ namespace BleakwindBuffet.Data.Drinks
                     case Size.Small: return 44;
                     case Size.Medium: return 88;
                     case Size.Large: return 132;
-                    default: throw new NotImplementedException($"Unknown size {Size}");
+                    default: throw new NotImplementedException($"Unknown size {size}");
                 }
             }
         }
@@ -95,7 +85,7 @@ namespace BleakwindBuffet.Data.Drinks
         /// Gets any special instructions
         /// </summary>
         private List<string> specialInstructions = new List<string>();
-        public List<string> SpecialInstructions
+        public override List<string> SpecialInstructions
         {
             get { return new List<string>(specialInstructions); }
         }

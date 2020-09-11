@@ -20,6 +20,26 @@ namespace BleakwindBuffet.DataTests.UnitTests.DrinkTests
     public class WarriorWaterTests
     {
         /// <summary>
+        /// Makes sure we can successfully cast into a drink
+        /// </summary>
+        [Fact]
+        public void ShouldBeADrink()
+        {
+            WarriorWater w = new WarriorWater();
+            Assert.IsAssignableFrom<Drink>(w);
+        }
+
+        /// <summary>
+        /// Verifies that we can successfully cast into an IOrderItem
+        /// </summary>
+        [Fact]
+        public void ShouldBeAnIOrderItem()
+        {
+            WarriorWater w = new WarriorWater();
+            Assert.IsAssignableFrom<IOrderItem>(w);
+        }
+
+        /// <summary>
         /// Makes sure a warrior water drink includes ice by default
         /// </summary>
         [Fact]

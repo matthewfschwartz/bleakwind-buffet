@@ -17,6 +17,26 @@ namespace BleakwindBuffet.DataTests.UnitTests.DrinkTests
     public class AretinoAppleJuiceTests
     {
         /// <summary>
+        /// Makes sure we can successfully cast into a drink
+        /// </summary>
+        [Fact]
+        public void ShouldBeADrink()
+        {
+            AretinoAppleJuice a = new AretinoAppleJuice();
+            Assert.IsAssignableFrom<Drink>(a);
+        }
+
+        /// <summary>
+        /// Verifies that we can successfully cast into an IOrderItem
+        /// </summary>
+        [Fact]
+        public void ShouldBeAnIOrderItem()
+        {
+            AretinoAppleJuice a = new AretinoAppleJuice();
+            Assert.IsAssignableFrom<IOrderItem>(a);
+        }
+
+        /// <summary>
         /// Checks to make sure ice is not included by default
         /// </summary>
         [Fact]
