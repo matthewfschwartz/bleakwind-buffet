@@ -1,4 +1,10 @@
-﻿using BleakwindBuffet.Data.Enums;
+﻿/*
+ * Author: Matthew Schwartz
+ * Class name: Drink.cs
+ * Purpose: Base class for all drinks
+ */
+
+using BleakwindBuffet.Data.Enums;
 using System;
 using System.Collections.Generic;
 using System.Text;

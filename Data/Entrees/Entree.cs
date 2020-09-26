@@ -1,4 +1,10 @@
-﻿using System;
+﻿/*
+ * Author: Matthew Schwartz
+ * Class name: Entree.cs
+ * Purpose: Base class for all entrees
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Text;
 
