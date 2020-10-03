@@ -6,6 +6,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 
 namespace BleakwindBuffet.Data.Entrees
@@ -13,10 +14,11 @@ namespace BleakwindBuffet.Data.Entrees
     /// <summary>
     /// Class for defining a Smokehouse Skeleton object
     /// </summary>
-    public class SmokehouseSkeleton : Entree, IOrderItem
+    public class SmokehouseSkeleton : Entree, IOrderItem, INotifyPropertyChanged
     {
         private double price = 5.62;
         private uint calories = 602; // Uint is unsigned integer (calories can't be negative)
+        public event PropertyChangedEventHandler PropertyChanged;
 
         /// <summary>
         /// Gets the price of the combo
@@ -49,6 +51,8 @@ namespace BleakwindBuffet.Data.Entrees
             set
             {
                 sausageLink = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SausageLink"));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SpecialInstructions"));
                 if (!sausageLink)
                 {
                     specialInstructions.Add("Hold sausage");
@@ -73,6 +77,8 @@ namespace BleakwindBuffet.Data.Entrees
             set
             {
                 egg = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Egg"));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SpecialInstructions"));
                 if (!egg)
                 {
                     specialInstructions.Add("Hold eggs");
@@ -97,6 +103,8 @@ namespace BleakwindBuffet.Data.Entrees
             set
             {
                 hashBrowns = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("HashBrowns"));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SpecialInstructions"));
                 if (!hashBrowns)
                 {
                     specialInstructions.Add("Hold hash browns");
@@ -121,6 +129,8 @@ namespace BleakwindBuffet.Data.Entrees
             set
             {
                 pancake = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Pancake"));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SpecialInstructions"));
                 if (!pancake)
                 {
                     specialInstructions.Add("Hold pancakes");

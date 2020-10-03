@@ -17,19 +17,31 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <ListBox Grid.Row="1" VerticalAlignment="Center" FontSize="16">
-            <CheckBox IsChecked="True">Bun</CheckBox>
-            <CheckBox IsChecked="True">Ketchup</CheckBox>
-            <CheckBox IsChecked="True">Mustard</CheckBox>
-            <CheckBox IsChecked="True">Pickle</CheckBox>
-            <CheckBox IsChecked="True">Cheese</CheckBox>
-            <CheckBox IsChecked="True">Tomato</CheckBox>
-            <CheckBox IsChecked="True">Lettuce</CheckBox>
-            <CheckBox IsChecked="True">Mayo</CheckBox>
-            <CheckBox IsChecked="True">Bacon</CheckBox>
-            <CheckBox IsChecked="True">Egg</CheckBox>
-        </ListBox>
-        <Button Click="ClickDone" Grid.Row="2" Grid.Column="2" FontSize="20">Done</Button>
-        <Label Grid.ColumnSpan="3" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20">Customize Thalmor Triple</Label>
+        <StackPanel Grid.Row="1" Grid.RowSpan="2" Grid.ColumnSpan="2">
+            <Label HorizontalAlignment="Center" FontSize="30">Special Instructions:</Label>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Row="1" Grid.RowSpan="1" Grid.ColumnSpan="2">
+                    <CheckBox Name="BunSelect" Click="OnBunSelect" FontSize="30" IsChecked="True">Bun</CheckBox>
+                    <CheckBox Name="KetchupSelect" Click="OnKetchupSelect" FontSize="30" IsChecked="True">Ketchup</CheckBox>
+                    <CheckBox Name="MustardSelect" Click="OnMustardSelect" FontSize="30" IsChecked="True">Mustard</CheckBox>
+                    <CheckBox Name="PickleSelect" Click="OnPickleSelect" FontSize="30" IsChecked="True">Pickle</CheckBox>
+                    <CheckBox Name="CheeseSelect" Click="OnCheeseSelect" FontSize="30" IsChecked="True">Cheese</CheckBox>
+                </StackPanel>
+                <StackPanel Grid.Row="1" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="2">
+                    <CheckBox Name="TomatoSelect" Click="OnTomatoSelect" FontSize="30" IsChecked="True">Tomato</CheckBox>
+                    <CheckBox Name="LettuceSelect" Click="OnLettuceSelect" FontSize="30" IsChecked="True">Lettuce</CheckBox>
+                    <CheckBox Name="MayoSelect" Click="OnMayoSelect" FontSize="30" IsChecked="True">Mayo</CheckBox>
+                    <CheckBox Name="BaconSelect" Click="OnBaconSelect" FontSize="30" IsChecked="True">Bacon</CheckBox>
+                    <CheckBox Name="EggSelect" Click="OnEggSelect" FontSize="30" IsChecked="True">Egg</CheckBox>
+                </StackPanel>
+            </Grid>
+        </StackPanel>
+        
+        <Button Click="ClickDone" Grid.Row="2" Grid.Column="2" FontSize="30">Done</Button>
+        <Label Grid.ColumnSpan="3" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30">Customize Thalmor Triple</Label>
     </Grid>
 </UserControl>

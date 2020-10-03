@@ -7,6 +7,8 @@
 using BleakwindBuffet.Data.Enums;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using System.Text;
 
 namespace BleakwindBuffet.Data.Drinks
@@ -16,11 +18,17 @@ namespace BleakwindBuffet.Data.Drinks
     /// </summary>
     public abstract class Drink
     {
+        //public event PropertyChangedEventHandler PropertyChanged;
         /// <summary>
         /// Size of a drink, all drinks have same size options (so virtual)
         /// </summary>
         protected Size size = Size.Small; 
-        public virtual Size Size { get { return size; } set { size = value; } }
+        public virtual Size Size { get { return size; } 
+            set 
+            { 
+                size = value;
+            } 
+        }
 
         /// <summary>
         /// Price of a drink, always overriding these (so abstract)
@@ -37,5 +45,6 @@ namespace BleakwindBuffet.Data.Drinks
         /// Special instructions for a drink, always overriding these (so abstract)
         /// </summary>
         public abstract List<string> SpecialInstructions { get; }
+
     }
 }

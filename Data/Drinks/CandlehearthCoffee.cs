@@ -7,6 +7,7 @@
 using BleakwindBuffet.Data.Enums;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 
 namespace BleakwindBuffet.Data.Drinks
@@ -14,8 +15,32 @@ namespace BleakwindBuffet.Data.Drinks
     /// <summary>
     /// Class defining a CandlehearthCoffee object
     /// </summary>
-    public class CandlehearthCoffee : Drink, IOrderItem
+    public class CandlehearthCoffee : Drink, IOrderItem, INotifyPropertyChanged
     {
+        public const double SMALL_CANDLEHEARTH_COFFEE_PRICE = 0.75;
+        public const double MEDIUM_CANDLEHEARTH_COFFEE_PRICE = 1.25;
+        public const double LARGE_CANDLEHEARTH_COFFEE_PRICE = 1.75;
+        public const uint SMALL_CANDLEHEARTH_COFFEE_CALORIES = 7;
+        public const uint MEDIUM_CANDLEHEARTH_COFFEE_CALORIES = 10;
+        public const uint LARGE_CANDLEHEARTH_COFFEE_CALORIES = 20;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private new Size size = Size.Small;
+        public override Size Size
+        {
+            get { return size; }
+            set
+            {
+                size = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Size"));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Price"));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Calories"));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SpecialInstructions"));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("ToString"));
+            }
+        }
+
         /// <summary>
         /// Gets price of the drink
         /// </summary>
@@ -28,9 +53,9 @@ namespace BleakwindBuffet.Data.Drinks
             {
                 switch (size)
                 {
-                    case Size.Small: return 0.75;
-                    case Size.Medium: return 1.25;
-                    case Size.Large: return 1.75;
+                    case Size.Small: return SMALL_CANDLEHEARTH_COFFEE_PRICE;
+                    case Size.Medium: return MEDIUM_CANDLEHEARTH_COFFEE_PRICE;
+                    case Size.Large: return LARGE_CANDLEHEARTH_COFFEE_PRICE;
                     default: throw new NotImplementedException($"Unknown size {Size}");
                 }
             }
@@ -48,9 +73,9 @@ namespace BleakwindBuffet.Data.Drinks
             {
                 switch (size)
                 {
-                    case Size.Small: return 7;
-                    case Size.Medium: return 10;
-                    case Size.Large: return 20;
+                    case Size.Small: return SMALL_CANDLEHEARTH_COFFEE_CALORIES;
+                    case Size.Medium: return MEDIUM_CANDLEHEARTH_COFFEE_CALORIES;
+                    case Size.Large: return LARGE_CANDLEHEARTH_COFFEE_CALORIES;
                     default: throw new NotImplementedException($"Unknown size {Size}");
                 }
             }
@@ -68,6 +93,7 @@ namespace BleakwindBuffet.Data.Drinks
             set
             {
                 ice = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Ice"));
                 if (ice)
                 {
                     specialInstructions.Add("Add ice");
@@ -92,6 +118,7 @@ namespace BleakwindBuffet.Data.Drinks
             set
             {
                 roomForCream = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("RoomForCream"));
                 if (roomForCream)
                 {
                     specialInstructions.Add("Add cream");
@@ -116,6 +143,7 @@ namespace BleakwindBuffet.Data.Drinks
             set
             {
                 decaf = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Decaf"));
             }
         }
 

@@ -119,5 +119,72 @@ namespace BleakwindBuffet.DataTests.UnitTests.SideTests
             v.Size = size;
             Assert.Equal(name, v.ToString());
         }
+
+        [Theory]
+        [InlineData(Size.Small)]
+        [InlineData(Size.Medium)]
+        [InlineData(Size.Large)]
+
+        public void ChangingSizeShouldNotifySizeProperty(Size size)
+        {
+            VokunSalad v = new VokunSalad();
+            Assert.PropertyChanged(v, "Size", () =>
+            {
+                v.Size = size;
+            });
+        }
+
+        [Theory]
+        [InlineData(Size.Small)]
+        [InlineData(Size.Medium)]
+        [InlineData(Size.Large)]
+
+        public void ChangingSizeShouldNotifyPriceProperty(Size size)
+        {
+            VokunSalad v = new VokunSalad();
+            Assert.PropertyChanged(v, "Price", () =>
+            {
+                v.Size = size;
+            });
+        }
+
+        [Theory]
+        [InlineData(Size.Small)]
+        [InlineData(Size.Medium)]
+        [InlineData(Size.Large)]
+        public void ChangingSizeShouldNotifyCaloriesProperty(Size size)
+        {
+            VokunSalad v = new VokunSalad();
+            Assert.PropertyChanged(v, "Calories", () =>
+            {
+                v.Size = size;
+            });
+        }
+
+        [Theory]
+        [InlineData(Size.Small)]
+        [InlineData(Size.Medium)]
+        [InlineData(Size.Large)]
+        public void ChangingSizeShouldNotifySpecialInstructionsProperty(Size size)
+        {
+            VokunSalad v = new VokunSalad();
+            Assert.PropertyChanged(v, "SpecialInstructions", () =>
+            {
+                v.Size = size;
+            });
+        }
+
+        [Theory]
+        [InlineData(Size.Small)]
+        [InlineData(Size.Medium)]
+        [InlineData(Size.Large)]
+        public void ChangingSizeShouldNotifyToStringProperty(Size size)
+        {
+            VokunSalad v = new VokunSalad();
+            Assert.PropertyChanged(v, "ToString", () =>
+            {
+                v.Size = size;
+            });
+        }
     }
 }

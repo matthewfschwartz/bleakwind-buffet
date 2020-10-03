@@ -211,5 +211,157 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
             BriarheartBurger b = new BriarheartBurger();
             Assert.Equal("Briarheart Burger", b.ToString());
         }
+
+        [Fact]
+        public void ChangingBunShouldNotifyBunProperty()
+        {
+            BriarheartBurger b = new BriarheartBurger();
+            Assert.PropertyChanged(b, "Bun", () =>
+            {
+                b.Bun = true;
+            });
+
+            Assert.PropertyChanged(b, "Bun", () =>
+            {
+                b.Bun = false;
+            });
+        }
+
+        [Fact]
+        public void ChangingBunShouldNotifySpecialInstructionsProperty()
+        {
+            BriarheartBurger b = new BriarheartBurger();
+            Assert.PropertyChanged(b, "SpecialInstructions", () =>
+            {
+                b.Bun = true;
+            });
+
+            Assert.PropertyChanged(b, "SpecialInstructions", () =>
+            {
+                b.Bun = false;
+            });
+        }
+
+        [Fact]
+        public void ChangingKetchupShouldNotifyKetchupProperty()
+        {
+            BriarheartBurger b = new BriarheartBurger();
+            Assert.PropertyChanged(b, "Ketchup", () =>
+            {
+                b.Ketchup = true;
+            });
+
+            Assert.PropertyChanged(b, "Ketchup", () =>
+            {
+                b.Ketchup = false;
+            });
+        }
+
+        [Fact]
+        public void ChangingKetchupShouldNotifySpecialInstructionsProperty()
+        {
+            BriarheartBurger b = new BriarheartBurger();
+            Assert.PropertyChanged(b, "SpecialInstructions", () =>
+            {
+                b.Ketchup = true;
+            });
+
+            Assert.PropertyChanged(b, "SpecialInstructions", () =>
+            {
+                b.Ketchup = false;
+            });
+        }
+
+        [Fact]
+        public void ChangingMustardShouldNotifyMustardProperty()
+        {
+            BriarheartBurger b = new BriarheartBurger();
+            Assert.PropertyChanged(b, "Mustard", () =>
+            {
+                b.Mustard = true;
+            });
+
+            Assert.PropertyChanged(b, "Mustard", () =>
+            {
+                b.Mustard = false;
+            });
+        }
+
+        [Fact]
+        public void ChangingMustardShouldNotifySpecialInstructionsProperty()
+        {
+            BriarheartBurger b = new BriarheartBurger();
+            Assert.PropertyChanged(b, "SpecialInstructions", () =>
+            {
+                b.Mustard = true;
+            });
+
+            Assert.PropertyChanged(b, "SpecialInstructions", () =>
+            {
+                b.Mustard = false;
+            });
+        }
+
+        [Fact]
+        public void ChangingPickleShouldNotifyPickleProperty()
+        {
+            BriarheartBurger b = new BriarheartBurger();
+            Assert.PropertyChanged(b, "Pickle", () =>
+            {
+                b.Pickle = true;
+            });
+
+            Assert.PropertyChanged(b, "Pickle", () =>
+            {
+                b.Pickle = false;
+            });
+        }
+
+        [Fact]
+        public void ChangingPickleShouldNotifySpecialInstructionsProperty()
+        {
+            BriarheartBurger b = new BriarheartBurger();
+            Assert.PropertyChanged(b, "SpecialInstructions", () =>
+            {
+                b.Pickle = true;
+            });
+
+            Assert.PropertyChanged(b, "SpecialInstructions", () =>
+            {
+                b.Pickle = false;
+            });
+        }
+
+        [Fact]
+        public void ChangingCheeseShouldNotifyCheeseProperty()
+        {
+            BriarheartBurger b = new BriarheartBurger();
+            Assert.PropertyChanged(b, "Cheese", () =>
+            {
+                b.Cheese = true;
+            });
+
+            Assert.PropertyChanged(b, "Cheese", () =>
+            {
+                b.Cheese = false;
+            });
+        }
+
+        [Fact]
+        public void ChangingCheeseShouldNotifySpecialInstructionsProperty()
+        {
+            BriarheartBurger b = new BriarheartBurger();
+            Assert.PropertyChanged(b, "SpecialInstructions", () =>
+            {
+                b.Cheese = true;
+            });
+
+            Assert.PropertyChanged(b, "SpecialInstructions", () =>
+            {
+                b.Cheese = false;
+            });
+        }
+
+        
     }
 }

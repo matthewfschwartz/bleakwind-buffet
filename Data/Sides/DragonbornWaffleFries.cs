@@ -7,6 +7,7 @@
 using BleakwindBuffet.Data.Enums;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 
 namespace BleakwindBuffet.Data.Sides
@@ -14,8 +15,32 @@ namespace BleakwindBuffet.Data.Sides
     /// <summary>
     /// Class for defining a Dragonborn Waffle Fries object
     /// </summary>
-    public class DragonbornWaffleFries : Side, IOrderItem
+    public class DragonbornWaffleFries : Side, IOrderItem, INotifyPropertyChanged
     {
+        public const double SMALL_DRAGONBORN_WAFFLE_FRIES_PRICE = 0.42;
+        public const double MEDIUM_DRAGONBORN_WAFFLE_FRIES_PRICE = 0.76;
+        public const double LARGE_DRAGONBORN_WAFFLE_FRIES_PRICE = 0.96;
+        public const uint SMALL_DRAGONBORN_WAFFLE_FRIES_CALORIES = 77;
+        public const uint MEDIUM_DRAGONBORN_WAFFLE_FRIES_CALORIES = 89;
+        public const uint LARGE_DRAGONBORN_WAFFLE_FRIES_CALORIES = 100;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private new Size size = Size.Small;
+        public override Size Size
+        {
+            get { return size; }
+            set
+            {
+                size = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Size"));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Price"));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Calories"));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SpecialInstructions"));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("ToString"));
+            }
+        }
+
         /// <summary>
         /// Gets price of the side
         /// </summary>
@@ -28,9 +53,9 @@ namespace BleakwindBuffet.Data.Sides
             {
                 switch (size)
                 {
-                    case Size.Small: return 0.42;
-                    case Size.Medium: return 0.76;
-                    case Size.Large: return 0.96;
+                    case Size.Small: return SMALL_DRAGONBORN_WAFFLE_FRIES_PRICE;
+                    case Size.Medium: return MEDIUM_DRAGONBORN_WAFFLE_FRIES_PRICE;
+                    case Size.Large: return LARGE_DRAGONBORN_WAFFLE_FRIES_PRICE;
                     default: throw new NotImplementedException($"Unknown size {Size}");
                 }
             }
@@ -48,9 +73,9 @@ namespace BleakwindBuffet.Data.Sides
             {
                 switch (size)
                 {
-                    case Size.Small: return 77;
-                    case Size.Medium: return 89;
-                    case Size.Large: return 100;
+                    case Size.Small: return SMALL_DRAGONBORN_WAFFLE_FRIES_CALORIES;
+                    case Size.Medium: return MEDIUM_DRAGONBORN_WAFFLE_FRIES_CALORIES;
+                    case Size.Large: return LARGE_DRAGONBORN_WAFFLE_FRIES_CALORIES;
                     default: throw new NotImplementedException($"Unknown size {Size}");
                 }
             }

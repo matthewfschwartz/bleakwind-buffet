@@ -17,15 +17,17 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <ListBox Grid.Row="1" VerticalAlignment="Center" FontSize="16">
-            <CheckBox IsChecked="True">Bun</CheckBox>
-            <CheckBox IsChecked="True">Ketchup</CheckBox>
-            <CheckBox IsChecked="True">Mustard</CheckBox>
-            <CheckBox IsChecked="True">Pickle</CheckBox>
-            <CheckBox IsChecked="True">Cheese</CheckBox>
-        </ListBox>
-        <Button Click="ClickDone" Grid.Row="2" Grid.Column="2" FontSize="20">Done</Button>
-        <Label Grid.ColumnSpan="3" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20">Customize Briarheart Burger</Label>
+        <StackPanel Grid.Row="1" Grid.RowSpan="2" Grid.ColumnSpan="2">
+            <Label HorizontalAlignment="Center" FontSize="30">Special Instructions:</Label>
+            <CheckBox Name="BunSelect" Click="OnBunSelect" FontSize="30" IsChecked="True">Bun</CheckBox>
+            <CheckBox Name="KetchupSelect" Click="OnKetchupSelect" FontSize="30" IsChecked="True">Ketchup</CheckBox>
+            <CheckBox Name="MustardSelect" Click="OnMustardSelect" FontSize="30" IsChecked="True">Mustard</CheckBox>
+            <CheckBox Name="PickleSelect" Click="OnPickleSelect" FontSize="30" IsChecked="True">Pickle</CheckBox>
+            <CheckBox Name="CheeseSelect" Click="OnCheeseSelect" FontSize="30" IsChecked="True">Cheese</CheckBox>
+        </StackPanel>
+        
+        <Button Click="ClickDone" Grid.Row="2" Grid.Column="2" FontSize="30">Done</Button>
+        <Label Grid.ColumnSpan="3" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30">Customize Briarheart Burger</Label>
         
     </Grid>
 </UserControl>

@@ -7,6 +7,7 @@
 using BleakwindBuffet.Data.Enums;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 
 namespace BleakwindBuffet.Data.Sides
@@ -14,8 +15,32 @@ namespace BleakwindBuffet.Data.Sides
     /// <summary>
     /// Class for defining a Fried Miraak object
     /// </summary>
-    public class FriedMiraak : Side, IOrderItem
+    public class FriedMiraak : Side, IOrderItem, INotifyPropertyChanged
     {
+        public const double SMALL_FRIED_MIRAAK_PRICE = 1.78;
+        public const double MEDIUM_FRIED_MIRAAK_PRICE = 2.01;
+        public const double LARGE_FRIED_MIRAAK_PRICE = 2.88;
+        public const uint SMALL_FRIED_MIRAAK_CALORIES = 151;
+        public const uint MEDIUM_FRIED_MIRAAK_CALORIES = 236;
+        public const uint LARGE_FRIED_MIRAAK_CALORIES = 306;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private new Size size = Size.Small;
+        public override Size Size
+        {
+            get { return size; }
+            set
+            {
+                size = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Size"));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Price"));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Calories"));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SpecialInstructions"));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("ToString"));
+            }
+        }
+
         /// <summary>
         /// Gets price of the side
         /// </summary>
@@ -28,9 +53,9 @@ namespace BleakwindBuffet.Data.Sides
             {
                 switch (size)
                 {
-                    case Size.Small: return 1.78;
-                    case Size.Medium: return 2.01;
-                    case Size.Large: return 2.88;
+                    case Size.Small: return SMALL_FRIED_MIRAAK_PRICE;
+                    case Size.Medium: return MEDIUM_FRIED_MIRAAK_PRICE;
+                    case Size.Large: return LARGE_FRIED_MIRAAK_PRICE;
                     default: throw new NotImplementedException($"Unknown size {Size}");
                 }
             }
@@ -48,9 +73,9 @@ namespace BleakwindBuffet.Data.Sides
             {
                 switch (size)
                 {
-                    case Size.Small: return 151;
-                    case Size.Medium: return 236;
-                    case Size.Large: return 306;
+                    case Size.Small: return SMALL_FRIED_MIRAAK_CALORIES;
+                    case Size.Medium: return MEDIUM_FRIED_MIRAAK_CALORIES;
+                    case Size.Large: return LARGE_FRIED_MIRAAK_CALORIES;
                     default: throw new NotImplementedException($"Unknown size {Size}");
                 }
             }

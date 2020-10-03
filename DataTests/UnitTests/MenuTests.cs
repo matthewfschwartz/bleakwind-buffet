@@ -14,6 +14,7 @@ using System.Text;
 using Xunit;
 using Xunit.Abstractions;
 using BleakwindBuffet.Data.Enums;
+using System.ComponentModel;
 
 namespace BleakwindBuffet.DataTests.UnitTests
 {

@@ -7,6 +7,7 @@
 using BleakwindBuffet.Data.Enums;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 
 namespace BleakwindBuffet.Data.Drinks
@@ -14,8 +15,32 @@ namespace BleakwindBuffet.Data.Drinks
     /// <summary>
     /// Class defining a SailorSoda object
     /// </summary>
-    public class SailorSoda : Drink, IOrderItem
+    public class SailorSoda : Drink, IOrderItem, INotifyPropertyChanged
     {
+        public const double SMALL_SAILOR_SODA_PRICE = 1.42;
+        public const double MEDIUM_SAILOR_SODA_PRICE = 1.74;
+        public const double LARGE_SAILOR_SODA_PRICE = 2.07;
+        public const uint SMALL_SAILOR_SODA_CALORIES = 117;
+        public const uint MEDIUM_SAILOR_SODA_CALORIES = 153;
+        public const uint LARGE_SAILOR_SODA_CALORIES = 205;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private new Size size = Size.Small;
+        public override Size Size
+        {
+            get { return size; }
+            set
+            {
+                size = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Size"));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Price"));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Calories"));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SpecialInstructions"));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("ToString"));
+            }
+        }
+
         /// <summary>
         /// Gets price of the drink
         /// </summary>
@@ -28,9 +53,9 @@ namespace BleakwindBuffet.Data.Drinks
             {
                 switch (size)
                 {
-                    case Size.Small: return 1.42;
-                    case Size.Medium: return 1.74;
-                    case Size.Large: return 2.07;
+                    case Size.Small: return SMALL_SAILOR_SODA_PRICE;
+                    case Size.Medium: return MEDIUM_SAILOR_SODA_PRICE;
+                    case Size.Large: return LARGE_SAILOR_SODA_PRICE;
                     default: throw new NotImplementedException($"Unknown size {Size}");
                 }
             }
@@ -48,9 +73,9 @@ namespace BleakwindBuffet.Data.Drinks
             {
                 switch (size)
                 {
-                    case Size.Small: return 117;
-                    case Size.Medium: return 153;
-                    case Size.Large: return 205;
+                    case Size.Small: return SMALL_SAILOR_SODA_CALORIES;
+                    case Size.Medium: return MEDIUM_SAILOR_SODA_CALORIES;
+                    case Size.Large: return LARGE_SAILOR_SODA_CALORIES;
                     default: throw new NotImplementedException($"Unknown size {Size}");
                 }
             }
@@ -68,6 +93,7 @@ namespace BleakwindBuffet.Data.Drinks
             set
             {
                 ice = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Ice"));
                 if (!ice)
                 {
                     specialInstructions.Add("Hold ice");
@@ -85,7 +111,12 @@ namespace BleakwindBuffet.Data.Drinks
         public SodaFlavor Flavor
         {
             get { return flavor; }
-            set { flavor = value; }
+            set 
+            {
+                flavor = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Flavor"));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("ToString"));
+            }
         }
 
         /// <summary>

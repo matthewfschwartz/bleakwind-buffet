@@ -178,5 +178,102 @@ namespace BleakwindBuffet.DataTests.UnitTests.DrinkTests
             w.Size = size;
             Assert.Equal(name, w.ToString());
         }
+
+        [Fact]
+        public void ChangingIceShouldNotifyIceProperty()
+        {
+            WarriorWater w = new WarriorWater();
+            Assert.PropertyChanged(w, "Ice", () =>
+            {
+                w.Ice = true;
+            });
+
+            Assert.PropertyChanged(w, "Ice", () =>
+            {
+                w.Ice = false;
+            });
+        }
+
+        [Fact]
+        public void ChangingLemonShouldNotifyLemonProperty()
+        {
+            WarriorWater w = new WarriorWater();
+            Assert.PropertyChanged(w, "Lemon", () =>
+            {
+                w.Lemon = true;
+            });
+
+            Assert.PropertyChanged(w, "Lemon", () =>
+            {
+                w.Lemon = false;
+            });
+        }
+
+        [Theory]
+        [InlineData(Size.Small)]
+        [InlineData(Size.Medium)]
+        [InlineData(Size.Large)]
+
+        public void ChangingSizeShouldNotifySizeProperty(Size size)
+        {
+            WarriorWater w = new WarriorWater();
+            Assert.PropertyChanged(w, "Size", () =>
+            {
+                w.Size = size;
+            });
+        }
+
+        [Theory]
+        [InlineData(Size.Small)]
+        [InlineData(Size.Medium)]
+        [InlineData(Size.Large)]
+
+        public void ChangingSizeShouldNotifyPriceProperty(Size size)
+        {
+            WarriorWater w = new WarriorWater();
+            Assert.PropertyChanged(w, "Price", () =>
+            {
+                w.Size = size;
+            });
+        }
+
+        [Theory]
+        [InlineData(Size.Small)]
+        [InlineData(Size.Medium)]
+        [InlineData(Size.Large)]
+        public void ChangingSizeShouldNotifyCaloriesProperty(Size size)
+        {
+            WarriorWater w = new WarriorWater();
+            Assert.PropertyChanged(w, "Calories", () =>
+            {
+                w.Size = size;
+            });
+        }
+
+        [Theory]
+        [InlineData(Size.Small)]
+        [InlineData(Size.Medium)]
+        [InlineData(Size.Large)]
+        public void ChangingSizeShouldNotifySpecialInstructionsProperty(Size size)
+        {
+            WarriorWater w = new WarriorWater();
+            Assert.PropertyChanged(w, "SpecialInstructions", () =>
+            {
+                w.Size = size;
+            });
+        }
+
+        [Theory]
+        [InlineData(Size.Small)]
+        [InlineData(Size.Medium)]
+        [InlineData(Size.Large)]
+        public void ChangingSizeShouldNotifyToStringProperty(Size size)
+        {
+            WarriorWater w = new WarriorWater();
+            Assert.PropertyChanged(w, "ToString", () =>
+            {
+                w.Size = size;
+            });
+        }
     }
 }

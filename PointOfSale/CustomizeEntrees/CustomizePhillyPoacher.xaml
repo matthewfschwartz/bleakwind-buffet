@@ -17,12 +17,14 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <ListBox Grid.Row="1" VerticalAlignment="Center" FontSize="16">
-            <CheckBox IsChecked="True">Sirloin</CheckBox>
-            <CheckBox IsChecked="True">Onions</CheckBox>
-            <CheckBox IsChecked="True">Roll</CheckBox>
-        </ListBox>
-        <Button Click="ClickDone" Grid.Row="2" Grid.Column="2" FontSize="20">Done</Button>
-        <Label Grid.ColumnSpan="3" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20">Customize Philly Poacher</Label>
+        <StackPanel Grid.Row="1" Grid.ColumnSpan="2" Grid.RowSpan="2">
+            <Label HorizontalAlignment="Center" FontSize="30">Special Instructions:</Label>
+            <CheckBox Name="SirloinSelect" Click="OnSirloinSelect" FontSize="30" IsChecked="True">Sirloin</CheckBox>
+            <CheckBox Name="OnionsSelect" Click="OnOnionsSelect" FontSize="30" IsChecked="True">Onions</CheckBox>
+            <CheckBox Name="RollSelect" Click="OnRollSelect" FontSize="30" IsChecked="True">Roll</CheckBox>
+        </StackPanel>
+        
+        <Button Click="ClickDone" Grid.Row="2" Grid.Column="2" FontSize="30">Done</Button>
+        <Label Grid.ColumnSpan="3" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30">Customize Philly Poacher</Label>
     </Grid>
 </UserControl>

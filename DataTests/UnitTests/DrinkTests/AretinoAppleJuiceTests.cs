@@ -146,5 +146,87 @@ namespace BleakwindBuffet.DataTests.UnitTests.DrinkTests
             a.Size = size;
             Assert.Equal(name, a.ToString());
         }
+
+        [Fact]
+        public void ChangingIceShouldNotifyIceProperty()
+        {
+            AretinoAppleJuice a = new AretinoAppleJuice();
+            Assert.PropertyChanged(a, "Ice", () =>
+            {
+                a.Ice = true;
+            });
+
+            Assert.PropertyChanged(a, "Ice", () =>
+            {
+                a.Ice = false;
+            });
+        }
+
+        [Theory]
+        [InlineData(Size.Small)]
+        [InlineData(Size.Medium)]
+        [InlineData(Size.Large)]
+
+        public void ChangingSizeShouldNotifySizeProperty(Size size)
+        {
+            AretinoAppleJuice a = new AretinoAppleJuice();
+            Assert.PropertyChanged(a, "Size", () =>
+            {
+                a.Size = size;
+            });
+        }
+
+        [Theory]
+        [InlineData(Size.Small)]
+        [InlineData(Size.Medium)]
+        [InlineData(Size.Large)]
+
+        public void ChangingSizeShouldNotifyPriceProperty(Size size)
+        {
+            AretinoAppleJuice a = new AretinoAppleJuice();
+            Assert.PropertyChanged(a, "Price", () =>
+            {
+                a.Size = size;
+            });
+        }
+
+        [Theory]
+        [InlineData(Size.Small)]
+        [InlineData(Size.Medium)]
+        [InlineData(Size.Large)]
+        public void ChangingSizeShouldNotifyCaloriesProperty(Size size)
+        {
+            AretinoAppleJuice a = new AretinoAppleJuice();
+            Assert.PropertyChanged(a, "Calories", () =>
+            {
+                a.Size = size;
+            });
+        }
+
+        [Theory]
+        [InlineData(Size.Small)]
+        [InlineData(Size.Medium)]
+        [InlineData(Size.Large)]
+        public void ChangingSizeShouldNotifySpecialInstructionsProperty(Size size)
+        {
+            AretinoAppleJuice a = new AretinoAppleJuice();
+            Assert.PropertyChanged(a, "SpecialInstructions", () =>
+            {
+                a.Size = size;
+            });
+        }
+
+        [Theory]
+        [InlineData(Size.Small)]
+        [InlineData(Size.Medium)]
+        [InlineData(Size.Large)]
+        public void ChangingSizeShouldNotifyToStringProperty(Size size)
+        {
+            AretinoAppleJuice a = new AretinoAppleJuice();
+            Assert.PropertyChanged(a, "ToString", () =>
+            {
+                a.Size = size;
+            });
+        }
     }
 }

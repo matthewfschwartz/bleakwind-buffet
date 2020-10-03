@@ -119,5 +119,72 @@ namespace BleakwindBuffet.DataTests.UnitTests.SideTests
             d.Size = size;
             Assert.Equal(name, d.ToString());
         }
+
+        [Theory]
+        [InlineData(Size.Small)]
+        [InlineData(Size.Medium)]
+        [InlineData(Size.Large)]
+
+        public void ChangingSizeShouldNotifySizeProperty(Size size)
+        {
+            DragonbornWaffleFries d = new DragonbornWaffleFries();
+            Assert.PropertyChanged(d, "Size", () =>
+            {
+                d.Size = size;
+            });
+        }
+
+        [Theory]
+        [InlineData(Size.Small)]
+        [InlineData(Size.Medium)]
+        [InlineData(Size.Large)]
+
+        public void ChangingSizeShouldNotifyPriceProperty(Size size)
+        {
+            DragonbornWaffleFries d = new DragonbornWaffleFries();
+            Assert.PropertyChanged(d, "Price", () =>
+            {
+                d.Size = size;
+            });
+        }
+
+        [Theory]
+        [InlineData(Size.Small)]
+        [InlineData(Size.Medium)]
+        [InlineData(Size.Large)]
+        public void ChangingSizeShouldNotifyCaloriesProperty(Size size)
+        {
+            DragonbornWaffleFries d = new DragonbornWaffleFries();
+            Assert.PropertyChanged(d, "Calories", () =>
+            {
+                d.Size = size;
+            });
+        }
+
+        [Theory]
+        [InlineData(Size.Small)]
+        [InlineData(Size.Medium)]
+        [InlineData(Size.Large)]
+        public void ChangingSizeShouldNotifySpecialInstructionsProperty(Size size)
+        {
+            DragonbornWaffleFries d = new DragonbornWaffleFries();
+            Assert.PropertyChanged(d, "SpecialInstructions", () =>
+            {
+                d.Size = size;
+            });
+        }
+
+        [Theory]
+        [InlineData(Size.Small)]
+        [InlineData(Size.Medium)]
+        [InlineData(Size.Large)]
+        public void ChangingSizeShouldNotifyToStringProperty(Size size)
+        {
+            DragonbornWaffleFries d = new DragonbornWaffleFries();
+            Assert.PropertyChanged(d, "ToString", () =>
+            {
+                d.Size = size;
+            });
+        }
     }
 }

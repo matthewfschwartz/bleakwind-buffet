@@ -7,13 +7,22 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="200">
     <DockPanel Name="orderSummaryList">
-        <Button Name="mainMenuButton" Click="mainMenuButton_Click" DockPanel.Dock="Top">Main Menu</Button>
-        <TextBox Name="orderNumber" DockPanel.Dock="Top" TextAlignment="Center">Order #</TextBox>
-        <TextBlock DockPanel.Dock="Bottom" TextAlignment="Center">Total: $</TextBlock>
-        <TextBlock DockPanel.Dock="Bottom" TextAlignment="Center">Tax: $</TextBlock>
-        <TextBlock DockPanel.Dock="Bottom" TextAlignment="Center">Subtotal: $</TextBlock>
-        <TextBlock DockPanel.Dock="Bottom" TextAlignment="Center">Order Summary:</TextBlock>
+        <Button Name="mainMenuButton" Click="mainMenuButton_Click" DockPanel.Dock="Top" FontSize="20">Main Menu</Button>
+        <TextBox Name="orderNumber" DockPanel.Dock="Top" TextAlignment="Center" FontSize="20">Order #</TextBox>
+        <TextBlock DockPanel.Dock="Bottom" TextAlignment="Center" FontSize="16">Total: $</TextBlock>
+        <TextBlock DockPanel.Dock="Bottom" TextAlignment="Center" FontSize="16">Tax: $</TextBlock>
+        <TextBlock DockPanel.Dock="Bottom" TextAlignment="Center" FontSize="16">Subtotal: $</TextBlock>
+        <TextBlock DockPanel.Dock="Bottom" TextAlignment="Center" FontSize="16">Order Summary:</TextBlock>
         
+        
+        <Grid DockPanel.Dock="Bottom">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="1" Height="60" FontSize="20">Finish</Button>
+            <Button Height="60" FontSize="20">Cancel</Button>
+        </Grid>
         <ListView Name="orderList"/>
     </DockPanel>
 </UserControl>

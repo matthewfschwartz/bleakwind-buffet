@@ -19,17 +19,14 @@
         </Grid.ColumnDefinitions>
 
 
-        <StackPanel Grid.Row="1">
-            <Label HorizontalAlignment="Center" FontSize="16">Select a Size:</Label>
-
-            <ListBox SelectionMode="Single" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" FontSize="16">
-                <RadioButton GroupName="Size" IsChecked="True">Small</RadioButton>
-                <RadioButton GroupName="Size">Medium</RadioButton>
-                <RadioButton GroupName="Size">Large</RadioButton>
-            </ListBox>
+        <StackPanel Grid.Row="1" Grid.ColumnSpan="2" Grid.RowSpan="2">
+            <Label HorizontalAlignment="Center" FontSize="30">Select a Size:</Label>
+            <RadioButton Name="SmallRadio" Click="SizeSelectionChanged" GroupName="Size" FontSize="30" IsChecked="True">Small</RadioButton>
+            <RadioButton Name="MedRadio" Click="SizeSelectionChanged" GroupName="Size" FontSize="30">Medium</RadioButton>
+            <RadioButton Name="LargeRadio" Click="SizeSelectionChanged" GroupName="Size" FontSize="30">Large</RadioButton>
         </StackPanel>
 
-        <Button Click="ClickDone" Grid.Row="2" Grid.Column="2" FontSize="20">Done</Button>
-        <Label Grid.ColumnSpan="3" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20">Customize Fried Miraak</Label>
+        <Button Click="ClickDone" Grid.Row="2" Grid.Column="2" FontSize="30">Done</Button>
+        <Label Grid.ColumnSpan="3" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30">Customize Fried Miraak</Label>
     </Grid>
 </UserControl>

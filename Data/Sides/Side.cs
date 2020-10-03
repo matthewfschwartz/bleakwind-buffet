@@ -7,6 +7,7 @@
 using BleakwindBuffet.Data.Enums;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 
 namespace BleakwindBuffet.Data.Sides
@@ -16,11 +17,17 @@ namespace BleakwindBuffet.Data.Sides
     /// </summary>
     public abstract class Side
     {
+
         /// <summary>
         /// Size of a side item
         /// </summary>
         protected Size size = Size.Small;
-        public virtual Size Size { get { return size; } set { size = value; } }
+        public virtual Size Size { get { return size; } 
+            set 
+            { 
+                size = value;
+            } 
+        }
 
         /// <summary>
         /// Price for a side item

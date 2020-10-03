@@ -7,6 +7,7 @@
 using BleakwindBuffet.Data.Enums;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 
 namespace BleakwindBuffet.Data.Drinks
@@ -14,8 +15,32 @@ namespace BleakwindBuffet.Data.Drinks
     /// <summary>
     /// Class defining a MarkarthMilk object
     /// </summary>
-    public class MarkarthMilk : Drink, IOrderItem
+    public class MarkarthMilk : Drink, IOrderItem, INotifyPropertyChanged
     {
+        public const double SMALL_MARKARTH_MILK_PRICE = 1.05;
+        public const double MEDIUM_MARKARTH_MILK_PRICE = 1.11;
+        public const double LARGE_MARKARTH_MILK_PRICE = 1.22;
+        public const uint SMALL_MARKARTH_MILK_CALORIES = 56;
+        public const uint MEDIUM_MARKARTH_MILK_CALORIES = 72;
+        public const uint LARGE_MARKARTH_MILK_CALORIES = 93;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private new Size size = Size.Small;
+        public override Size Size
+        {
+            get { return size; }
+            set
+            {
+                size = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Size"));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Price"));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Calories"));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SpecialInstructions"));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("ToString"));
+            }
+        }
+
         /// <summary>
         /// Gets price of the drink
         /// </summary>
@@ -28,9 +53,9 @@ namespace BleakwindBuffet.Data.Drinks
             {
                 switch (size)
                 {
-                    case Size.Small: return 1.05;
-                    case Size.Medium: return 1.11;
-                    case Size.Large: return 1.22;
+                    case Size.Small: return SMALL_MARKARTH_MILK_PRICE;
+                    case Size.Medium: return MEDIUM_MARKARTH_MILK_PRICE;
+                    case Size.Large: return LARGE_MARKARTH_MILK_PRICE;
                     default: throw new NotImplementedException($"Unknown size {Size}");
                 }
             }
@@ -48,9 +73,9 @@ namespace BleakwindBuffet.Data.Drinks
             {
                 switch (size)
                 {
-                    case Size.Small: return 56;
-                    case Size.Medium: return 72;
-                    case Size.Large: return 93;
+                    case Size.Small: return SMALL_MARKARTH_MILK_CALORIES;
+                    case Size.Medium: return MEDIUM_MARKARTH_MILK_CALORIES;
+                    case Size.Large: return LARGE_MARKARTH_MILK_CALORIES;
                     default: throw new NotImplementedException($"Unknown size {Size}");
                 }
             }
@@ -68,6 +93,7 @@ namespace BleakwindBuffet.Data.Drinks
             set
             {
                 ice = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Ice"));
                 if (ice)
                 {
                     specialInstructions.Add("Add ice");

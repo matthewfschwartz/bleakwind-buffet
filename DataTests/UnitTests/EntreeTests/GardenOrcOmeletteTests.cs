@@ -185,5 +185,125 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
             GardenOrcOmelette g = new GardenOrcOmelette();
             Assert.Equal("Garden Orc Omelette", g.ToString());
         }
+
+        [Fact]
+        public void ChangingBroccoliShouldNotifyBroccoliProperty()
+        {
+            GardenOrcOmelette g = new GardenOrcOmelette();
+            Assert.PropertyChanged(g, "Broccoli", () =>
+            {
+                g.Broccoli = true;
+            });
+
+            Assert.PropertyChanged(g, "Broccoli", () =>
+            {
+                g.Broccoli = false;
+            });
+        }
+
+        [Fact]
+        public void ChangingBroccoliShouldNotifySpecialInstructionsProperty()
+        {
+            GardenOrcOmelette g = new GardenOrcOmelette();
+            Assert.PropertyChanged(g, "SpecialInstructions", () =>
+            {
+                g.Broccoli = true;
+            });
+
+            Assert.PropertyChanged(g, "SpecialInstructions", () =>
+            {
+                g.Broccoli = false;
+            });
+        }
+
+        [Fact]
+        public void ChangingMushroomsShouldNotifyMushroomsProperty()
+        {
+            GardenOrcOmelette g = new GardenOrcOmelette();
+            Assert.PropertyChanged(g, "Mushrooms", () =>
+            {
+                g.Mushrooms = true;
+            });
+
+            Assert.PropertyChanged(g, "Mushrooms", () =>
+            {
+                g.Mushrooms = false;
+            });
+        }
+
+        [Fact]
+        public void ChangingMushroomsShouldNotifySpecialInstructionsProperty()
+        {
+            GardenOrcOmelette g = new GardenOrcOmelette();
+            Assert.PropertyChanged(g, "SpecialInstructions", () =>
+            {
+                g.Mushrooms = true;
+            });
+
+            Assert.PropertyChanged(g, "SpecialInstructions", () =>
+            {
+                g.Mushrooms = false;
+            });
+        }
+
+        [Fact]
+        public void ChangingTomatoShouldNotifyTomatoProperty()
+        {
+            GardenOrcOmelette g = new GardenOrcOmelette();
+            Assert.PropertyChanged(g, "Tomato", () =>
+            {
+                g.Tomato = true;
+            });
+
+            Assert.PropertyChanged(g, "Tomato", () =>
+            {
+                g.Tomato = false;
+            });
+        }
+
+        [Fact]
+        public void ChangingTomatoShouldNotifySpecialInstructionsProperty()
+        {
+            GardenOrcOmelette g = new GardenOrcOmelette();
+            Assert.PropertyChanged(g, "SpecialInstructions", () =>
+            {
+                g.Tomato = true;
+            });
+
+            Assert.PropertyChanged(g, "SpecialInstructions", () =>
+            {
+                g.Tomato = false;
+            });
+        }
+
+        [Fact]
+        public void ChangingCheddarShouldNotifyCheddarProperty()
+        {
+            GardenOrcOmelette g = new GardenOrcOmelette();
+            Assert.PropertyChanged(g, "Cheddar", () =>
+            {
+                g.Cheddar = true;
+            });
+
+            Assert.PropertyChanged(g, "Cheddar", () =>
+            {
+                g.Cheddar = false;
+            });
+        }
+
+        [Fact]
+        public void ChangingCheddarShouldNotifySpecialInstructionsProperty()
+        {
+            GardenOrcOmelette g = new GardenOrcOmelette();
+            Assert.PropertyChanged(g, "SpecialInstructions", () =>
+            {
+                g.Cheddar = true;
+            });
+
+            Assert.PropertyChanged(g, "SpecialInstructions", () =>
+            {
+                g.Cheddar = false;
+            });
+        }
     }
 }

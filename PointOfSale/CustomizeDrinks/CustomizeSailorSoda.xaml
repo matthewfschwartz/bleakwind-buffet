@@ -17,36 +17,28 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <StackPanel Grid.Row="1">
-            <Label HorizontalAlignment="Center" FontSize="16">Select a Flavor:</Label>
-            <ListBox FontSize="16">
-                <RadioButton GroupName="Flavor">Blackberry</RadioButton>
-                <RadioButton GroupName="Flavor">Cherry</RadioButton>
-                <RadioButton GroupName="Flavor">Grapefruit</RadioButton>
-                <RadioButton GroupName="Flavor">Lemon</RadioButton>
-                <RadioButton GroupName="Flavor">Peach</RadioButton>
-                <RadioButton GroupName="Flavor">Watermelon</RadioButton>
-            </ListBox>
-            
+        <StackPanel Grid.Row="1" Grid.ColumnSpan="1" Grid.RowSpan="2">
+            <Label HorizontalAlignment="Center" FontSize="30">Select Flavor:</Label>
+            <RadioButton Name="BlackberryOption" Click="OnFlavorSelection" FontSize="30" GroupName="Flavor">Blackberry</RadioButton>
+            <RadioButton Name="CherryOption" Click="OnFlavorSelection" FontSize="30" GroupName="Flavor">Cherry</RadioButton>
+            <RadioButton Name="GrapefruitOption" Click="OnFlavorSelection" FontSize="30" GroupName="Flavor">Grapefruit</RadioButton>
+            <RadioButton Name="LemonOption" Click="OnFlavorSelection" FontSize="30" GroupName="Flavor">Lemon</RadioButton>
+            <RadioButton Name="PeachOption" Click="OnFlavorSelection" FontSize="30" GroupName="Flavor">Peach</RadioButton>
+            <RadioButton Name="WatermelonOption" Click="OnFlavorSelection" FontSize="30" GroupName="Flavor">Watermelon</RadioButton>
+
         </StackPanel>
 
-        <StackPanel Grid.Row="1" Grid.Column="1">
-            <Label HorizontalAlignment="Center" FontSize="16">Select a Size:</Label>
-
-            <ListBox SelectionMode="Single" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" FontSize="16">
-                <RadioButton GroupName="Size" IsChecked="True">Small</RadioButton>
-                <RadioButton GroupName="Size">Medium</RadioButton>
-                <RadioButton GroupName="Size">Large</RadioButton>
-            </ListBox>
-
+        <StackPanel Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="2">
+            <Label HorizontalAlignment="Center" FontSize="30">Select a Size:</Label>
+            <RadioButton Name="SmallRadio" Click="SizeSelectionChanged" FontSize="30" GroupName="Size" IsChecked="True">Small</RadioButton>
+            <RadioButton Name="MedRadio" Click="SizeSelectionChanged" FontSize="30" GroupName="Size">Medium</RadioButton>
+            <RadioButton Name="LargeRadio" Click="SizeSelectionChanged" FontSize="30" GroupName="Size">Large</RadioButton>
             <Label/>
-            <Label HorizontalAlignment="Center" FontSize="16">Special Instructions: </Label>
-            <ListBox Grid.Row="1" Grid.Column="2" VerticalAlignment="Center" FontSize="16">
-                <CheckBox IsChecked="True">Ice</CheckBox>
-            </ListBox>
+            <Label HorizontalAlignment="Center" FontSize="30" >Special Instructions:</Label>
+            <CheckBox Name="IceSelect" Click="OnIceSelect" FontSize="30" IsChecked="True">Ice</CheckBox>
         </StackPanel>
         
-        <Button Click="ClickDone" Grid.Row="2" Grid.Column="2" FontSize="20">Done</Button>
-        <Label Grid.ColumnSpan="3" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20">Customize Sailor Soda</Label>
+        <Button Click="ClickDone" Grid.Row="2" Grid.Column="2" FontSize="30">Done</Button>
+        <Label Grid.ColumnSpan="3" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30">Customize Sailor Soda</Label>
     </Grid>
 </UserControl>

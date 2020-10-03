@@ -17,10 +17,10 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <ListBox Grid.Row="1" VerticalAlignment="Center" FontSize="16">
-            No Customization Options
+        <ListBox Grid.Row="1" Grid.RowSpan="2" Grid.ColumnSpan="2" FontSize="24">
+            <Label HorizontalAlignment="Center" FontSize="30">No Customization Options</Label>
         </ListBox>
-        <Button Click="ClickDone" Grid.Row="2" Grid.Column="2" FontSize="20">Done</Button>
-        <Label Grid.ColumnSpan="3" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20">Customize Thugs T-Bone</Label>
+        <Button Click="ClickDone" Grid.Row="2" Grid.Column="2" FontSize="30">Done</Button>
+        <Label Grid.ColumnSpan="3" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30">Customize Thugs T-Bone</Label>
     </Grid>
 </UserControl>

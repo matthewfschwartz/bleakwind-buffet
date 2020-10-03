@@ -118,5 +118,72 @@ namespace BleakwindBuffet.DataTests.UnitTests.SideTests
             m.Size = size;
             Assert.Equal(name, m.ToString());
         }
+
+        [Theory]
+        [InlineData(Size.Small)]
+        [InlineData(Size.Medium)]
+        [InlineData(Size.Large)]
+
+        public void ChangingSizeShouldNotifySizeProperty(Size size)
+        {
+            MadOtarGrits m = new MadOtarGrits();
+            Assert.PropertyChanged(m, "Size", () =>
+            {
+                m.Size = size;
+            });
+        }
+
+        [Theory]
+        [InlineData(Size.Small)]
+        [InlineData(Size.Medium)]
+        [InlineData(Size.Large)]
+
+        public void ChangingSizeShouldNotifyPriceProperty(Size size)
+        {
+            MadOtarGrits m = new MadOtarGrits();
+            Assert.PropertyChanged(m, "Price", () =>
+            {
+                m.Size = size;
+            });
+        }
+
+        [Theory]
+        [InlineData(Size.Small)]
+        [InlineData(Size.Medium)]
+        [InlineData(Size.Large)]
+        public void ChangingSizeShouldNotifyCaloriesProperty(Size size)
+        {
+            MadOtarGrits m = new MadOtarGrits();
+            Assert.PropertyChanged(m, "Calories", () =>
+            {
+                m.Size = size;
+            });
+        }
+
+        [Theory]
+        [InlineData(Size.Small)]
+        [InlineData(Size.Medium)]
+        [InlineData(Size.Large)]
+        public void ChangingSizeShouldNotifySpecialInstructionsProperty(Size size)
+        {
+            MadOtarGrits m = new MadOtarGrits();
+            Assert.PropertyChanged(m, "SpecialInstructions", () =>
+            {
+                m.Size = size;
+            });
+        }
+
+        [Theory]
+        [InlineData(Size.Small)]
+        [InlineData(Size.Medium)]
+        [InlineData(Size.Large)]
+        public void ChangingSizeShouldNotifyToStringProperty(Size size)
+        {
+            MadOtarGrits m = new MadOtarGrits();
+            Assert.PropertyChanged(m, "ToString", () =>
+            {
+                m.Size = size;
+            });
+        }
     }
 }

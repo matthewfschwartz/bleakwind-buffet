@@ -7,6 +7,7 @@
 using BleakwindBuffet.Data.Enums;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 
 namespace BleakwindBuffet.Data.Sides
@@ -14,8 +15,32 @@ namespace BleakwindBuffet.Data.Sides
     /// <summary>
     /// Class for defining a Vokun Salad object
     /// </summary>
-    public class VokunSalad : Side, IOrderItem
+    public class VokunSalad : Side, IOrderItem, INotifyPropertyChanged
     {
+        public const double SMALL_VOKUN_SALAD_PRICE = 0.93;
+        public const double MEDIUM_VOKUN_SALAD_PRICE = 1.28;
+        public const double LARGE_VOKUN_SALAD_PRICE = 1.82;
+        public const uint SMALL_VOKUN_SALAD_CALORIES = 41;
+        public const uint MEDIUM_VOKUN_SALAD_CALORIES = 52;
+        public const uint LARGE_VOKUN_SALAD_CALORIES = 73;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private new Size size = Size.Small;
+        public override Size Size
+        {
+            get { return size; }
+            set
+            {
+                size = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Size"));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Price"));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Calories"));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SpecialInstructions"));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("ToString"));
+            }
+        }
+
         /// <summary>
         /// Gets price of the side
         /// </summary>
@@ -28,9 +53,9 @@ namespace BleakwindBuffet.Data.Sides
             {
                 switch (size)
                 {
-                    case Size.Small: return 0.93;
-                    case Size.Medium: return 1.28;
-                    case Size.Large: return 1.82;
+                    case Size.Small: return SMALL_VOKUN_SALAD_PRICE;
+                    case Size.Medium: return MEDIUM_VOKUN_SALAD_PRICE;
+                    case Size.Large: return LARGE_VOKUN_SALAD_PRICE;
                     default: throw new NotImplementedException($"Unknown size {Size}");
                 }
             }
@@ -48,9 +73,9 @@ namespace BleakwindBuffet.Data.Sides
             {
                 switch (size)
                 {
-                    case Size.Small: return 41;
-                    case Size.Medium: return 52;
-                    case Size.Large: return 73;
+                    case Size.Small: return SMALL_VOKUN_SALAD_CALORIES;
+                    case Size.Medium: return MEDIUM_VOKUN_SALAD_CALORIES;
+                    case Size.Large: return LARGE_VOKUN_SALAD_CALORIES;
                     default: throw new NotImplementedException($"Unknown size {Size}");
                 }
             }

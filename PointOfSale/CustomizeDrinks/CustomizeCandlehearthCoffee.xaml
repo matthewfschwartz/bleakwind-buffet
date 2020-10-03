@@ -18,26 +18,28 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-
-        <StackPanel Grid.Row="1">
-            <Label HorizontalAlignment="Center" FontSize="16">Select a Size:</Label>
-
-            <ListBox SelectionMode="Single" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" FontSize="16">
-                <RadioButton GroupName="Size" IsChecked="True">Small</RadioButton>
-                <RadioButton GroupName="Size">Medium</RadioButton>
-                <RadioButton GroupName="Size">Large</RadioButton>
-            </ListBox>
-
-            <Label/>
-            <Label HorizontalAlignment="Center" FontSize="16">Special Instructions:</Label>
-            <ListBox Grid.Row="1" Grid.Column="2" VerticalAlignment="Center" FontSize="16">
-                <CheckBox IsChecked="False">Ice</CheckBox>
-                <CheckBox IsChecked="False">Cream</CheckBox>
-                <CheckBox IsChecked="False">Decaf</CheckBox>
-            </ListBox>
+        <StackPanel Grid.Row="1" Grid.RowSpan="2" Grid.ColumnSpan="3">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="1.5*"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Row="1" Grid.RowSpan="2" Grid.ColumnSpan="1">
+                    <Label HorizontalAlignment="Center" FontSize="30">Select a Size:</Label>
+                    <RadioButton Name="SmallRadio" Click="SizeSelectionChanged" GroupName="Size" FontSize="30" IsChecked="True">Small</RadioButton>
+                    <RadioButton Name="MedRadio" Click="SizeSelectionChanged" GroupName="Size" FontSize="30">Medium</RadioButton>
+                    <RadioButton Name="LargeRadio" Click="SizeSelectionChanged" GroupName="Size" FontSize="30">Large</RadioButton>
+                </StackPanel>
+                <StackPanel Grid.Row="1" Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="2">
+                    <Label HorizontalAlignment="Center" FontSize="30">Special Instructions:</Label>
+                    <CheckBox Name="IceSelect" Click="OnIceSelect" FontSize="30" IsChecked="False">Ice</CheckBox>
+                    <CheckBox Name="CreamSelect" Click="OnCreamSelect" FontSize="30" IsChecked="False">Cream</CheckBox>
+                    <CheckBox Name="DecafSelect" Click="OnDecafSelect" FontSize="30" IsChecked="False">Decaf</CheckBox>
+                </StackPanel>
+            </Grid>
         </StackPanel>
 
-        <Button Click="ClickDone" Grid.Row="2" Grid.Column="2" FontSize="20">Done</Button>
-        <Label Grid.ColumnSpan="3" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20">Customize Candlehearth Coffee</Label>
+        <Button Click="ClickDone" Grid.Row="2" Grid.Column="2" FontSize="30">Done</Button>
+        <Label Grid.ColumnSpan="3" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30">Customize Candlehearth Coffee</Label>
     </Grid>
 </UserControl>

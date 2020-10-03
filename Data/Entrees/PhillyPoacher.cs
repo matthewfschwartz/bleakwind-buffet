@@ -6,6 +6,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 
 namespace BleakwindBuffet.Data.Entrees
@@ -13,10 +14,11 @@ namespace BleakwindBuffet.Data.Entrees
     /// <summary>
     /// Class for defining a Philly Poacher object
     /// </summary>
-    public class PhillyPoacher : Entree, IOrderItem
+    public class PhillyPoacher : Entree, IOrderItem, INotifyPropertyChanged
     {
         private double price = 7.23;
         private uint calories = 784; // Uint is unsigned integer (calories can't be negative)
+        public event PropertyChangedEventHandler PropertyChanged;
 
         /// <summary>
         /// Gets the price of the sandwich
@@ -46,6 +48,8 @@ namespace BleakwindBuffet.Data.Entrees
             set
             {
                 sirloin = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Sirloin"));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SpecialInstructions"));
                 if (!sirloin)
                 {
                     specialInstructions.Add("Hold sirloin");
@@ -70,6 +74,8 @@ namespace BleakwindBuffet.Data.Entrees
             set
             {
                 onion = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Onion"));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SpecialInstructions"));
                 if (!onion)
                 {
                     specialInstructions.Add("Hold onions");
@@ -93,7 +99,9 @@ namespace BleakwindBuffet.Data.Entrees
             get { return roll; }
             set
             {
-                roll = value;
+                roll = value; 
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Roll"));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SpecialInstructions"));
                 if (!roll)
                 {
                     specialInstructions.Add("Hold roll");

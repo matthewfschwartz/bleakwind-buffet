@@ -6,6 +6,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 
 namespace BleakwindBuffet.Data.Entrees
@@ -13,10 +14,11 @@ namespace BleakwindBuffet.Data.Entrees
     /// <summary>
     /// Class for defining a Thalmor Triple object
     /// </summary>
-    public class ThalmorTriple : Entree, IOrderItem
+    public class ThalmorTriple : Entree, IOrderItem, INotifyPropertyChanged
     {
         private double price = 8.32;
         private uint calories = 943; // Uint is unsigned integer (calories can't be negative)
+        public event PropertyChangedEventHandler PropertyChanged;
 
         /// <summary>
         /// Gets the price of the burger
@@ -46,6 +48,8 @@ namespace BleakwindBuffet.Data.Entrees
             set
             {
                 bun = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Bun"));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SpecialInstructions"));
                 if (!value)
                 {
                     specialInstructions.Add("Hold bun");
@@ -70,6 +74,8 @@ namespace BleakwindBuffet.Data.Entrees
             set
             {
                 ketchup = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Ketchup"));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SpecialInstructions"));
                 if (!value)
                 {
                     specialInstructions.Add("Hold ketchup");
@@ -94,6 +100,8 @@ namespace BleakwindBuffet.Data.Entrees
             set
             {
                 mustard = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Mustard"));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SpecialInstructions"));
                 if (!value)
                 {
                     specialInstructions.Add("Hold mustard");
@@ -118,6 +126,8 @@ namespace BleakwindBuffet.Data.Entrees
             set
             {
                 pickle = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Pickle"));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SpecialInstructions"));
                 if (!value)
                 {
                     specialInstructions.Add("Hold pickle");
@@ -142,6 +152,8 @@ namespace BleakwindBuffet.Data.Entrees
             set
             {
                 cheese = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Cheese"));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SpecialInstructions"));
                 if (!value)
                 {
                     specialInstructions.Add("Hold cheese");
@@ -166,6 +178,8 @@ namespace BleakwindBuffet.Data.Entrees
             set
             {
                 tomato = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Tomato"));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SpecialInstructions"));
                 if (!value)
                 {
                     specialInstructions.Add("Hold tomato");
@@ -190,6 +204,8 @@ namespace BleakwindBuffet.Data.Entrees
             set
             {
                 lettuce = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Lettuce"));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SpecialInstructions"));
                 if (!value)
                 {
                     specialInstructions.Add("Hold lettuce");
@@ -214,6 +230,8 @@ namespace BleakwindBuffet.Data.Entrees
             set
             {
                 mayo = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Mayo"));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SpecialInstructions"));
                 if (!value)
                 {
                     specialInstructions.Add("Hold mayo");
@@ -238,6 +256,8 @@ namespace BleakwindBuffet.Data.Entrees
             set
             {
                 bacon = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Bacon"));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SpecialInstructions"));
                 if (!value)
                 {
                     specialInstructions.Add("Hold bacon");
@@ -262,6 +282,8 @@ namespace BleakwindBuffet.Data.Entrees
             set
             {
                 egg = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Egg"));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SpecialInstructions"));
                 if (!value)
                 {
                     specialInstructions.Add("Hold egg");

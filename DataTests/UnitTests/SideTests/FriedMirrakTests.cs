@@ -118,5 +118,72 @@ namespace BleakwindBuffet.DataTests.UnitTests.SideTests
             f.Size = size;
             Assert.Equal(name, f.ToString());
         }
+
+        [Theory]
+        [InlineData(Size.Small)]
+        [InlineData(Size.Medium)]
+        [InlineData(Size.Large)]
+
+        public void ChangingSizeShouldNotifySizeProperty(Size size)
+        {
+            FriedMiraak f = new FriedMiraak();
+            Assert.PropertyChanged(f, "Size", () =>
+            {
+                f.Size = size;
+            });
+        }
+
+        [Theory]
+        [InlineData(Size.Small)]
+        [InlineData(Size.Medium)]
+        [InlineData(Size.Large)]
+
+        public void ChangingSizeShouldNotifyPriceProperty(Size size)
+        {
+            FriedMiraak f = new FriedMiraak();
+            Assert.PropertyChanged(f, "Price", () =>
+            {
+                f.Size = size;
+            });
+        }
+
+        [Theory]
+        [InlineData(Size.Small)]
+        [InlineData(Size.Medium)]
+        [InlineData(Size.Large)]
+        public void ChangingSizeShouldNotifyCaloriesProperty(Size size)
+        {
+            FriedMiraak f = new FriedMiraak();
+            Assert.PropertyChanged(f, "Calories", () =>
+            {
+                f.Size = size;
+            });
+        }
+
+        [Theory]
+        [InlineData(Size.Small)]
+        [InlineData(Size.Medium)]
+        [InlineData(Size.Large)]
+        public void ChangingSizeShouldNotifySpecialInstructionsProperty(Size size)
+        {
+            FriedMiraak f = new FriedMiraak();
+            Assert.PropertyChanged(f, "SpecialInstructions", () =>
+            {
+                f.Size = size;
+            });
+        }
+
+        [Theory]
+        [InlineData(Size.Small)]
+        [InlineData(Size.Medium)]
+        [InlineData(Size.Large)]
+        public void ChangingSizeShouldNotifyToStringProperty(Size size)
+        {
+            FriedMiraak f = new FriedMiraak();
+            Assert.PropertyChanged(f, "ToString", () =>
+            {
+                f.Size = size;
+            });
+        }
     }
 }

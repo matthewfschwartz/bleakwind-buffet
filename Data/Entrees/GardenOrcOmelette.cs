@@ -6,6 +6,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 
 namespace BleakwindBuffet.Data.Entrees
@@ -13,10 +14,11 @@ namespace BleakwindBuffet.Data.Entrees
     /// <summary>
     /// Class for defining a Garden Orc Omelette object
     /// </summary>
-    public class GardenOrcOmelette : Entree, IOrderItem
+    public class GardenOrcOmelette : Entree, IOrderItem, INotifyPropertyChanged
     {
         private double price = 4.57;
         private uint calories = 404; // Uint is unsigned integer (calories can't be negative)
+        public event PropertyChangedEventHandler PropertyChanged;
 
         /// <summary>
         /// Gets the price of the omelette
@@ -46,6 +48,8 @@ namespace BleakwindBuffet.Data.Entrees
             set
             {
                 broccoli = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Broccoli"));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SpecialInstructions"));
                 if (!broccoli)
                 {
                     specialInstructions.Add("Hold broccoli");
@@ -71,6 +75,8 @@ namespace BleakwindBuffet.Data.Entrees
             set
             {
                 mushrooms = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Mushrooms"));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SpecialInstructions"));
                 if (!mushrooms)
                 {
                     specialInstructions.Add("Hold mushrooms");
@@ -96,6 +102,8 @@ namespace BleakwindBuffet.Data.Entrees
             set
             {
                 tomato = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Tomato"));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SpecialInstructions"));
                 if (!tomato)
                 {
                     specialInstructions.Add("Hold tomato");
@@ -121,6 +129,8 @@ namespace BleakwindBuffet.Data.Entrees
             set
             {
                 cheddar = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Cheddar"));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SpecialInstructions"));
                 if (!cheddar)
                 {
                     specialInstructions.Add("Hold cheddar");

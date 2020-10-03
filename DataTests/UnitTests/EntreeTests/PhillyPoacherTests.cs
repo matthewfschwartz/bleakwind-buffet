@@ -157,5 +157,95 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
             PhillyPoacher p = new PhillyPoacher();
             Assert.Equal("Philly Poacher", p.ToString());
         }
+
+        [Fact]
+        public void ChangingSirloinShouldNotifySirloinProperty()
+        {
+            PhillyPoacher p = new PhillyPoacher();
+            Assert.PropertyChanged(p, "Sirloin", () =>
+            {
+                p.Sirloin = true;
+            });
+
+            Assert.PropertyChanged(p, "Sirloin", () =>
+            {
+                p.Sirloin = false;
+            });
+        }
+
+        [Fact]
+        public void ChangingSirloinShouldNotifySpecialInstructionsProperty()
+        {
+            PhillyPoacher p = new PhillyPoacher();
+            Assert.PropertyChanged(p, "SpecialInstructions", () =>
+            {
+                p.Sirloin = true;
+            });
+
+            Assert.PropertyChanged(p, "SpecialInstructions", () =>
+            {
+                p.Sirloin = false;
+            });
+        }
+
+        [Fact]
+        public void ChangingOnionShouldNotifyOnionProperty()
+        {
+            PhillyPoacher p = new PhillyPoacher();
+            Assert.PropertyChanged(p, "Onion", () =>
+            {
+                p.Onion = true;
+            });
+
+            Assert.PropertyChanged(p, "Onion", () =>
+            {
+                p.Onion = false;
+            });
+        }
+
+        [Fact]
+        public void ChangingOnionShouldNotifySpecialInstructionsProperty()
+        {
+            PhillyPoacher p = new PhillyPoacher();
+            Assert.PropertyChanged(p, "SpecialInstructions", () =>
+            {
+                p.Onion = true;
+            });
+
+            Assert.PropertyChanged(p, "SpecialInstructions", () =>
+            {
+                p.Onion = false;
+            });
+        }
+
+        [Fact]
+        public void ChangingRollShouldNotifyRollProperty()
+        {
+            PhillyPoacher p = new PhillyPoacher();
+            Assert.PropertyChanged(p, "Roll", () =>
+            {
+                p.Roll = true;
+            });
+
+            Assert.PropertyChanged(p, "Roll", () =>
+            {
+                p.Roll = false;
+            });
+        }
+
+        [Fact]
+        public void ChangingRollShouldNotifySpecialInstructionsProperty()
+        {
+            PhillyPoacher p = new PhillyPoacher();
+            Assert.PropertyChanged(p, "SpecialInstructions", () =>
+            {
+                p.Roll = true;
+            });
+
+            Assert.PropertyChanged(p, "SpecialInstructions", () =>
+            {
+                p.Roll = false;
+            });
+        }
     }
 }

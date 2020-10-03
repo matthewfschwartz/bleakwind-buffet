@@ -7,6 +7,7 @@
 using BleakwindBuffet.Data.Enums;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 
 namespace BleakwindBuffet.Data.Sides
@@ -14,8 +15,32 @@ namespace BleakwindBuffet.Data.Sides
     /// <summary>
     /// Class for defining a Mad Otar Grits object
     /// </summary>
-    public class MadOtarGrits : Side, IOrderItem
+    public class MadOtarGrits : Side, IOrderItem, INotifyPropertyChanged
     {
+        public const double SMALL_MAD_OTAR_GRITS_PRICE = 1.22;
+        public const double MEDIUM_MAD_OTAR_GRITS_PRICE = 1.58;
+        public const double LARGE_MAD_OTAR_GRITS_PRICE = 1.93;
+        public const uint SMALL_MAD_OTAR_GRITS_CALORIES = 105;
+        public const uint MEDIUM_MAD_OTAR_GRITS_CALORIES = 142;
+        public const uint LARGE_MAD_OTAR_GRITS_CALORIES = 179;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private new Size size = Size.Small;
+        public override Size Size
+        {
+            get { return size; }
+            set
+            {
+                size = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Size"));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Price"));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Calories"));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SpecialInstructions"));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("ToString"));
+            }
+        }
+
         /// <summary>
         /// Gets price of the side
         /// </summary>
@@ -28,9 +53,9 @@ namespace BleakwindBuffet.Data.Sides
             {
                 switch (size)
                 {
-                    case Size.Small: return 1.22;
-                    case Size.Medium: return 1.58;
-                    case Size.Large: return 1.93;
+                    case Size.Small: return SMALL_MAD_OTAR_GRITS_PRICE;
+                    case Size.Medium: return MEDIUM_MAD_OTAR_GRITS_PRICE;
+                    case Size.Large: return LARGE_MAD_OTAR_GRITS_PRICE;
                     default: throw new NotImplementedException($"Unknown size {Size}");
                 }
             }
@@ -48,9 +73,9 @@ namespace BleakwindBuffet.Data.Sides
             {
                 switch (size)
                 {
-                    case Size.Small: return 105;
-                    case Size.Medium: return 142;
-                    case Size.Large: return 179;
+                    case Size.Small: return SMALL_MAD_OTAR_GRITS_CALORIES;
+                    case Size.Medium: return MEDIUM_MAD_OTAR_GRITS_CALORIES;
+                    case Size.Large: return LARGE_MAD_OTAR_GRITS_CALORIES;
                     default: throw new NotImplementedException($"Unknown size {Size}");
                 }
             }
