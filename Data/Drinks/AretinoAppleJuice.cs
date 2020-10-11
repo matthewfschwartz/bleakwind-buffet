@@ -15,7 +15,7 @@ namespace BleakwindBuffet.Data.Drinks
     /// <summary>
     /// Class defining a AretinoAppleJuice object
     /// </summary>
-    public class AretinoAppleJuice : Drink, IOrderItem, INotifyPropertyChanged
+    public class AretinoAppleJuice : Drink, IOrderItem
     {
         public const double SMALL_ARETINO_APPLE_JUICE_PRICE = 0.62;
         public const double MEDIUM_ARETINO_APPLE_JUICE_PRICE = 0.87;
@@ -24,7 +24,10 @@ namespace BleakwindBuffet.Data.Drinks
         public const uint MEDIUM_ARETINO_APPLE_JUICE_CALORIES = 88;
         public const uint LARGE_ARETINO_APPLE_JUICE_CALORIES = 132;
 
-        public event PropertyChangedEventHandler PropertyChanged;
+        /// <summary>
+        /// Name of this item, used in the order summary display list
+        /// </summary>
+        public string Name { get { return this.ToString(); } }
 
         private new Size size = Size.Small;
         public override Size Size
@@ -33,11 +36,11 @@ namespace BleakwindBuffet.Data.Drinks
             set
             {
                 size = value;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Size"));
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Price"));
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Calories")); 
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SpecialInstructions"));
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("ToString"));
+                OnPropertyChanged("Size");
+                OnPropertyChanged("Price");
+                OnPropertyChanged("Calories");
+                OnPropertyChanged("SpecialInstructions");
+                OnPropertyChanged("Name");
             }
         }
 
@@ -93,7 +96,7 @@ namespace BleakwindBuffet.Data.Drinks
             set
             {
                 ice = value;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Ice"));
+                
                 if (ice)
                 {
                     specialInstructions.Add("Add ice");
@@ -102,7 +105,8 @@ namespace BleakwindBuffet.Data.Drinks
                 {
                     specialInstructions.Remove("Add ice");
                 }
-                
+                OnPropertyChanged("Ice");
+                OnPropertyChanged("SpecialInstructions");
             }
         }
 

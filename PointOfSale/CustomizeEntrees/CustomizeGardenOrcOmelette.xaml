@@ -19,12 +19,12 @@
         </Grid.ColumnDefinitions>
         <StackPanel Grid.Row="1" Grid.RowSpan="2" Grid.ColumnSpan="2">
             <Label HorizontalAlignment="Center" FontSize="30">Special Instructions:</Label>
-            <CheckBox Name="BroccoliSelect" Click="OnBroccoliSelect" FontSize="30" IsChecked="True">Broccoli</CheckBox>
-            <CheckBox Name="MushroomsSelect" Click="OnMushroomsSelect" FontSize="30" IsChecked="True">Mushrooms</CheckBox>
-            <CheckBox Name="TomatoSelect" Click="OnTomatoSelect" FontSize="30" IsChecked="True">Tomato</CheckBox>
-            <CheckBox Name="CheddarSelect" Click="OnCheddarSelect" FontSize="30" IsChecked="True">Cheddar</CheckBox>
+            <CheckBox Name="BroccoliSelect" FontSize="30" IsChecked="{Binding Path=Broccoli}">Broccoli</CheckBox>
+            <CheckBox Name="MushroomsSelect" FontSize="30" IsChecked="{Binding Path=Mushrooms}">Mushrooms</CheckBox>
+            <CheckBox Name="TomatoSelect" FontSize="30" IsChecked="{Binding Path=Tomato}">Tomato</CheckBox>
+            <CheckBox Name="CheddarSelect" FontSize="30" IsChecked="{Binding Path=Cheddar}">Cheddar</CheckBox>
         </StackPanel>
-        
+
         <Button Click="ClickDone" Grid.Row="2" Grid.Column="2" FontSize="30">Done</Button>
         <Label Grid.ColumnSpan="3" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30">Customize Garden Orc Omelette</Label>        
     </Grid>

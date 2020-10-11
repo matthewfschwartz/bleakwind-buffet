@@ -7,6 +7,7 @@ using Xunit;
 
 using BleakwindBuffet.Data;
 using BleakwindBuffet.Data.Entrees;
+using System.ComponentModel;
 
 namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
 {
@@ -23,6 +24,16 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
         {
             PhillyPoacher p = new PhillyPoacher();
             Assert.IsAssignableFrom<Entree>(p);
+        }
+
+        /// <summary>
+        /// Makes sure the philly poacher has the right name by default
+        /// </summary>
+        [Fact]
+        public void ShouldHaveCorrectNameByDefault()
+        {
+            PhillyPoacher p = new PhillyPoacher();
+            Assert.Equal(p.ToString(), p.Name);
         }
 
         /// <summary>
@@ -246,6 +257,15 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
             {
                 p.Roll = false;
             });
+        }
+
+        /// <summary>
+        /// Checks to make sure philly poacher implements INotifyPropertyChanged interface
+        /// </summary>
+        [Fact]
+        public void ShouldImplementINotifyPropertyChanged()
+        {
+            Assert.IsAssignableFrom<INotifyPropertyChanged>(new PhillyPoacher());
         }
     }
 }

@@ -4,6 +4,7 @@
  * Purpose: Initializes the customization view for philly poacher and allows navigation back to the select entrees view
  */
 
+using BleakwindBuffet.Data;
 using BleakwindBuffet.Data.Entrees;
 using System;
 using System.Collections.Generic;
@@ -25,42 +26,42 @@ namespace PointOfSale.CustomizeEntrees
     /// </summary>
     public partial class CustomizePhillyPoacher : UserControl
     {
-        PhillyPoacher p = new PhillyPoacher();
-        public CustomizePhillyPoacher()
+        PhillyPoacher p;
+        ComboMeal c;
+        public CustomizePhillyPoacher(PhillyPoacher PP, bool isCombo)
         {
             InitializeComponent();
-            DataContext = new PhillyPoacher();
+            DataContext = PP;
+            p = PP;
+            IsCombo = IsCombo;
         }
+
+        public CustomizePhillyPoacher(PhillyPoacher PP, ComboMeal CM, bool isCombo)
+        {
+            InitializeComponent();
+            DataContext = PP;
+            p = PP;
+            IsCombo = IsCombo;
+            c = CM;
+        }
+
+        public bool IsCombo { get; set; } = false;
+
         void ClickDone(object sender, RoutedEventArgs e)
         {
-            SelectEntrees custom = new SelectEntrees();
-            OrderComponent order = this.FindAncestor<OrderComponent>();
-            order.Swap(custom);
-            
-        }
+            if (IsCombo)
+            {
+                CustomizeComboMeal custom = new CustomizeComboMeal(c);
+                OrderComponent orderComponent = this.FindAncestor<OrderComponent>();
+                orderComponent.Swap(custom);
+            }
+            else
+            {
+                SelectEntrees custom = new SelectEntrees();
+                OrderComponent orderComponent = this.FindAncestor<OrderComponent>();
+                orderComponent.Swap(custom);
+            }
 
-        void OnSirloinSelect(object sender, EventArgs e)
-        {
-            if (SirloinSelect.IsChecked == false) SirloinSelect.IsChecked = false;
-            else SirloinSelect.IsChecked = true;
-            p.Sirloin = (bool)SirloinSelect.IsChecked;
-            DataContext = p;
-        }
-
-        void OnOnionsSelect(object sender, EventArgs e)
-        {
-            if (OnionsSelect.IsChecked == false) OnionsSelect.IsChecked = false;
-            else OnionsSelect.IsChecked = true;
-            p.Onion = (bool)OnionsSelect.IsChecked;
-            DataContext = p;
-        }
-
-        void OnRollSelect(object sender, EventArgs e)
-        {
-            if (RollSelect.IsChecked == false) RollSelect.IsChecked = false;
-            else RollSelect.IsChecked = true;
-            p.Roll = (bool)RollSelect.IsChecked;
-            DataContext = p;
         }
     }
 }

@@ -16,6 +16,17 @@ namespace BleakwindBuffet.Data.Entrees
     /// </summary>
     public abstract class Entree
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        /// <summary>
+        /// Property invokation method for this class and derived classes to use
+        /// </summary>
+        /// <param name="propertyName">Which property is being changed</param>
+        protected void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
         /// <summary>
         /// Price of an entree
         /// </summary>

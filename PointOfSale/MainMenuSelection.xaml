@@ -11,21 +11,23 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
-                <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
             <Border Name="entreesButtonBorder" Grid.Column="0" BorderThickness="3" BorderBrush="Purple">
-                <Button Name="entreesButton" Click ="ClickEntreesButton" Grid.Column="0"></Button>
+                <Button Name="entreesButton" Click ="ClickEntreesButton" FontSize="50">Entrees</Button>
             </Border>
             <Border Name="drinksButtonBorder" Grid.Column="1" BorderThickness="3" BorderBrush="Purple">
-                <Button Name="drinksButton" Click="ClickDrinksButton" Grid.Column="1"></Button>
+                <Button Name="drinksButton" Click="ClickDrinksButton" FontSize="50">Drinks</Button>
             </Border>
-            <Border Name="sidesButtonBorder" Grid.Column="2" BorderThickness="3" BorderBrush="Purple">
-                <Button Name="sidesButton" Click="ClickSidesButton" Grid.Column="2"></Button>
+            <Border Name="sidesButtonBorder" Grid.Column="0" Grid.Row="1" BorderThickness="3" BorderBrush="Purple">
+                <Button Name="sidesButton" Click="ClickSidesButton" FontSize="50">Sides</Button>
             </Border>
-            <Label Grid.Column="0" FontSize="32" HorizontalAlignment="Center">Entrees</Label>
-            <Label Grid.Column="1" FontSize="32" HorizontalAlignment="Center">Drinks</Label>
-            <Label Grid.Column="2" FontSize="32" HorizontalAlignment="Center">Sides</Label>
+            <Border Name="comboButtonBorder" Grid.Column="1" Grid.Row="1" BorderThickness="3" BorderBrush="Purple">
+                <Button Name="comboButton" Click="ClickComboButton" FontSize="50">Combo</Button>
+            </Border>
         </Grid>
     </Border>
 </UserControl>

@@ -8,6 +8,7 @@ using Xunit;
 using BleakwindBuffet.Data;
 using BleakwindBuffet.Data.Entrees;
 using System.Runtime.InteropServices;
+using System.ComponentModel;
 
 namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
 {
@@ -24,6 +25,16 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
         {
             GardenOrcOmelette g = new GardenOrcOmelette();
             Assert.IsAssignableFrom<Entree>(g);
+        }
+
+        /// <summary>
+        /// Makes sure the garden orc omelette has the right name by default
+        /// </summary>
+        [Fact]
+        public void ShouldHaveCorrectNameByDefault()
+        {
+            GardenOrcOmelette g = new GardenOrcOmelette();
+            Assert.Equal(g.ToString(), g.Name);
         }
 
         /// <summary>
@@ -304,6 +315,15 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
             {
                 g.Cheddar = false;
             });
+        }
+
+        /// <summary>
+        /// Checks to make sure garden orc omelette implements INotifyPropertyChanged interface
+        /// </summary>
+        [Fact]
+        public void ShouldImplementINotifyPropertyChanged()
+        {
+            Assert.IsAssignableFrom<INotifyPropertyChanged>(new GardenOrcOmelette());
         }
     }
 }

@@ -4,6 +4,7 @@
  * Purpose: Initializes the customization view for thugs tbone and allows navigation back to the select entrees view
  */
 
+using BleakwindBuffet.Data;
 using BleakwindBuffet.Data.Entrees;
 using System;
 using System.Collections.Generic;
@@ -25,17 +26,42 @@ namespace PointOfSale.CustomizeEntrees
     /// </summary>
     public partial class CustomizeThugsTBone : UserControl
     {
-        public CustomizeThugsTBone()
+        private ThugsTBone t;
+        ComboMeal c;
+        public CustomizeThugsTBone(ThugsTBone TT, bool isCombo)
         {
             InitializeComponent();
-            DataContext = new ThugsTBone();
+            DataContext = TT;
+            t = TT;
+            IsCombo = isCombo;
         }
+
+        public CustomizeThugsTBone(ThugsTBone TT, ComboMeal CM, bool isCombo)
+        {
+            InitializeComponent();
+            DataContext = TT;
+            t = TT;
+            IsCombo = isCombo;
+            c = CM;
+        }
+
+        public bool IsCombo { get; set; } = false;
+
         void ClickDone(object sender, RoutedEventArgs e)
         {
-            SelectEntrees custom = new SelectEntrees();
-            OrderComponent order = this.FindAncestor<OrderComponent>();
-            order.Swap(custom);
-            
+            if (IsCombo)
+            {
+                CustomizeComboMeal custom = new CustomizeComboMeal(c);
+                OrderComponent orderComponent = this.FindAncestor<OrderComponent>();
+                orderComponent.Swap(custom);
+            }
+            else
+            {
+                SelectEntrees custom = new SelectEntrees();
+                OrderComponent orderComponent = this.FindAncestor<OrderComponent>();
+                orderComponent.Swap(custom);
+            }
+
         }
     }
 }

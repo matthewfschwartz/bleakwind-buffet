@@ -19,13 +19,13 @@
         </Grid.ColumnDefinitions>
         <StackPanel Grid.Row="1" Grid.RowSpan="2" Grid.ColumnSpan="2">
             <Label HorizontalAlignment="Center" FontSize="30">Special Instructions:</Label>
-            <CheckBox Name="BunSelect" Click="OnBunSelect" FontSize="30" IsChecked="True">Bun</CheckBox>
-            <CheckBox Name="KetchupSelect" Click="OnKetchupSelect" FontSize="30" IsChecked="True">Ketchup</CheckBox>
-            <CheckBox Name="MustardSelect" Click="OnMustardSelect" FontSize="30" IsChecked="True">Mustard</CheckBox>
-            <CheckBox Name="PickleSelect" Click="OnPickleSelect" FontSize="30" IsChecked="True">Pickle</CheckBox>
-            <CheckBox Name="CheeseSelect" Click="OnCheeseSelect" FontSize="30" IsChecked="True">Cheese</CheckBox>
+            <CheckBox Name="BunSelect" FontSize="30" IsChecked="{Binding Path=Bun}">Bun</CheckBox>
+            <CheckBox Name="KetchupSelect" FontSize="30" IsChecked="{Binding Path=Ketchup}">Ketchup</CheckBox>
+            <CheckBox Name="MustardSelect" FontSize="30" IsChecked="{Binding Path=Mustard}">Mustard</CheckBox>
+            <CheckBox Name="PickleSelect" FontSize="30" IsChecked="{Binding Path=Pickle}">Pickle</CheckBox>
+            <CheckBox Name="CheeseSelect" FontSize="30" IsChecked="{Binding Path=Cheese}">Cheese</CheckBox>
         </StackPanel>
-        
+
         <Button Click="ClickDone" Grid.Row="2" Grid.Column="2" FontSize="30">Done</Button>
         <Label Grid.ColumnSpan="3" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30">Customize Briarheart Burger</Label>
         

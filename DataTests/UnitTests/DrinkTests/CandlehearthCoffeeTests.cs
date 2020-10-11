@@ -8,6 +8,7 @@ using Xunit;
 using BleakwindBuffet.Data;
 using BleakwindBuffet.Data.Enums;
 using BleakwindBuffet.Data.Drinks;
+using System.ComponentModel;
 
 namespace BleakwindBuffet.DataTests.UnitTests.DrinkTests
 {
@@ -24,6 +25,16 @@ namespace BleakwindBuffet.DataTests.UnitTests.DrinkTests
         {
             CandlehearthCoffee c = new CandlehearthCoffee();
             Assert.IsAssignableFrom<Drink>(c);
+        }
+
+        /// <summary>
+        /// Makes sure the candlehearth coffee has the right name by default
+        /// </summary>
+        [Fact]
+        public void ShouldHaveCorrectNameByDefault()
+        {
+            CandlehearthCoffee c = new CandlehearthCoffee();
+            Assert.Equal(c.ToString(), c.Name);
         }
 
         /// <summary>
@@ -304,17 +315,13 @@ namespace BleakwindBuffet.DataTests.UnitTests.DrinkTests
             });
         }
 
-        [Theory]
-        [InlineData(Size.Small)]
-        [InlineData(Size.Medium)]
-        [InlineData(Size.Large)]
-        public void ChangingSizeShouldNotifyToStringProperty(Size size)
+        /// <summary>
+        /// Checks to make sure candlehearth coffee implements INotifyPropertyChanged interface
+        /// </summary>
+        [Fact]
+        public void ShouldImplementINotifyPropertyChanged()
         {
-            CandlehearthCoffee c = new CandlehearthCoffee();
-            Assert.PropertyChanged(c, "ToString", () =>
-            {
-                c.Size = size;
-            });
+            Assert.IsAssignableFrom<INotifyPropertyChanged>(new CandlehearthCoffee());
         }
     }
 }

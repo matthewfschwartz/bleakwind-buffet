@@ -14,10 +14,17 @@ namespace BleakwindBuffet.Data.Entrees
     /// <summary>
     /// Class for defining a Thugs T-Bone object
     /// </summary>
-    public class ThugsTBone : Entree, IOrderItem
+    public class ThugsTBone : Entree, IOrderItem, INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+
         private double price = 6.44;
         private uint calories = 982; // Uint is unsigned integer (calories can't be negative)
+
+        /// <summary>
+        /// Name of this item, used in the order summary display list
+        /// </summary>
+        public string Name { get { return this.ToString(); } }
 
         /// <summary>
         /// Gets the price of the t-bone

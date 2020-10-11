@@ -4,6 +4,7 @@
  * Purpose: Initializes the customization view for markarth milk and allows navigation back to the select drinks view
  */
 
+using BleakwindBuffet.Data;
 using BleakwindBuffet.Data.Drinks;
 using System;
 using System.Collections.Generic;
@@ -26,47 +27,41 @@ namespace PointOfSale.CustomizeDrinks
     /// </summary>
     public partial class CustomizeMarkarthMilk : UserControl
     {
-        private MarkarthMilk m = new MarkarthMilk();
-        public CustomizeMarkarthMilk()
+        private MarkarthMilk m;
+        ComboMeal c;
+        public CustomizeMarkarthMilk(MarkarthMilk MM, bool isCombo)
         {
             InitializeComponent();
-            DataContext = new MarkarthMilk();
+            DataContext = MM;
+            m = MM;
+            IsCombo = isCombo;
         }
+
+        public CustomizeMarkarthMilk(MarkarthMilk MM, ComboMeal CM, bool isCombo)
+        {
+            InitializeComponent();
+            DataContext = MM;
+            m = MM;
+            IsCombo = isCombo;
+            c = CM;
+        }
+
+        public bool IsCombo { get; set; } = false;
+
         void ClickDone(object sender, RoutedEventArgs e)
         {
-            SelectDrinks custom = new SelectDrinks();
-            OrderComponent order = this.FindAncestor<OrderComponent>();
-            order.Swap(custom);
-            
-        }
-
-        void OnIceSelect(object sender, EventArgs e)
-        {
-            if (IceSelect.IsChecked == false) IceSelect.IsChecked = false;
-            else IceSelect.IsChecked = true;
-            m.Ice = (bool)IceSelect.IsChecked;
-            DataContext = m;
-        }
-
-        void SizeSelectionChanged(object sender, RoutedEventArgs e)
-        {
-            Size size = Size.Small;
-            if ((bool)SmallRadio.IsChecked)
+            if (IsCombo)
             {
-                size = Size.Small;
-            }
-            else if ((bool)MedRadio.IsChecked)
-            {
-                size = Size.Medium;
+                CustomizeComboMeal custom = new CustomizeComboMeal(c);
+                OrderComponent orderComponent = this.FindAncestor<OrderComponent>();
+                orderComponent.Swap(custom);
             }
             else
             {
-                size = Size.Large;
+                SelectDrinks custom = new SelectDrinks();
+                OrderComponent orderComponent = this.FindAncestor<OrderComponent>();
+                orderComponent.Swap(custom);
             }
-            // Data binding for milk
-            m.Size = size;
-            // Assigning the DataContext makes sure we don't lose the new size that we have assigned
-            DataContext = m;
         }
     }
 }

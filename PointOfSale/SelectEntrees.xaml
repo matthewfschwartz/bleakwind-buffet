@@ -24,165 +24,53 @@
             </Border>
         
             <Border Name="briarheartBurgerBorder" BorderBrush="Purple" BorderThickness="3" Grid.Column="1">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition Width="2*"/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="40"/>
-                        <RowDefinition/>
-                        <RowDefinition Height="30"/>
-                        <RowDefinition Height="30"/>
-                    </Grid.RowDefinitions>
-                    <Label Grid.ColumnSpan="4" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16">Briarheart Burger</Label>
-                    <Label Grid.Column="1" Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Center">Quantity:</Label>
-                    <TextBox Grid.Column="2" Grid.Row="2" Name="briarheartQuantityTextBox" HorizontalAlignment="Left" VerticalAlignment="Center">0</TextBox>
-                    <Button Name="briarheartDecButton" Click="RemoveBriarheartBurger" Grid.Column="0" Grid.Row="2">-</Button> 
-                    <Button Name="briarheartIncButton" Click="AddBriarheartBurger" Grid.Column="3" Grid.Row="2">+</Button>
-                    <Button Name="customizeBriarheartButton" Click="CustomizeBriarheartBurger" Grid.Row="3" Grid.ColumnSpan="4">Customize</Button>
-                    <Image Grid.ColumnSpan="4" Grid.Row="1" ></Image>
-                </Grid>
+                <DockPanel>
+                    <Label DockPanel.Dock="Top" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16">Briarheart Burger</Label>
+                    <Button DockPanel.Dock="Top" Click="AddBriarheartBurger" Name="addBriarheartBurgerButton" FontSize="30" Margin="5" Padding="10">Add</Button>
+                    <Image></Image>
+                </DockPanel>
             </Border>
             <Border Name="doubleDraugrBorder" BorderBrush="Purple" BorderThickness="3" Grid.Column="2">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition Width="2*"/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="40"/>
-                        <RowDefinition/>
-                        <RowDefinition Height="30"/>
-                        <RowDefinition Height="30"/>
-                    </Grid.RowDefinitions>
-                    <Label Grid.ColumnSpan="4" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16">Double Draugr</Label>
-                    <Label Grid.Column="1" Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Center">Quantity:</Label>
-                    <TextBox Grid.Column="2" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Center" Name="draugrQuantityTextBox">0</TextBox>
-                    <Button Name="draugrDecButton" Click="RemoveDoubleDraugr" Grid.Column="0" Grid.Row="2">-</Button>
-                    <Button Name="draugrIncButton" Click="AddDoubleDraugr" Grid.Column="3" Grid.Row="2">+</Button>
-                    <Button Name="customizeDraugrButton" Click="CustomizeDoubleDraugr" Grid.Row="3" Grid.ColumnSpan="4">Customize</Button>
-                    <Image Grid.ColumnSpan="4" Grid.Row="1" ></Image>
-                </Grid>
+                <DockPanel>
+                    <Label DockPanel.Dock="Top" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16">Double Draugr</Label>
+                    <Button DockPanel.Dock="Top" Click="AddDoubleDraugr" Name="addDoubleDraugrButton" FontSize="30" Margin="5" Padding="10">Add</Button>
+                    <Image></Image>
+                </DockPanel>
             </Border>
             <Border Name="thalmortripleBorder" BorderBrush="Purple" BorderThickness="3" Grid.Column="3">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition Width="2*"/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="40"/>
-                        <RowDefinition/>
-                        <RowDefinition Height="30"/>
-                        <RowDefinition Height="30"/>
-                    </Grid.RowDefinitions>
-                    <Label Grid.ColumnSpan="4" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16">Thalmor Triple</Label>
-                    <Label Grid.Column="1" Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Center">Quantity:</Label>
-                    <TextBox Grid.Column="2" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Center" Name="thalmorQuantityTextBox">0</TextBox>
-                    <Button Name="thalmorDecButton" Click="RemoveThalmorTriple"  Grid.Column="0" Grid.Row="2">-</Button>
-                    <Button Name="thalmorIncButton" Click="AddThalmorTriple" Grid.Column="3" Grid.Row="2">+</Button>
-                    <Button Name="customizeThalmorButton" Click="CustomizeThalmorTriple" Grid.Row="3" Grid.ColumnSpan="4">Customize</Button>
-                    <Image Grid.ColumnSpan="4" Grid.Row="1" ></Image>
-                </Grid>
+                <DockPanel>
+                    <Label DockPanel.Dock="Top" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16">Thalmor Triple</Label>
+                    <Button DockPanel.Dock="Top" Click="AddThalmorTriple" Name="addThalmorTripleButton" FontSize="30" Margin="5" Padding="10">Add</Button>
+                    <Image></Image>
+                </DockPanel>
             </Border>
             <Border Name="smokehouseSkeletonBorder" BorderBrush="Purple" BorderThickness="3" Grid.Column="0" Grid.Row="1">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition Width="2*"/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="40"/>
-                        <RowDefinition/>
-                        <RowDefinition Height="30"/>
-                        <RowDefinition Height="30"/>
-                    </Grid.RowDefinitions>
-                    <Label Grid.ColumnSpan="4" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16">Smokehouse Skeleton</Label>
-                    <Label Grid.Column="1" Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Center">Quantity:</Label>
-                    <TextBox Grid.Column="2" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Center" Name="skelQuantityTextBox">0</TextBox>
-                    <Button Name="skelDecButton" Click="RemoveSmokehouseSkeleton" Grid.Column="0" Grid.Row="2">-</Button>
-                    <Button Name="skelIncButton" Click="AddSmokehouseSkeleton" Grid.Column="3" Grid.Row="2">+</Button>
-                    <Button Name="customizeSkelButton" Click="CustomizeSmokehouseSkeleton" Grid.Row="3" Grid.ColumnSpan="4">Customize</Button>
-                    <Image Grid.ColumnSpan="4" Grid.Row="1" ></Image>
-                </Grid>
+                <DockPanel>
+                    <Label DockPanel.Dock="Top" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16">Smokehouse Skeleton</Label>
+                    <Button DockPanel.Dock="Top" Click="AddSmokehouseSkeleton" Name="addSmokehouseSkeletonButton" FontSize="30" Margin="5" Padding="10">Add</Button>
+                    <Image></Image>
+                </DockPanel>
             </Border>
             <Border Name="gardenOrcOmeletteBorder" BorderBrush="Purple" BorderThickness="3" Grid.Column="1" Grid.Row="1">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition Width="2*"/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="40"/>
-                        <RowDefinition/>
-                        <RowDefinition Height="30"/>
-                        <RowDefinition Height="30"/>
-                    </Grid.RowDefinitions>
-                    <Label Grid.ColumnSpan="4" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16">Garden Orc Omelette</Label>
-                    <Label Grid.Column="1" Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Center">Quantity:</Label>
-                    <TextBox Grid.Column="2" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Center" Name="gardenQuantityTextBox">0</TextBox>
-                    <Button Name="gardenDecButton" Click="RemoveGardenOrcOmelette" Grid.Column="0" Grid.Row="2">-</Button>
-                    <Button Name="gardenIncButton" Click="AddGardenOrcOmelette" Grid.Column="3" Grid.Row="2">+</Button>
-                    <Button Name="customizeGardenButton" Click="CustomizeGardenOrcOmelette" Grid.Row="3" Grid.ColumnSpan="4">Customize</Button>
-                    <Image Grid.ColumnSpan="4" Grid.Row="1" ></Image>
-                </Grid>
+                <DockPanel>
+                    <Label DockPanel.Dock="Top" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16">Garden Orc Omelette</Label>
+                    <Button DockPanel.Dock="Top" Click="AddGardenOrcOmelette" Name="addGardenOrcOmeletteButton" FontSize="30" Margin="5" Padding="10">Add</Button>
+                    <Image></Image>
+                </DockPanel>
             </Border>
             <Border Name="phillyPoacherBorder" BorderBrush="Purple" BorderThickness="3" Grid.Column="2" Grid.Row="1">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition Width="2*"/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="40"/>
-                        <RowDefinition/>
-                        <RowDefinition Height="30"/>
-                        <RowDefinition Height="30"/>
-                    </Grid.RowDefinitions>
-                    <Label Grid.ColumnSpan="4" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16">Philly Poacher</Label>
-                    <Label Grid.Column="1" Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Center">Quantity:</Label>
-                    <TextBox Grid.Column="2" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Center" Name="phillyQuantityTextBox">0</TextBox>
-                    <Button Name="phillyDecButton" Click="RemovePhillyPoacher" Grid.Column="0" Grid.Row="2">-</Button>
-                    <Button Name="phillyIncButton" Click="AddPhillyPoacher" Grid.Column="3" Grid.Row="2">+</Button>
-                    <Button Name="customizePhillyButton" Click="CustomizePhillyPoacher" Grid.Row="3" Grid.ColumnSpan="4">Customize</Button>
-                    <Image Grid.ColumnSpan="4" Grid.Row="1" ></Image>
-                </Grid>
+                <DockPanel>
+                    <Label DockPanel.Dock="Top" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16">Philly Poacher</Label>
+                    <Button DockPanel.Dock="Top" Click="AddPhillyPoacher" Name="addPhillyPoacherButton" FontSize="30" Margin="5" Padding="10">Add</Button>
+                    <Image></Image>
+                </DockPanel>
             </Border>
             <Border Name="thugsTBoneBorder" BorderBrush="Purple" BorderThickness="3" Grid.Column="3" Grid.Row="1">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition Width="2*"/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="40"/>
-                        <RowDefinition/>
-                        <RowDefinition Height="30"/>
-                        <RowDefinition Height="30"/>
-                    </Grid.RowDefinitions>
-                    <Label Grid.ColumnSpan="4" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16">Thugs T-Bone</Label>
-                    <Label Grid.Column="1" Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Center">Quantity:</Label>
-                    <TextBox Grid.Column="2" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Center" Name="tboneQuantityTextBox">0</TextBox>
-                    <Button Name="tboneDecButton" Click="RemoveThugsTBone" Grid.Column="0" Grid.Row="2">-</Button>
-                    <Button Name="tboneIncButton" Click="AddThugsTBone" Grid.Column="3" Grid.Row="2">+</Button>
-                    <Button Name="customizeTBoneButton" Click="CustomizeThugsTBone" Grid.Row="3" Grid.ColumnSpan="4">Customize</Button>
-                    <Image Grid.ColumnSpan="4" Grid.Row="1" ></Image>
-                </Grid>
+                <DockPanel>
+                    <Label DockPanel.Dock="Top" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16">Thugs T-Bone</Label>
+                    <Button DockPanel.Dock="Top" Click="AddThugsTBone" Name="addThugsTBoneButton" FontSize="30" Margin="5" Padding="10">Add</Button>
+                    <Image></Image>
+                </DockPanel>
             </Border>
         </Grid>
     </Border>

@@ -3,9 +3,25 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:PointOfSale.CustomizeEntrees"
+             xmlns:system="clr-namespace:System;assembly=mscorlib"
+             xmlns:data="clr-namespace:BleakwindBuffet.Data.Enums;assembly=Data"
+             xmlns:local="clr-namespace:PointOfSale.CustomizeDrinks"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+
+    <UserControl.Resources>
+        <ObjectDataProvider x:Key="sizes" ObjectType="system:Enum" MethodName="GetValues">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="data:Size"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+        <ObjectDataProvider x:Key="flavors" ObjectType="system:Enum" MethodName="GetValues">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="data:SodaFlavor"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+    </UserControl.Resources>
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -19,25 +35,18 @@
         </Grid.ColumnDefinitions>
         <StackPanel Grid.Row="1" Grid.ColumnSpan="1" Grid.RowSpan="2">
             <Label HorizontalAlignment="Center" FontSize="30">Select Flavor:</Label>
-            <RadioButton Name="BlackberryOption" Click="OnFlavorSelection" FontSize="30" GroupName="Flavor">Blackberry</RadioButton>
-            <RadioButton Name="CherryOption" Click="OnFlavorSelection" FontSize="30" GroupName="Flavor">Cherry</RadioButton>
-            <RadioButton Name="GrapefruitOption" Click="OnFlavorSelection" FontSize="30" GroupName="Flavor">Grapefruit</RadioButton>
-            <RadioButton Name="LemonOption" Click="OnFlavorSelection" FontSize="30" GroupName="Flavor">Lemon</RadioButton>
-            <RadioButton Name="PeachOption" Click="OnFlavorSelection" FontSize="30" GroupName="Flavor">Peach</RadioButton>
-            <RadioButton Name="WatermelonOption" Click="OnFlavorSelection" FontSize="30" GroupName="Flavor">Watermelon</RadioButton>
+            <ComboBox ItemsSource="{Binding Source={StaticResource flavors}}" SelectedItem="{Binding Path=Flavor}"/>
 
         </StackPanel>
 
         <StackPanel Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="2">
             <Label HorizontalAlignment="Center" FontSize="30">Select a Size:</Label>
-            <RadioButton Name="SmallRadio" Click="SizeSelectionChanged" FontSize="30" GroupName="Size" IsChecked="True">Small</RadioButton>
-            <RadioButton Name="MedRadio" Click="SizeSelectionChanged" FontSize="30" GroupName="Size">Medium</RadioButton>
-            <RadioButton Name="LargeRadio" Click="SizeSelectionChanged" FontSize="30" GroupName="Size">Large</RadioButton>
+            <ComboBox ItemsSource="{Binding Source={StaticResource sizes}}" SelectedItem="{Binding Path=Size}"/>
             <Label/>
             <Label HorizontalAlignment="Center" FontSize="30" >Special Instructions:</Label>
-            <CheckBox Name="IceSelect" Click="OnIceSelect" FontSize="30" IsChecked="True">Ice</CheckBox>
+            <CheckBox Name="IceSelect" FontSize="30" IsChecked="True">Ice</CheckBox>
         </StackPanel>
-        
+
         <Button Click="ClickDone" Grid.Row="2" Grid.Column="2" FontSize="30">Done</Button>
         <Label Grid.ColumnSpan="3" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30">Customize Sailor Soda</Label>
     </Grid>

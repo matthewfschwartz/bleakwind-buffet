@@ -8,6 +8,7 @@ using Xunit;
 using BleakwindBuffet.Data;
 using BleakwindBuffet.Data.Enums;
 using BleakwindBuffet.Data.Sides;
+using System.ComponentModel;
 
 namespace BleakwindBuffet.DataTests.UnitTests.SideTests
 {
@@ -24,6 +25,16 @@ namespace BleakwindBuffet.DataTests.UnitTests.SideTests
         {
             MadOtarGrits m = new MadOtarGrits();
             Assert.IsAssignableFrom<Side>(m);
+        }
+
+        /// <summary>
+        /// Makes sure the mad otar grits has the right name by default
+        /// </summary>
+        [Fact]
+        public void ShouldHaveCorrectNameByDefault()
+        {
+            MadOtarGrits m = new MadOtarGrits();
+            Assert.Equal(m.ToString(), m.Name);
         }
 
         /// <summary>
@@ -173,17 +184,13 @@ namespace BleakwindBuffet.DataTests.UnitTests.SideTests
             });
         }
 
-        [Theory]
-        [InlineData(Size.Small)]
-        [InlineData(Size.Medium)]
-        [InlineData(Size.Large)]
-        public void ChangingSizeShouldNotifyToStringProperty(Size size)
+        /// <summary>
+        /// Checks to make sure mad otar grits implements INotifyPropertyChanged interface
+        /// </summary>
+        [Fact]
+        public void ShouldImplementINotifyPropertyChanged()
         {
-            MadOtarGrits m = new MadOtarGrits();
-            Assert.PropertyChanged(m, "ToString", () =>
-            {
-                m.Size = size;
-            });
+            Assert.IsAssignableFrom<INotifyPropertyChanged>(new MadOtarGrits());
         }
     }
 }

@@ -4,6 +4,7 @@
  * Purpose: The main container for what the user will see
  */
 
+using BleakwindBuffet.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,8 +30,7 @@ namespace PointOfSale
         public MainWindow()
         {
             InitializeComponent();
+            DataContext = new Order(false);
         }
-
-        
     }
 }

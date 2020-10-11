@@ -10,6 +10,7 @@ using BleakwindBuffet.Data.Entrees;
 using System.Runtime.InteropServices;
 using Xunit.Sdk;
 using NuGet.Frameworks;
+using System.ComponentModel;
 
 namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
 {
@@ -26,6 +27,16 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
         {
             DoubleDraugr d = new DoubleDraugr();
             Assert.IsAssignableFrom<Entree>(d);
+        }
+
+        /// <summary>
+        /// Makes sure the double draugr has the right name by default
+        /// </summary>
+        [Fact]
+        public void ShouldHaveCorrectNameByDefault()
+        {
+            DoubleDraugr d = new DoubleDraugr();
+            Assert.Equal(d.ToString(), d.Name);
         }
 
         /// <summary>
@@ -535,6 +546,15 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
             {
                 d.Cheese = false;
             });
+        }
+
+        /// <summary>
+        /// Checks to make sure double draugr implements INotifyPropertyChanged interface
+        /// </summary>
+        [Fact]
+        public void ShouldImplementINotifyPropertyChanged()
+        {
+            Assert.IsAssignableFrom<INotifyPropertyChanged>(new DoubleDraugr());
         }
     }
 }

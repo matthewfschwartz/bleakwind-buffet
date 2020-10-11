@@ -10,6 +10,7 @@ using BleakwindBuffet.Data;
 
 using BleakwindBuffet.Data.Enums;
 using BleakwindBuffet.Data.Drinks;
+using System.ComponentModel;
 
 namespace BleakwindBuffet.DataTests.UnitTests.DrinkTests
 {
@@ -26,6 +27,16 @@ namespace BleakwindBuffet.DataTests.UnitTests.DrinkTests
         {
             SailorSoda s = new SailorSoda();
             Assert.IsAssignableFrom<Drink>(s);
+        }
+
+        /// <summary>
+        /// Makes sure the sailor soda has the right name by default
+        /// </summary>
+        [Fact]
+        public void ShouldHaveCorrectNameByDefault()
+        {
+            SailorSoda s = new SailorSoda();
+            Assert.Equal(s.ToString(), s.Name);
         }
 
         /// <summary>
@@ -272,19 +283,6 @@ namespace BleakwindBuffet.DataTests.UnitTests.DrinkTests
         }
 
         [Theory]
-        [InlineData(Size.Small)]
-        [InlineData(Size.Medium)]
-        [InlineData(Size.Large)]
-        public void ChangingSizeShouldNotifyToStringProperty(Size size)
-        {
-            SailorSoda s = new SailorSoda();
-            Assert.PropertyChanged(s, "ToString", () =>
-            {
-                s.Size = size;
-            });
-        }
-
-        [Theory]
         [InlineData(SodaFlavor.Blackberry)]
         [InlineData(SodaFlavor.Cherry)]
         [InlineData(SodaFlavor.Grapefruit)]
@@ -300,20 +298,13 @@ namespace BleakwindBuffet.DataTests.UnitTests.DrinkTests
             });
         }
 
-        [Theory]
-        [InlineData(SodaFlavor.Blackberry)]
-        [InlineData(SodaFlavor.Cherry)]
-        [InlineData(SodaFlavor.Grapefruit)]
-        [InlineData(SodaFlavor.Lemon)]
-        [InlineData(SodaFlavor.Peach)]
-        [InlineData(SodaFlavor.Watermelon)]
-        public void ChangingFlavorShouldNotifyToStringProperty(SodaFlavor flavor)
+        /// <summary>
+        /// Checks to make sure sailor soda implements INotifyPropertyChanged interface
+        /// </summary>
+        [Fact]
+        public void ShouldImplementINotifyPropertyChanged()
         {
-            SailorSoda s = new SailorSoda();
-            Assert.PropertyChanged(s, "ToString", () =>
-            {
-                s.Flavor = flavor;
-            });
+            Assert.IsAssignableFrom<INotifyPropertyChanged>(new SailorSoda());
         }
     }
 }

@@ -5,6 +5,8 @@
  * Allows the user to click into each entree option for customizability.
  */
 
+using BleakwindBuffet.Data;
+using BleakwindBuffet.Data.Entrees;
 using PointOfSale.CustomizeEntrees;
 using System;
 using System.Collections.Generic;
@@ -26,149 +28,155 @@ namespace PointOfSale
     /// </summary>
     public partial class SelectEntrees : UserControl
     {
-        private int burgerCount = 0;
-        private int doubleCount = 0;
-        private int tripleCount = 0;
-        private int skelCount = 0;
-        private int gardenCount = 0;
-        private int phillyCount = 0;
-        private int tboneCount = 0;
+        ComboMeal c;
         public SelectEntrees()
         {
             InitializeComponent();
         }
 
-        void CustomizeBriarheartBurger(object sender, RoutedEventArgs e)
+        public SelectEntrees(ComboMeal CM, bool isCombo)
         {
-            CustomizeBriarheartBurger custom = new CustomizeBriarheartBurger();
-            OrderComponent order = this.FindAncestor<OrderComponent>();
-            order.Swap(custom);
+            InitializeComponent();
+            DataContext = CM;
+            c = CM;
+            IsCombo = isCombo;
         }
 
-        void CustomizeDoubleDraugr(object sender, RoutedEventArgs e)
-        {
-            CustomizeDoubleDraugr custom = new CustomizeDoubleDraugr();
-            OrderComponent order = this.FindAncestor<OrderComponent>();
-            order.Swap(custom);
-        }
-
-        void CustomizeThalmorTriple(object sender, RoutedEventArgs e)
-        {
-            CustomizeThalmorTriple custom = new CustomizeThalmorTriple();
-            OrderComponent order = this.FindAncestor<OrderComponent>();
-            order.Swap(custom);
-        }
-
-        void CustomizeSmokehouseSkeleton(object sender, RoutedEventArgs e)
-        {
-            CustomizeSmokehouseSkeleton custom = new CustomizeSmokehouseSkeleton();
-            OrderComponent order = this.FindAncestor<OrderComponent>();
-            order.Swap(custom);
-        }
-
-        void CustomizeGardenOrcOmelette(object sender, RoutedEventArgs e)
-        {
-            CustomizeGardenOrcOmelette custom = new CustomizeGardenOrcOmelette();
-            OrderComponent order = this.FindAncestor<OrderComponent>();
-            order.Swap(custom);
-        }
-
-        void CustomizePhillyPoacher(object sender, RoutedEventArgs e)
-        {
-            CustomizePhillyPoacher custom = new CustomizePhillyPoacher();
-            OrderComponent order = this.FindAncestor<OrderComponent>();
-            order.Swap(custom);
-        }
-
-        void CustomizeThugsTBone(object sender, RoutedEventArgs e)
-        {
-            CustomizeThugsTBone custom = new CustomizeThugsTBone();
-            OrderComponent order = this.FindAncestor<OrderComponent>();
-            order.Swap(custom);
-        }
+        public bool IsCombo { get; set; }
 
         void AddBriarheartBurger(object sender, RoutedEventArgs e)
         {
-            burgerCount++;
-            briarheartQuantityTextBox.Text = burgerCount.ToString();
-        }
-
-        void RemoveBriarheartBurger(object sender, RoutedEventArgs e)
-        {
-            if (burgerCount > 0) burgerCount--;
-            briarheartQuantityTextBox.Text = burgerCount.ToString();
+            if (IsCombo)
+            {
+                
+                c.Entree = new DoubleDraugr();
+                CustomizeComboMeal custom = new CustomizeComboMeal(c);
+                OrderComponent orderComponent = this.FindAncestor<OrderComponent>();
+                orderComponent.Swap(custom);
+            }
+            if (DataContext is Order order)
+            {
+                BriarheartBurger b = new BriarheartBurger();
+                order.Add(b);
+                CustomizeBriarheartBurger custom = new CustomizeBriarheartBurger(b, false);
+                OrderComponent orderComponent = this.FindAncestor<OrderComponent>();
+                orderComponent.Swap(custom);
+            }
+            
         }
 
         void AddDoubleDraugr(object sender, RoutedEventArgs e)
         {
-            doubleCount++;
-            draugrQuantityTextBox.Text = doubleCount.ToString();
-        }
-
-        void RemoveDoubleDraugr(object sender, RoutedEventArgs e)
-        {
-            if (doubleCount > 0) doubleCount--;
-            draugrQuantityTextBox.Text = doubleCount.ToString();
+            if (IsCombo)
+            {
+                c.Entree = new DoubleDraugr();
+                CustomizeComboMeal custom = new CustomizeComboMeal(c);
+                OrderComponent orderComponent = this.FindAncestor<OrderComponent>();
+                orderComponent.Swap(custom);
+            }
+            else if (DataContext is Order order)
+            {
+                DoubleDraugr d = new DoubleDraugr();
+                order.Add(d);
+                CustomizeDoubleDraugr custom = new CustomizeDoubleDraugr(d, false);
+                OrderComponent orderComponent = this.FindAncestor<OrderComponent>();
+                orderComponent.Swap(custom);
+            }
         }
 
         void AddThalmorTriple(object sender, RoutedEventArgs e)
         {
-            tripleCount++;
-            thalmorQuantityTextBox.Text = tripleCount.ToString();
-        }
-
-        void RemoveThalmorTriple(object sender, RoutedEventArgs e)
-        {
-            if (tripleCount > 0) tripleCount--;
-            thalmorQuantityTextBox.Text = tripleCount.ToString();
+            if (IsCombo)
+            {
+                c.Entree = new ThalmorTriple();
+                CustomizeComboMeal custom = new CustomizeComboMeal(c);
+                OrderComponent orderComponent = this.FindAncestor<OrderComponent>();
+                orderComponent.Swap(custom);
+            }
+            if (DataContext is Order order)
+            {
+                ThalmorTriple t = new ThalmorTriple();
+                order.Add(t);
+                CustomizeThalmorTriple custom = new CustomizeThalmorTriple(t, false);
+                OrderComponent orderComponent = this.FindAncestor<OrderComponent>();
+                orderComponent.Swap(custom);
+            }
         }
 
         void AddSmokehouseSkeleton(object sender, RoutedEventArgs e)
         {
-            skelCount++;
-            skelQuantityTextBox.Text = skelCount.ToString();
-        }
-
-        void RemoveSmokehouseSkeleton(object sender, RoutedEventArgs e)
-        {
-            if (skelCount > 0) skelCount--;
-            skelQuantityTextBox.Text = skelCount.ToString();
+            if (IsCombo)
+            {
+                c.Entree = new SmokehouseSkeleton();
+                CustomizeComboMeal custom = new CustomizeComboMeal(c);
+                OrderComponent orderComponent = this.FindAncestor<OrderComponent>();
+                orderComponent.Swap(custom);
+            }
+            if (DataContext is Order order)
+            {
+                SmokehouseSkeleton s = new SmokehouseSkeleton();
+                order.Add(s);
+                CustomizeSmokehouseSkeleton custom = new CustomizeSmokehouseSkeleton(s, false);
+                OrderComponent orderComponent = this.FindAncestor<OrderComponent>();
+                orderComponent.Swap(custom);
+            }
         }
 
         void AddGardenOrcOmelette(object sender, RoutedEventArgs e)
         {
-            gardenCount++;
-            gardenQuantityTextBox.Text = gardenCount.ToString();
-        }
-
-        void RemoveGardenOrcOmelette(object sender, RoutedEventArgs e)
-        {
-            if (gardenCount > 0) gardenCount--;
-            gardenQuantityTextBox.Text = gardenCount.ToString();
+            if (IsCombo)
+            {
+                c.Entree = new GardenOrcOmelette();
+                CustomizeComboMeal custom = new CustomizeComboMeal(c);
+                OrderComponent orderComponent = this.FindAncestor<OrderComponent>();
+                orderComponent.Swap(custom);
+            }
+            if (DataContext is Order order)
+            {
+                GardenOrcOmelette g = new GardenOrcOmelette();
+                order.Add(g);
+                CustomizeGardenOrcOmelette custom = new CustomizeGardenOrcOmelette(g, false);
+                OrderComponent orderComponent = this.FindAncestor<OrderComponent>();
+                orderComponent.Swap(custom);
+            }
         }
 
         void AddPhillyPoacher(object sender, RoutedEventArgs e)
         {
-            phillyCount++;
-            phillyQuantityTextBox.Text = phillyCount.ToString();
-        }
-
-        void RemovePhillyPoacher(object sender, RoutedEventArgs e)
-        {
-            if (phillyCount > 0) phillyCount--;
-            phillyQuantityTextBox.Text = phillyCount.ToString();
+            if (IsCombo)
+            {
+                c.Entree = new PhillyPoacher();
+                CustomizeComboMeal custom = new CustomizeComboMeal(c);
+                OrderComponent orderComponent = this.FindAncestor<OrderComponent>();
+                orderComponent.Swap(custom);
+            }
+            if (DataContext is Order order)
+            {
+                PhillyPoacher p = new PhillyPoacher();
+                order.Add(p);
+                CustomizePhillyPoacher custom = new CustomizePhillyPoacher(p, false);
+                OrderComponent orderComponent = this.FindAncestor<OrderComponent>();
+                orderComponent.Swap(custom);
+            }
         }
 
         void AddThugsTBone(object sender, RoutedEventArgs e)
         {
-            tboneCount++;
-            tboneQuantityTextBox.Text = tboneCount.ToString();
-        }
-
-        void RemoveThugsTBone(object sender, RoutedEventArgs e)
-        {
-            if (tboneCount > 0) tboneCount--;
-            tboneQuantityTextBox.Text = tboneCount.ToString();
+            if (IsCombo)
+            {
+                c.Entree = new ThugsTBone();
+                CustomizeComboMeal custom = new CustomizeComboMeal(c);
+                OrderComponent orderComponent = this.FindAncestor<OrderComponent>();
+                orderComponent.Swap(custom);
+            }
+            if (DataContext is Order order)
+            {
+                ThugsTBone t = new ThugsTBone();
+                order.Add(t);
+                CustomizeThugsTBone custom = new CustomizeThugsTBone(t, false);
+                OrderComponent orderComponent = this.FindAncestor<OrderComponent>();
+                orderComponent.Swap(custom);
+            }
         }
     }
 }

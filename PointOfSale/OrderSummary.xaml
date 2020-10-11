@@ -7,22 +7,50 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="200">
     <DockPanel Name="orderSummaryList">
-        <Button Name="mainMenuButton" Click="mainMenuButton_Click" DockPanel.Dock="Top" FontSize="20">Main Menu</Button>
-        <TextBox Name="orderNumber" DockPanel.Dock="Top" TextAlignment="Center" FontSize="20">Order #</TextBox>
-        <TextBlock DockPanel.Dock="Bottom" TextAlignment="Center" FontSize="16">Total: $</TextBlock>
-        <TextBlock DockPanel.Dock="Bottom" TextAlignment="Center" FontSize="16">Tax: $</TextBlock>
-        <TextBlock DockPanel.Dock="Bottom" TextAlignment="Center" FontSize="16">Subtotal: $</TextBlock>
-        <TextBlock DockPanel.Dock="Bottom" TextAlignment="Center" FontSize="16">Order Summary:</TextBlock>
-        
-        
+        <StackPanel DockPanel.Dock="Top">
+            <Button Name="mainMenuButton" Click="mainMenuButton_Click" FontSize="20">Main Menu</Button>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock VerticalAlignment="Center" Margin="10 0 0 0" TextAlignment="Center" FontSize="20">Order Number:</TextBlock>
+                <TextBlock VerticalAlignment="Center" Text="{Binding Path=Number}" Name="orderNumber" TextAlignment="Center" FontSize="20"/>
+            </StackPanel>
+            
+        </StackPanel>
+
+        <StackPanel DockPanel.Dock="Bottom">
+            <StackPanel Orientation="Horizontal" Margin="10 0 0 0">
+                <TextBlock TextAlignment="Center" FontSize="16" HorizontalAlignment="Right">Subtotal: </TextBlock>
+                <TextBlock Text="{Binding Path=Subtotal, StringFormat='C'}" TextAlignment="Center" FontSize="16"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="10 0 0 0">
+                <TextBlock TextAlignment="Center" FontSize="16" HorizontalAlignment="Right">Tax: </TextBlock>
+                <TextBlock Text="{Binding Path=Tax, StringFormat='C'}" TextAlignment="Center" FontSize="16"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="10 0 0 0">
+                <TextBlock TextAlignment="Center" FontSize="16" HorizontalAlignment="Right">Total: </TextBlock>
+                <TextBlock Text="{Binding Path=Total, StringFormat='C'}" TextAlignment="Center" FontSize="16"></TextBlock>
+            </StackPanel>
+        </StackPanel>
         <Grid DockPanel.Dock="Bottom">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="1" Height="60" FontSize="20">Finish</Button>
-            <Button Height="60" FontSize="20">Cancel</Button>
+            <Button Name="FinishButton" Click="OnFinishClick" Grid.Column="1" Height="60" FontSize="20">Finish</Button>
+            <Button Name="CancelButton" Click="OnCancelClick" Height="60" FontSize="20">Cancel</Button>
         </Grid>
-        <ListView Name="orderList"/>
+        <ListView ItemsSource="{Binding}" Name="orderList">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Border BorderBrush="LightSlateGray" BorderThickness="2" Padding="5" CornerRadius="5">
+                        <StackPanel>
+                            <TextBlock Text="{Binding Path=Name}"></TextBlock>
+                            <ListBox ItemsSource="{Binding Path=SpecialInstructions}"></ListBox>
+                            <TextBlock Text="{Binding Path=Price, StringFormat='C'}"></TextBlock>
+                            <Button Name="RemoveButton" Click="OnRemoveClick">Remove from Order</Button>
+                        </StackPanel>
+                    </Border>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </DockPanel>
 </UserControl>

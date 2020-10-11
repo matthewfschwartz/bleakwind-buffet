@@ -24,7 +24,10 @@ namespace BleakwindBuffet.Data.Sides
         public const uint MEDIUM_FRIED_MIRAAK_CALORIES = 236;
         public const uint LARGE_FRIED_MIRAAK_CALORIES = 306;
 
-        public event PropertyChangedEventHandler PropertyChanged;
+        /// <summary>
+        /// Name of this item, used in the order summary display list
+        /// </summary>
+        public string Name { get { return this.ToString(); } }
 
         private new Size size = Size.Small;
         public override Size Size
@@ -33,11 +36,11 @@ namespace BleakwindBuffet.Data.Sides
             set
             {
                 size = value;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Size"));
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Price"));
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Calories"));
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SpecialInstructions"));
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("ToString"));
+                OnPropertyChanged("Size");
+                OnPropertyChanged("Price");
+                OnPropertyChanged("Calories");
+                OnPropertyChanged("SpecialInstructions");
+                OnPropertyChanged("Name");
             }
         }
 

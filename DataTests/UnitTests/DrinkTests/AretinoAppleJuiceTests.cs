@@ -8,6 +8,7 @@ using Xunit;
 using BleakwindBuffet.Data;
 using BleakwindBuffet.Data.Enums;
 using BleakwindBuffet.Data.Drinks;
+using System.ComponentModel;
 
 namespace BleakwindBuffet.DataTests.UnitTests.DrinkTests
 {
@@ -34,6 +35,16 @@ namespace BleakwindBuffet.DataTests.UnitTests.DrinkTests
         {
             AretinoAppleJuice a = new AretinoAppleJuice();
             Assert.IsAssignableFrom<IOrderItem>(a);
+        }
+
+        /// <summary>
+        /// Makes sure the aretino apple juice has the right name by default
+        /// </summary>
+        [Fact]
+        public void ShouldHaveCorrectNameByDefault()
+        {
+            AretinoAppleJuice a = new AretinoAppleJuice();
+            Assert.Equal(a.ToString(), a.Name);
         }
 
         /// <summary>
@@ -216,17 +227,13 @@ namespace BleakwindBuffet.DataTests.UnitTests.DrinkTests
             });
         }
 
-        [Theory]
-        [InlineData(Size.Small)]
-        [InlineData(Size.Medium)]
-        [InlineData(Size.Large)]
-        public void ChangingSizeShouldNotifyToStringProperty(Size size)
+        /// <summary>
+        /// Checks to make sure aretino apple juice implements INotifyPropertyChanged interface
+        /// </summary>
+        [Fact]
+        public void ShouldImplementINotifyPropertyChanged()
         {
-            AretinoAppleJuice a = new AretinoAppleJuice();
-            Assert.PropertyChanged(a, "ToString", () =>
-            {
-                a.Size = size;
-            });
+            Assert.IsAssignableFrom<INotifyPropertyChanged>(new AretinoAppleJuice());
         }
     }
 }

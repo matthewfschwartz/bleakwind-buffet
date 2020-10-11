@@ -5,6 +5,7 @@
  * Swaps the view accordingly
  */
 
+using BleakwindBuffet.Data;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -48,6 +49,19 @@ namespace PointOfSale
             SelectSides selectSides = new SelectSides();
             OrderComponent order = this.FindAncestor<OrderComponent>();
             order.Swap(selectSides);
+        }
+
+        void ClickComboButton(object sender, RoutedEventArgs e)
+        {
+            if (DataContext is Order order)
+            {
+                ComboMeal c = new ComboMeal();
+                order.Add(c);
+                CustomizeComboMeal customizeCombo = new CustomizeComboMeal(c);
+                OrderComponent orderComponent = this.FindAncestor<OrderComponent>();
+                orderComponent.Swap(customizeCombo);
+            }
+            
         }
     }
 }

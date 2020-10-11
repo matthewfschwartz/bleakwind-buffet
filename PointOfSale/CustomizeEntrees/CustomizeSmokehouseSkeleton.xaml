@@ -19,12 +19,12 @@
         </Grid.ColumnDefinitions>
         <StackPanel Grid.Row="1" Grid.ColumnSpan="2" Grid.RowSpan="2">
             <Label HorizontalAlignment="Center" FontSize="30">Special Instructions:</Label>
-            <CheckBox Name="SausageSelect" Click="OnSausageSelect" FontSize="30" IsChecked="True">Sausage Link</CheckBox>
-            <CheckBox Name="EggSelect" Click="OnEggsSelect" FontSize="30" IsChecked="True">Eggs</CheckBox>
-            <CheckBox Name="HashbrownsSelect" Click="OnHashbrownsSelect" FontSize="30" IsChecked="True">Hashbrowns</CheckBox>
-            <CheckBox Name="PancakesSelect" Click="OnPancakesSelect" FontSize="30" IsChecked="True">Pancakes</CheckBox>
+            <CheckBox Name="SausageSelect" FontSize="30" IsChecked="{Binding Path=SausageLink}">Sausage Link</CheckBox>
+            <CheckBox Name="EggSelect" FontSize="30" IsChecked="{Binding Path=Egg}">Eggs</CheckBox>
+            <CheckBox Name="HashbrownsSelect" FontSize="30" IsChecked="{Binding Path=HashBrowns}">Hashbrowns</CheckBox>
+            <CheckBox Name="PancakesSelect" FontSize="30" IsChecked="{Binding Path=Pancake}">Pancakes</CheckBox>
         </StackPanel>
-        
+
         <Button Click="ClickDone" Grid.Row="2" Grid.Column="2" FontSize="30">Done</Button>
         <Label Grid.ColumnSpan="3" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30">Customize Smokehouse Skeleton</Label>
     </Grid>

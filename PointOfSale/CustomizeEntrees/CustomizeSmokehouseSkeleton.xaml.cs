@@ -4,6 +4,7 @@
  * Purpose: Initializes the customization view for smokehouse skeleton and allows navigation back to the select entrees view
  */
 
+using BleakwindBuffet.Data;
 using BleakwindBuffet.Data.Entrees;
 using System;
 using System.Collections.Generic;
@@ -25,50 +26,42 @@ namespace PointOfSale.CustomizeEntrees
     /// </summary>
     public partial class CustomizeSmokehouseSkeleton : UserControl
     {
-        SmokehouseSkeleton s = new SmokehouseSkeleton();
-        public CustomizeSmokehouseSkeleton()
+        SmokehouseSkeleton s;
+        ComboMeal c;
+        public CustomizeSmokehouseSkeleton(SmokehouseSkeleton SS, bool isCombo)
         {
             InitializeComponent();
-            DataContext = new SmokehouseSkeleton();
+            DataContext = SS;
+            s = SS;
+            IsCombo = isCombo;
         }
+
+        public CustomizeSmokehouseSkeleton(SmokehouseSkeleton SS, ComboMeal CM, bool isCombo)
+        {
+            InitializeComponent();
+            DataContext = SS;
+            s = SS;
+            IsCombo = isCombo;
+            c = CM;
+        }
+
+        public bool IsCombo { get; set; } = false;
+
         void ClickDone(object sender, RoutedEventArgs e)
         {
-            SelectEntrees custom = new SelectEntrees();
-            OrderComponent order = this.FindAncestor<OrderComponent>();
-            order.Swap(custom);
-           
-        }
+            if (IsCombo)
+            {
+                CustomizeComboMeal custom = new CustomizeComboMeal(c);
+                OrderComponent orderComponent = this.FindAncestor<OrderComponent>();
+                orderComponent.Swap(custom);
+            }
+            else
+            {
+                SelectEntrees custom = new SelectEntrees();
+                OrderComponent orderComponent = this.FindAncestor<OrderComponent>();
+                orderComponent.Swap(custom);
+            }
 
-        void OnSausageSelect(object sender, EventArgs e)
-        {
-            if (SausageSelect.IsChecked == false) SausageSelect.IsChecked = false;
-            else SausageSelect.IsChecked = true;
-            s.SausageLink = (bool)SausageSelect.IsChecked;
-            DataContext = s;
-        }
-
-        void OnEggsSelect(object sender, EventArgs e)
-        {
-            if (EggSelect.IsChecked == false) EggSelect.IsChecked = false;
-            else EggSelect.IsChecked = true;
-            s.Egg = (bool)EggSelect.IsChecked;
-            DataContext = s;
-        }
-
-        void OnHashbrownsSelect(object sender, EventArgs e)
-        {
-            if (HashbrownsSelect.IsChecked == false) HashbrownsSelect.IsChecked = false;
-            else HashbrownsSelect.IsChecked = true;
-            s.HashBrowns = (bool)HashbrownsSelect.IsChecked;
-            DataContext = s;
-        }
-
-        void OnPancakesSelect(object sender, EventArgs e)
-        {
-            if (PancakesSelect.IsChecked == false) PancakesSelect.IsChecked = false;
-            else PancakesSelect.IsChecked = true;
-            s.Pancake = (bool)PancakesSelect.IsChecked;
-            DataContext = s;
         }
     }
 }

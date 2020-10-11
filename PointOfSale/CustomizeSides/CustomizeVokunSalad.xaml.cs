@@ -4,6 +4,7 @@
  * Purpose: Initializes the customization view for vokun salad and allows navigation back to the select sides view
  */
 
+using BleakwindBuffet.Data;
 using BleakwindBuffet.Data.Sides;
 using System;
 using System.Collections.Generic;
@@ -26,39 +27,41 @@ namespace PointOfSale.CustomizeSides
     /// </summary>
     public partial class CustomizeVokunSalad : UserControl
     {
-        VokunSalad v = new VokunSalad();
-        public CustomizeVokunSalad()
+        VokunSalad v;
+        ComboMeal c;
+        public CustomizeVokunSalad(VokunSalad VS, bool isCombo)
         {
             InitializeComponent();
-            DataContext = new VokunSalad();
-        }
-        void ClickDone(object sender, RoutedEventArgs e)
-        {
-            SelectSides custom = new SelectSides();
-            OrderComponent order = this.FindAncestor<OrderComponent>();
-            order.Swap(custom);
-            
+            DataContext = VS;
+            v = VS;
+            IsCombo = isCombo;
         }
 
-        void SizeSelectionChanged(object sender, RoutedEventArgs e)
+        public CustomizeVokunSalad(VokunSalad VS, ComboMeal CM, bool isCombo)
         {
-            Size size = Size.Small;
-            if ((bool)SmallRadio.IsChecked)
+            InitializeComponent();
+            DataContext = VS;
+            v = VS;
+            IsCombo = isCombo;
+            c = CM;
+        }
+
+        public bool IsCombo { get; set; } = false;
+
+        void ClickDone(object sender, RoutedEventArgs e)
+        {
+            if (IsCombo)
             {
-                size = Size.Small;
-            }
-            else if ((bool)MedRadio.IsChecked)
-            {
-                size = Size.Medium;
+                CustomizeComboMeal custom = new CustomizeComboMeal(c);
+                OrderComponent orderComponent = this.FindAncestor<OrderComponent>();
+                orderComponent.Swap(custom);
             }
             else
             {
-                size = Size.Large;
+                SelectSides custom = new SelectSides();
+                OrderComponent orderComponent = this.FindAncestor<OrderComponent>();
+                orderComponent.Swap(custom);
             }
-            // Data binding for salad
-            v.Size = size;
-            // Assigning the DataContext makes sure we don't lose the new size that we have assigned
-            DataContext = v;
         }
     }
 }

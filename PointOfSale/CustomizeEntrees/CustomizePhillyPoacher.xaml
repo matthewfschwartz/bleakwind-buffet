@@ -19,11 +19,11 @@
         </Grid.ColumnDefinitions>
         <StackPanel Grid.Row="1" Grid.ColumnSpan="2" Grid.RowSpan="2">
             <Label HorizontalAlignment="Center" FontSize="30">Special Instructions:</Label>
-            <CheckBox Name="SirloinSelect" Click="OnSirloinSelect" FontSize="30" IsChecked="True">Sirloin</CheckBox>
-            <CheckBox Name="OnionsSelect" Click="OnOnionsSelect" FontSize="30" IsChecked="True">Onions</CheckBox>
-            <CheckBox Name="RollSelect" Click="OnRollSelect" FontSize="30" IsChecked="True">Roll</CheckBox>
+            <CheckBox Name="SirloinSelect" FontSize="30" IsChecked="{Binding Path=Sirloin}">Sirloin</CheckBox>
+            <CheckBox Name="OnionsSelect" FontSize="30" IsChecked="{Binding Path=Onions}">Onions</CheckBox>
+            <CheckBox Name="RollSelect" FontSize="30" IsChecked="{Binding Path=Roll}">Roll</CheckBox>
         </StackPanel>
-        
+
         <Button Click="ClickDone" Grid.Row="2" Grid.Column="2" FontSize="30">Done</Button>
         <Label Grid.ColumnSpan="3" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30">Customize Philly Poacher</Label>
     </Grid>

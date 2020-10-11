@@ -4,6 +4,7 @@
  * Purpose: Initializes the customization view for thalmor triple and allows navigation back to the select entrees view
  */
 
+using BleakwindBuffet.Data;
 using BleakwindBuffet.Data.Entrees;
 using System;
 using System.Collections.Generic;
@@ -25,99 +26,42 @@ namespace PointOfSale.CustomizeEntrees
     /// </summary>
     public partial class CustomizeThalmorTriple : UserControl
     {
-        ThalmorTriple t = new ThalmorTriple();
-        public CustomizeThalmorTriple()
+        ThalmorTriple t;
+        ComboMeal c;
+        public CustomizeThalmorTriple(ThalmorTriple TT, bool isCombo)
         {
             InitializeComponent();
-            DataContext = new ThalmorTriple();
+            DataContext = TT;
+            t = TT;
+            IsCombo = isCombo;
         }
+
+        public CustomizeThalmorTriple(ThalmorTriple TT, ComboMeal CM, bool isCombo)
+        {
+            InitializeComponent();
+            DataContext = TT;
+            t = TT;
+            IsCombo = isCombo;
+            c = CM;
+        }
+
+        public bool IsCombo { get; set; } = false;
 
         void ClickDone(object sender, RoutedEventArgs e)
         {
-            SelectEntrees custom = new SelectEntrees();
-            OrderComponent order = this.FindAncestor<OrderComponent>();
-            order.Swap(custom);
-            
-        }
+            if (IsCombo)
+            {
+                CustomizeComboMeal custom = new CustomizeComboMeal(c);
+                OrderComponent orderComponent = this.FindAncestor<OrderComponent>();
+                orderComponent.Swap(custom);
+            }
+            else
+            {
+                SelectEntrees custom = new SelectEntrees();
+                OrderComponent orderComponent = this.FindAncestor<OrderComponent>();
+                orderComponent.Swap(custom);
+            }
 
-        void OnBunSelect(object sender, EventArgs e)
-        {
-            if (BunSelect.IsChecked == false) BunSelect.IsChecked = false;
-            else BunSelect.IsChecked = true;
-            t.Bun = (bool)BunSelect.IsChecked;
-            DataContext = t;
-        }
-
-        void OnKetchupSelect(object sender, EventArgs e)
-        {
-            if (KetchupSelect.IsChecked == false) KetchupSelect.IsChecked = false;
-            else KetchupSelect.IsChecked = true;
-            t.Bun = (bool)KetchupSelect.IsChecked;
-            DataContext = t;
-        }
-
-        void OnMustardSelect(object sender, EventArgs e)
-        {
-            if (MustardSelect.IsChecked == false) MustardSelect.IsChecked = false;
-            else MustardSelect.IsChecked = true;
-            t.Bun = (bool)MustardSelect.IsChecked;
-            DataContext = t;
-        }
-
-        void OnPickleSelect(object sender, EventArgs e)
-        {
-            if (PickleSelect.IsChecked == false) PickleSelect.IsChecked = false;
-            else PickleSelect.IsChecked = true;
-            t.Bun = (bool)PickleSelect.IsChecked;
-            DataContext = t;
-        }
-
-        void OnCheeseSelect(object sender, EventArgs e)
-        {
-            if (CheeseSelect.IsChecked == false) CheeseSelect.IsChecked = false;
-            else CheeseSelect.IsChecked = true;
-            t.Bun = (bool)CheeseSelect.IsChecked;
-            DataContext = t;
-        }
-
-        void OnLettuceSelect(object sender, EventArgs e)
-        {
-            if (LettuceSelect.IsChecked == false) LettuceSelect.IsChecked = false;
-            else LettuceSelect.IsChecked = true;
-            t.Bun = (bool)LettuceSelect.IsChecked;
-            DataContext = t;
-        }
-
-        void OnTomatoSelect(object sender, EventArgs e)
-        {
-            if (TomatoSelect.IsChecked == false) TomatoSelect.IsChecked = false;
-            else TomatoSelect.IsChecked = true;
-            t.Bun = (bool)TomatoSelect.IsChecked;
-            DataContext = t;
-        }
-
-        void OnMayoSelect(object sender, EventArgs e)
-        {
-            if (MayoSelect.IsChecked == false) MayoSelect.IsChecked = false;
-            else MayoSelect.IsChecked = true;
-            t.Bun = (bool)MayoSelect.IsChecked;
-            DataContext = t;
-        }
-
-        void OnBaconSelect(object sender, EventArgs e)
-        {
-            if (BaconSelect.IsChecked == false) BaconSelect.IsChecked = false;
-            else BaconSelect.IsChecked = true;
-            t.Bun = (bool)BaconSelect.IsChecked;
-            DataContext = t;
-        }
-
-        void OnEggSelect(object sender, EventArgs e)
-        {
-            if (EggSelect.IsChecked == false) EggSelect.IsChecked = false;
-            else EggSelect.IsChecked = true;
-            t.Bun = (bool)EggSelect.IsChecked;
-            DataContext = t;
         }
     }
 }

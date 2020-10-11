@@ -3,9 +3,19 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:system="clr-namespace:System;assembly=mscorlib"
+             xmlns:data="clr-namespace:BleakwindBuffet.Data.Enums;assembly=Data"
              xmlns:local="clr-namespace:PointOfSale.CustomizeDrinks"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+    
+    <UserControl.Resources>
+        <ObjectDataProvider x:Key="sizes" ObjectType="system:Enum" MethodName="GetValues">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="data:Size"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+    </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -26,15 +36,13 @@
                 </Grid.ColumnDefinitions>
                 <StackPanel Grid.Row="1" Grid.RowSpan="2" Grid.ColumnSpan="1">
                     <Label HorizontalAlignment="Center" FontSize="30">Select a Size:</Label>
-                    <RadioButton Name="SmallRadio" Click="SizeSelectionChanged" GroupName="Size" FontSize="30" IsChecked="True">Small</RadioButton>
-                    <RadioButton Name="MedRadio" Click="SizeSelectionChanged" GroupName="Size" FontSize="30">Medium</RadioButton>
-                    <RadioButton Name="LargeRadio" Click="SizeSelectionChanged" GroupName="Size" FontSize="30">Large</RadioButton>
+                    <ComboBox ItemsSource="{Binding Source={StaticResource sizes}}" SelectedItem="{Binding Path=Size}"/>
                 </StackPanel>
                 <StackPanel Grid.Row="1" Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="2">
                     <Label HorizontalAlignment="Center" FontSize="30">Special Instructions:</Label>
-                    <CheckBox Name="IceSelect" Click="OnIceSelect" FontSize="30" IsChecked="False">Ice</CheckBox>
-                    <CheckBox Name="CreamSelect" Click="OnCreamSelect" FontSize="30" IsChecked="False">Cream</CheckBox>
-                    <CheckBox Name="DecafSelect" Click="OnDecafSelect" FontSize="30" IsChecked="False">Decaf</CheckBox>
+                    <CheckBox Name="IceSelect" FontSize="30" IsChecked="{Binding Path=Ice}">Ice</CheckBox>
+                    <CheckBox Name="CreamSelect" FontSize="30" IsChecked="{Binding Path=RoomForCream}">Cream</CheckBox>
+                    <CheckBox Name="DecafSelect" FontSize="30" IsChecked="{Binding Path=Decaf}">Decaf</CheckBox>
                 </StackPanel>
             </Grid>
         </StackPanel>

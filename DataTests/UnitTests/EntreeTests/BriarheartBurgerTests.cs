@@ -7,6 +7,7 @@ using Xunit;
 
 using BleakwindBuffet.Data;
 using BleakwindBuffet.Data.Entrees;
+using System.ComponentModel;
 
 namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
 {
@@ -23,6 +24,16 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
         {
             BriarheartBurger b = new BriarheartBurger();
             Assert.IsAssignableFrom<Entree>(b);
+        }
+
+        /// <summary>
+        /// Makes sure the briarheart burger has the right name by default
+        /// </summary>
+        [Fact]
+        public void ShouldHaveCorrectNameByDefault()
+        {
+            BriarheartBurger b = new BriarheartBurger();
+            Assert.Equal(b.ToString(), b.Name);
         }
 
         /// <summary>
@@ -362,6 +373,13 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
             });
         }
 
-        
+        /// <summary>
+        /// Checks to make sure briarheart burger implements INotifyPropertyChanged interface
+        /// </summary>
+        [Fact]
+        public void ShouldImplementINotifyPropertyChanged()
+        {
+            Assert.IsAssignableFrom<INotifyPropertyChanged>(new BriarheartBurger());
+        }
     }
 }

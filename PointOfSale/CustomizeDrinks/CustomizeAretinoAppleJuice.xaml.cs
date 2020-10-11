@@ -4,6 +4,7 @@
  * Purpose: Initializes the customization view for aretino apple juice and allows navigation back to the select drinks view
  */
 
+using BleakwindBuffet.Data;
 using BleakwindBuffet.Data.Drinks;
 using System;
 using System.Collections.Generic;
@@ -26,47 +27,41 @@ namespace PointOfSale.CustomizeDrinks
     /// </summary>
     public partial class CustomizeAretinoAppleJuice : UserControl
     {
-        private AretinoAppleJuice a = new AretinoAppleJuice();
-        public CustomizeAretinoAppleJuice()
+        private AretinoAppleJuice a;
+        ComboMeal c;
+        public CustomizeAretinoAppleJuice(AretinoAppleJuice AJ, bool isCombo)
         {
             InitializeComponent();
-            DataContext = new AretinoAppleJuice();
+            DataContext = AJ;
+            a = AJ;
+            IsCombo = isCombo;
         }
+
+        public CustomizeAretinoAppleJuice(AretinoAppleJuice AJ, ComboMeal CM, bool isCombo)
+        {
+            InitializeComponent();
+            DataContext = AJ;
+            a = AJ;
+            IsCombo = isCombo;
+            c = CM;
+        }
+
+        public bool IsCombo { get; set; } = false;
+
         void ClickDone(object sender, RoutedEventArgs e)
         {
-            SelectDrinks custom = new SelectDrinks();
-            OrderComponent order = this.FindAncestor<OrderComponent>();
-            order.Swap(custom);
-            
-        }
-
-        void OnIceSelect(object sender, EventArgs e)
-        {
-            if (IceSelect.IsChecked == false) IceSelect.IsChecked = false;
-            else IceSelect.IsChecked = true;
-            a.Ice = (bool)IceSelect.IsChecked;
-            DataContext = a;
-        }
-
-        void SizeSelectionChanged(object sender, RoutedEventArgs e)
-        {
-            Size size = Size.Small;
-            if ((bool)SmallRadio.IsChecked)
+            if (IsCombo)
             {
-                size = Size.Small;
-            }
-            else if ((bool)MedRadio.IsChecked)
-            {
-                size = Size.Medium;
+                CustomizeComboMeal custom = new CustomizeComboMeal(c);
+                OrderComponent orderComponent = this.FindAncestor<OrderComponent>();
+                orderComponent.Swap(custom);
             }
             else
             {
-                size = Size.Large;
+                SelectDrinks custom = new SelectDrinks();
+                OrderComponent orderComponent = this.FindAncestor<OrderComponent>();
+                orderComponent.Swap(custom);
             }
-            // Data binding for Aretino AJ 
-            a.Size = size;
-            // Assigning the DataContext makes sure we don't lose the new size that we have assigned
-            DataContext = a; 
         }
     }
 }

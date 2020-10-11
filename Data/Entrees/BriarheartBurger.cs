@@ -18,7 +18,11 @@ namespace BleakwindBuffet.Data.Entrees
     {
         private double price = 6.32; 
         private uint calories = 743; // Uint is unsigned integer (calories can't be negative)
-        public event PropertyChangedEventHandler PropertyChanged;
+
+        /// <summary>
+        /// Name of this item, used in the order summary display list
+        /// </summary>
+        public string Name { get { return this.ToString(); } }
 
         /// <summary>
         /// Gets the price of the burger
@@ -48,8 +52,7 @@ namespace BleakwindBuffet.Data.Entrees
             set 
             {
                 bun = value;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Bun"));
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SpecialInstructions"));
+                
                 if (!value)
                 {
                     specialInstructions.Add("Hold bun");
@@ -58,7 +61,8 @@ namespace BleakwindBuffet.Data.Entrees
                 {
                     specialInstructions.Remove("Hold bun");
                 }
-                
+                OnPropertyChanged("Bun");
+                OnPropertyChanged("SpecialInstructions");
             }
         }
 
@@ -74,8 +78,7 @@ namespace BleakwindBuffet.Data.Entrees
             set
             {
                 ketchup = value;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Ketchup"));
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SpecialInstructions"));
+                
                 if (!value)
                 {
                     specialInstructions.Add("Hold ketchup");
@@ -84,7 +87,8 @@ namespace BleakwindBuffet.Data.Entrees
                 {
                     specialInstructions.Remove("Hold ketchup");
                 }
-                
+                OnPropertyChanged("Ketchup");
+                OnPropertyChanged("SpecialInstructions");
             }
         }
 
@@ -100,8 +104,7 @@ namespace BleakwindBuffet.Data.Entrees
             set
             {
                 mustard = value;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Mustard"));
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SpecialInstructions"));
+                
                 if (!value)
                 {
                     specialInstructions.Add("Hold mustard");
@@ -110,7 +113,8 @@ namespace BleakwindBuffet.Data.Entrees
                 {
                     specialInstructions.Remove("Hold mustard");
                 }
-                
+                OnPropertyChanged("Mustard");
+                OnPropertyChanged("SpecialInstructions");
             }
         }
 
@@ -126,8 +130,7 @@ namespace BleakwindBuffet.Data.Entrees
             set
             {
                 pickle = value;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Pickle"));
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SpecialInstructions"));
+                
                 if (!value)
                 {
                     specialInstructions.Add("Hold pickle");
@@ -136,7 +139,8 @@ namespace BleakwindBuffet.Data.Entrees
                 {
                     specialInstructions.Remove("Hold pickle");
                 }
-                
+                OnPropertyChanged("Pickle");
+                OnPropertyChanged("SpecialInstructions");
             }
         }
 
@@ -152,8 +156,7 @@ namespace BleakwindBuffet.Data.Entrees
             set
             {
                 cheese = value;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Cheese"));
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SpecialInstructions"));
+                
                 if (!value)
                 {
                     specialInstructions.Add("Hold cheese");
@@ -162,7 +165,8 @@ namespace BleakwindBuffet.Data.Entrees
                 {
                     specialInstructions.Remove("Hold cheese");
                 }
-                
+                OnPropertyChanged("Cheese");
+                OnPropertyChanged("SpecialInstructions");
             }
         }
 

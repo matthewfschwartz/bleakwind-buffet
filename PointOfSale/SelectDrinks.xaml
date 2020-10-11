@@ -20,119 +20,39 @@
             <Label HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22">Select Drink(s)</Label>
         </Border>
         <Border Name="sailorSodaBorder" BorderBrush="Purple" BorderThickness="3" Grid.Column="1">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition Width="2*"/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="40"/>
-                    <RowDefinition/>
-                    <RowDefinition Height="30"/>
-                    <RowDefinition Height="30"/>
-                </Grid.RowDefinitions>
-                <Label Grid.ColumnSpan="4" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16">Sailor Soda</Label>
-                <Label Grid.Column="1" Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Center">Quantity:</Label>
-                <TextBox Grid.Column="2" Grid.Row="2" Name="sailorSodaQuantityTextBox" HorizontalAlignment="Left" VerticalAlignment="Center">0</TextBox>
-                <Button Name="sailorSodaDecButton" Click="RemoveSailorSoda" Grid.Column="0" Grid.Row="2">-</Button>
-                <Button Name="sailorSodaIncButton" Click="AddSailorSoda" Grid.Column="3" Grid.Row="2">+</Button>
-                <Button Name="customizeSailorSodaButton" Click="CustomizeSailorSoda" Grid.Row="3" Grid.ColumnSpan="4">Customize</Button>
-                <Image Grid.ColumnSpan="4" Grid.Row="1" ></Image>
-            </Grid>
+            <DockPanel>
+                <Label DockPanel.Dock="Top" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20">Sailor Soda</Label>
+                <Button DockPanel.Dock="Top" Click="AddSailorSoda" Name="addSailorSodaButton" FontSize="30" Margin="5" Padding="10">Add</Button>
+                <Image></Image>
+            </DockPanel>
         </Border>
         <Border Name="markarthMilkBorder" BorderBrush="Purple" BorderThickness="3" Grid.Column="2">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition Width="2*"/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="40"/>
-                    <RowDefinition/>
-                    <RowDefinition Height="30"/>
-                    <RowDefinition Height="30"/>
-                </Grid.RowDefinitions>
-                <Label Grid.ColumnSpan="4" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16">Markarth Milk</Label>
-                <Label Grid.Column="1" Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Center">Quantity:</Label>
-                <TextBox Grid.Column="2" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Center" Name="markarthMilkQuantityTextBox">0</TextBox>
-                <Button Name="markarthMilkDecButton" Click="RemoveMarkarthMilk" Grid.Column="0" Grid.Row="2">-</Button>
-                <Button Name="markarthMilkIncButton" Click="AddMarkarthMilk" Grid.Column="3" Grid.Row="2">+</Button>
-                <Button Name="customizeMarkarthMilkButton" Click="CustomizeMarkarthMilk" Grid.Row="3" Grid.ColumnSpan="4">Customize</Button>
-                <Image Grid.ColumnSpan="4" Grid.Row="1" ></Image>
-            </Grid>
+            <DockPanel>
+                <Label DockPanel.Dock="Top" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20">Markarth Milk</Label>
+                <Button DockPanel.Dock="Top" Click="AddMarkarthMilk" Name="addMarkarthButton" FontSize="30" Margin="5" Padding="10">Add</Button>
+                <Image></Image>
+            </DockPanel>
         </Border>
         <Border Name="aretinoAppleJuiceBorder" BorderBrush="Purple" BorderThickness="3" Grid.Column="2" Grid.Row="1">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition Width="2*"/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="40"/>
-                    <RowDefinition/>
-                    <RowDefinition Height="30"/>
-                    <RowDefinition Height="30"/>
-                </Grid.RowDefinitions>
-                <Label Grid.ColumnSpan="4" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16">Aretino Apple Juice</Label>
-                <Label Grid.Column="1" Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Center">Quantity:</Label>
-                <TextBox Grid.Column="2" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Center" Name="aretinoAppleJuiceQuantityTextBox">0</TextBox>
-                <Button Name="aretinoAppleJuiceDecButton" Click="RemoveAretinoAppleJuice"  Grid.Column="0" Grid.Row="2">-</Button>
-                <Button Name="aretinoAppleJuiceIncButton" Click="AddAretinoAppleJuice" Grid.Column="3" Grid.Row="2">+</Button>
-                <Button Name="customizeAretinoAppleJuiceButton" Click="CustomizeAretinoAppleJuice" Grid.Row="3" Grid.ColumnSpan="4">Customize</Button>
-                <Image Grid.ColumnSpan="4" Grid.Row="1" ></Image>
-            </Grid>
+            <DockPanel>
+                <Label DockPanel.Dock="Top" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20">Aretino Apple Juice</Label>
+                <Button DockPanel.Dock="Top" Click="AddAretinoAppleJuice" Name="addAretinoAppleJuiceButton" FontSize="30" Margin="5" Padding="10">Add</Button>
+                <Image></Image>
+            </DockPanel>
         </Border>
         <Border Name="candlehearthCoffeeBorder" BorderBrush="Purple" BorderThickness="3" Grid.Column="0" Grid.Row="1">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition Width="2*"/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="40"/>
-                    <RowDefinition/>
-                    <RowDefinition Height="30"/>
-                    <RowDefinition Height="30"/>
-                </Grid.RowDefinitions>
-                <Label Grid.ColumnSpan="4" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16">Candlehearth Coffee</Label>
-                <Label Grid.Column="1" Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Center">Quantity:</Label>
-                <TextBox Grid.Column="2" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Center" Name="candlehearthCoffeeQuantityTextBox">0</TextBox>
-                <Button Name="candlehearthCoffeeDecButton" Click="RemoveCandlehearthCoffee" Grid.Column="0" Grid.Row="2">-</Button>
-                <Button Name="candlehearthCoffeeIncButton" Click="AddCandlehearthCoffee" Grid.Column="3" Grid.Row="2">+</Button>
-                <Button Name="customizeCandlehearthCoffee" Click="CustomizeCandlehearthCoffee" Grid.Row="3" Grid.ColumnSpan="4">Customize</Button>
-                <Image Grid.ColumnSpan="4" Grid.Row="1" ></Image>
-            </Grid>
+            <DockPanel>
+                <Label DockPanel.Dock="Top" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20">Candlehearth Coffee</Label>
+                <Button DockPanel.Dock="Top" Click="AddCandlehearthCoffee" Name="addCandlehearthCoffeeButton" FontSize="30" Margin="5" Padding="10">Add</Button>
+                <Image></Image>
+            </DockPanel>
         </Border>
         <Border Name="warriorWaterBorder" BorderBrush="Purple" BorderThickness="3" Grid.Column="1" Grid.Row="1">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition Width="2*"/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="40"/>
-                    <RowDefinition/>
-                    <RowDefinition Height="30"/>
-                    <RowDefinition Height="30"/>
-                </Grid.RowDefinitions>
-                <Label Grid.ColumnSpan="4" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16">Warrior Water</Label>
-                <Label Grid.Column="1" Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Center">Quantity:</Label>
-                <TextBox Grid.Column="2" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Center" Name="warriorWaterQuantityTextBox">0</TextBox>
-                <Button Name="warriorWaterDecButton" Click="RemoveWarriorWater" Grid.Column="0" Grid.Row="2">-</Button>
-                <Button Name="warriorWaterIncButton" Click="AddWarriorWater" Grid.Column="3" Grid.Row="2">+</Button>
-                <Button Name="customizeWarriorWaterButton" Click="CustomizeWarriorWater" Grid.Row="3" Grid.ColumnSpan="4">Customize</Button>
-                <Image Grid.ColumnSpan="4" Grid.Row="1" ></Image>
-            </Grid>
+            <DockPanel>
+                <Label DockPanel.Dock="Top" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20">Warrior Water</Label>
+                <Button DockPanel.Dock="Top" Click="AddWarriorWater" Name="addWarriorWaterButton" FontSize="30" Margin="5" Padding="10">Add</Button>
+                <Image></Image>
+            </DockPanel>
         </Border>
     </Grid>
 </UserControl>

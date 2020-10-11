@@ -8,6 +8,7 @@ using Xunit;
 using BleakwindBuffet.Data;
 using BleakwindBuffet.Data.Enums;
 using BleakwindBuffet.Data.Sides;
+using System.ComponentModel;
 
 namespace BleakwindBuffet.DataTests.UnitTests.SideTests
 {
@@ -24,6 +25,16 @@ namespace BleakwindBuffet.DataTests.UnitTests.SideTests
         {
             DragonbornWaffleFries d = new DragonbornWaffleFries();
             Assert.IsAssignableFrom<Side>(d);
+        }
+
+        /// <summary>
+        /// Makes sure the dragonborn waffle fries has the right name by default
+        /// </summary>
+        [Fact]
+        public void ShouldHaveCorrectNameByDefault()
+        {
+            DragonbornWaffleFries d = new DragonbornWaffleFries();
+            Assert.Equal(d.ToString(), d.Name);
         }
 
         /// <summary>
@@ -174,17 +185,13 @@ namespace BleakwindBuffet.DataTests.UnitTests.SideTests
             });
         }
 
-        [Theory]
-        [InlineData(Size.Small)]
-        [InlineData(Size.Medium)]
-        [InlineData(Size.Large)]
-        public void ChangingSizeShouldNotifyToStringProperty(Size size)
+        /// <summary>
+        /// Checks to make sure dragonborn waffle fries implements INotifyPropertyChanged interface
+        /// </summary>
+        [Fact]
+        public void ShouldImplementINotifyPropertyChanged()
         {
-            DragonbornWaffleFries d = new DragonbornWaffleFries();
-            Assert.PropertyChanged(d, "ToString", () =>
-            {
-                d.Size = size;
-            });
+            Assert.IsAssignableFrom<INotifyPropertyChanged>(new DragonbornWaffleFries());
         }
     }
 }

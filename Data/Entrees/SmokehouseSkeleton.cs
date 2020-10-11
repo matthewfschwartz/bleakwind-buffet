@@ -18,7 +18,11 @@ namespace BleakwindBuffet.Data.Entrees
     {
         private double price = 5.62;
         private uint calories = 602; // Uint is unsigned integer (calories can't be negative)
-        public event PropertyChangedEventHandler PropertyChanged;
+
+        /// <summary>
+        /// Name of this item, used in the order summary display list
+        /// </summary>
+        public string Name { get { return this.ToString(); } }
 
         /// <summary>
         /// Gets the price of the combo
@@ -51,8 +55,7 @@ namespace BleakwindBuffet.Data.Entrees
             set
             {
                 sausageLink = value;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SausageLink"));
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SpecialInstructions"));
+                
                 if (!sausageLink)
                 {
                     specialInstructions.Add("Hold sausage");
@@ -61,7 +64,8 @@ namespace BleakwindBuffet.Data.Entrees
                 {
                     specialInstructions.Remove("Hold sausage");
                 }
-                
+                OnPropertyChanged("SausageLink");
+                OnPropertyChanged("SpecialInstructions");
             }
         }
 
@@ -77,8 +81,7 @@ namespace BleakwindBuffet.Data.Entrees
             set
             {
                 egg = value;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Egg"));
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SpecialInstructions"));
+                
                 if (!egg)
                 {
                     specialInstructions.Add("Hold eggs");
@@ -87,7 +90,8 @@ namespace BleakwindBuffet.Data.Entrees
                 {
                     specialInstructions.Remove("Hold eggs");
                 }
-                
+                OnPropertyChanged("Egg");
+                OnPropertyChanged("SpecialInstructions");
             }
         }
 
@@ -103,8 +107,7 @@ namespace BleakwindBuffet.Data.Entrees
             set
             {
                 hashBrowns = value;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("HashBrowns"));
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SpecialInstructions"));
+                
                 if (!hashBrowns)
                 {
                     specialInstructions.Add("Hold hash browns");
@@ -113,7 +116,8 @@ namespace BleakwindBuffet.Data.Entrees
                 {
                     specialInstructions.Remove("Hold hash browns");
                 }
-                
+                OnPropertyChanged("HashBrowns");
+                OnPropertyChanged("SpecialInstructions");
             }
         }
 
@@ -129,8 +133,7 @@ namespace BleakwindBuffet.Data.Entrees
             set
             {
                 pancake = value;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Pancake"));
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SpecialInstructions"));
+               
                 if (!pancake)
                 {
                     specialInstructions.Add("Hold pancakes");
@@ -139,7 +142,8 @@ namespace BleakwindBuffet.Data.Entrees
                 {
                     specialInstructions.Remove("Hold pancakes");
                 }
-                
+                OnPropertyChanged("Pancake");
+                OnPropertyChanged("SpecialInstructions");
             }
         }
 

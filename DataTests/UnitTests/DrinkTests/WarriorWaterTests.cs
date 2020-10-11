@@ -11,6 +11,7 @@ using BleakwindBuffet.Data;
 
 using BleakwindBuffet.Data.Enums;
 using BleakwindBuffet.Data.Drinks;
+using System.ComponentModel;
 
 namespace BleakwindBuffet.DataTests.UnitTests.DrinkTests
 {
@@ -27,6 +28,16 @@ namespace BleakwindBuffet.DataTests.UnitTests.DrinkTests
         {
             WarriorWater w = new WarriorWater();
             Assert.IsAssignableFrom<Drink>(w);
+        }
+
+        /// <summary>
+        /// Makes sure the warrior water has the right name by default
+        /// </summary>
+        [Fact]
+        public void ShouldHaveCorrectNameByDefault()
+        {
+            WarriorWater w = new WarriorWater();
+            Assert.Equal(w.ToString(), w.Name);
         }
 
         /// <summary>
@@ -263,17 +274,13 @@ namespace BleakwindBuffet.DataTests.UnitTests.DrinkTests
             });
         }
 
-        [Theory]
-        [InlineData(Size.Small)]
-        [InlineData(Size.Medium)]
-        [InlineData(Size.Large)]
-        public void ChangingSizeShouldNotifyToStringProperty(Size size)
+        /// <summary>
+        /// Checks to make sure warrior water implements INotifyPropertyChanged interface
+        /// </summary>
+        [Fact]
+        public void ShouldImplementINotifyPropertyChanged()
         {
-            WarriorWater w = new WarriorWater();
-            Assert.PropertyChanged(w, "ToString", () =>
-            {
-                w.Size = size;
-            });
+            Assert.IsAssignableFrom<INotifyPropertyChanged>(new WarriorWater());
         }
     }
 }

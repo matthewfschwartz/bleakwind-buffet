@@ -8,6 +8,7 @@ using Xunit;
 using BleakwindBuffet.Data;
 using BleakwindBuffet.Data.Enums;
 using BleakwindBuffet.Data.Sides;
+using System.ComponentModel;
 
 namespace BleakwindBuffet.DataTests.UnitTests.SideTests
 {
@@ -24,6 +25,16 @@ namespace BleakwindBuffet.DataTests.UnitTests.SideTests
         {
             FriedMiraak f = new FriedMiraak();
             Assert.IsAssignableFrom<Side>(f);
+        }
+
+        /// <summary>
+        /// Makes sure the fried miraak has the right name by default
+        /// </summary>
+        [Fact]
+        public void ShouldHaveCorrectNameByDefault()
+        {
+            FriedMiraak f = new FriedMiraak();
+            Assert.Equal(f.ToString(), f.Name);
         }
 
         /// <summary>
@@ -173,17 +184,13 @@ namespace BleakwindBuffet.DataTests.UnitTests.SideTests
             });
         }
 
-        [Theory]
-        [InlineData(Size.Small)]
-        [InlineData(Size.Medium)]
-        [InlineData(Size.Large)]
-        public void ChangingSizeShouldNotifyToStringProperty(Size size)
+        /// <summary>
+        /// Checks to make sure fried miraak implements INotifyPropertyChanged interface
+        /// </summary>
+        [Fact]
+        public void ShouldImplementINotifyPropertyChanged()
         {
-            FriedMiraak f = new FriedMiraak();
-            Assert.PropertyChanged(f, "ToString", () =>
-            {
-                f.Size = size;
-            });
+            Assert.IsAssignableFrom<INotifyPropertyChanged>(new FriedMiraak());
         }
     }
 }

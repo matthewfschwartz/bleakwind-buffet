@@ -7,6 +7,7 @@ using Xunit;
 
 using BleakwindBuffet.Data;
 using BleakwindBuffet.Data.Entrees;
+using System.ComponentModel;
 
 namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
 {
@@ -23,6 +24,16 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
         {
             ThugsTBone t = new ThugsTBone();
             Assert.IsAssignableFrom<Entree>(t);
+        }
+
+        /// <summary>
+        /// Makes sure the thugs tbone has the right name by default
+        /// </summary>
+        [Fact]
+        public void ShouldHaveCorrectNameByDefault()
+        {
+            ThugsTBone t = new ThugsTBone();
+            Assert.Equal(t.ToString(), t.Name);
         }
 
         /// <summary>
@@ -73,6 +84,15 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
         {
             ThugsTBone t = new ThugsTBone();
             Assert.Equal("Thugs T-Bone", t.ToString());
+        }
+
+        /// <summary>
+        /// Checks to make sure thugs tbone implements INotifyPropertyChanged interface
+        /// </summary>
+        [Fact]
+        public void ShouldImplementINotifyPropertyChanged()
+        {
+            Assert.IsAssignableFrom<INotifyPropertyChanged>(new ThugsTBone());
         }
     }
 }

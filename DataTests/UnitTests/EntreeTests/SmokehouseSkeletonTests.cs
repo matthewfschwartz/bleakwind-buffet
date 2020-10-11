@@ -8,6 +8,7 @@ using Xunit;
 using BleakwindBuffet.Data;
 using BleakwindBuffet.Data.Entrees;
 using System;
+using System.ComponentModel;
 
 namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
 {
@@ -24,6 +25,16 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
         {
             SmokehouseSkeleton s = new SmokehouseSkeleton();
             Assert.IsAssignableFrom<Entree>(s);
+        }
+
+        /// <summary>
+        /// Makes sure the smokehosue skeleton has the right name by default
+        /// </summary>
+        [Fact]
+        public void ShouldHaveCorrectNameByDefault()
+        {
+            SmokehouseSkeleton s = new SmokehouseSkeleton();
+            Assert.Equal(s.ToString(), s.Name);
         }
 
         /// <summary>
@@ -304,6 +315,15 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
             {
                 s.Pancake = false;
             });
+        }
+
+        /// <summary>
+        /// Checks to make sure smokehouse skeleton implements INotifyPropertyChanged interface
+        /// </summary>
+        [Fact]
+        public void ShouldImplementINotifyPropertyChanged()
+        {
+            Assert.IsAssignableFrom<INotifyPropertyChanged>(new SmokehouseSkeleton());
         }
     }
 }

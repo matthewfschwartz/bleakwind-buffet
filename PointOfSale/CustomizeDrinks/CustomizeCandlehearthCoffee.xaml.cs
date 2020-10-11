@@ -4,6 +4,7 @@
  * Purpose: Initializes the customization view for candlehearth coffee and allows navigation back to the select drinks view
  */
 
+using BleakwindBuffet.Data;
 using BleakwindBuffet.Data.Drinks;
 using System;
 using System.Collections.Generic;
@@ -26,63 +27,41 @@ namespace PointOfSale.CustomizeDrinks
     /// </summary>
     public partial class CustomizeCandlehearthCoffee : UserControl
     {
-        private CandlehearthCoffee c = new CandlehearthCoffee();
-        public CustomizeCandlehearthCoffee()
+        private CandlehearthCoffee c;
+        ComboMeal cm;
+        public CustomizeCandlehearthCoffee(CandlehearthCoffee CC, bool isCombo)
         {
             InitializeComponent();
-            DataContext = new CandlehearthCoffee();
+            DataContext = CC;
+            c = CC;
+            IsCombo = isCombo;
         }
+
+        public CustomizeCandlehearthCoffee(CandlehearthCoffee CC, ComboMeal CM, bool isCombo)
+        {
+            InitializeComponent();
+            DataContext = CC;
+            c = CC;
+            IsCombo = isCombo;
+            cm = CM;
+        }
+
+        public bool IsCombo { get; set; } = false;
+
         void ClickDone(object sender, RoutedEventArgs e)
         {
-            SelectDrinks custom = new SelectDrinks();
-            OrderComponent order = this.FindAncestor<OrderComponent>();
-            order.Swap(custom);
-            
-        }
-
-        void OnIceSelect(object sender, EventArgs e)
-        {
-            if (IceSelect.IsChecked == false) IceSelect.IsChecked = false;
-            else IceSelect.IsChecked = true;
-            c.Ice = (bool)IceSelect.IsChecked;
-            DataContext = c;
-        }
-
-        void OnCreamSelect(object sender, EventArgs e)
-        {
-            if (CreamSelect.IsChecked == false) CreamSelect.IsChecked = false;
-            else CreamSelect.IsChecked = true;
-            c.RoomForCream = (bool)CreamSelect.IsChecked;
-            DataContext = c;
-        }
-
-        void OnDecafSelect(object sender, EventArgs e)
-        {
-            if (DecafSelect.IsChecked == false) DecafSelect.IsChecked = false;
-            else DecafSelect.IsChecked = true;
-            c.Decaf = (bool)DecafSelect.IsChecked;
-            DataContext = c;
-        }
-
-        void SizeSelectionChanged(object sender, RoutedEventArgs e)
-        {
-            Size size = Size.Small;
-            if ((bool)SmallRadio.IsChecked)
+            if (IsCombo)
             {
-                size = Size.Small;
-            }
-            else if ((bool)MedRadio.IsChecked)
-            {
-                size = Size.Medium;
+                CustomizeComboMeal custom = new CustomizeComboMeal(cm);
+                OrderComponent orderComponent = this.FindAncestor<OrderComponent>();
+                orderComponent.Swap(custom);
             }
             else
             {
-                size = Size.Large;
+                SelectDrinks custom = new SelectDrinks();
+                OrderComponent orderComponent = this.FindAncestor<OrderComponent>();
+                orderComponent.Swap(custom);
             }
-            // Data binding for Coffee
-            c.Size = size;
-            // Assigning the DataContext makes sure we don't lose the new size that we have assigned
-            DataContext = c;
         }
     }
 }

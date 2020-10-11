@@ -9,6 +9,7 @@ using BleakwindBuffet.Data;
 using BleakwindBuffet.Data.Enums;
 using BleakwindBuffet.Data.Sides;
 using System.Runtime.InteropServices;
+using System.ComponentModel;
 
 namespace BleakwindBuffet.DataTests.UnitTests.SideTests
 {
@@ -25,6 +26,16 @@ namespace BleakwindBuffet.DataTests.UnitTests.SideTests
         {
             VokunSalad v = new VokunSalad();
             Assert.IsAssignableFrom<Side>(v);
+        }
+
+        /// <summary>
+        /// Makes sure the vokun salad has the right name by default
+        /// </summary>
+        [Fact]
+        public void ShouldHaveCorrectNameByDefault()
+        {
+            VokunSalad v = new VokunSalad();
+            Assert.Equal(v.ToString(), v.Name);
         }
 
         /// <summary>
@@ -174,17 +185,13 @@ namespace BleakwindBuffet.DataTests.UnitTests.SideTests
             });
         }
 
-        [Theory]
-        [InlineData(Size.Small)]
-        [InlineData(Size.Medium)]
-        [InlineData(Size.Large)]
-        public void ChangingSizeShouldNotifyToStringProperty(Size size)
+        /// <summary>
+        /// Checks to make sure vokun salad implements INotifyPropertyChanged interface
+        /// </summary>
+        [Fact]
+        public void ShouldImplementINotifyPropertyChanged()
         {
-            VokunSalad v = new VokunSalad();
-            Assert.PropertyChanged(v, "ToString", () =>
-            {
-                v.Size = size;
-            });
+            Assert.IsAssignableFrom<INotifyPropertyChanged>(new VokunSalad());
         }
     }
 }

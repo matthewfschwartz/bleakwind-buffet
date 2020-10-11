@@ -4,6 +4,7 @@
  * Purpose: The largest component in main window, handles the changing display of what view we want the user to see through the Swap() method
  */
 
+using BleakwindBuffet.Data;
 using System;
 using System.Collections.Generic;
 using System.Text;

@@ -8,6 +8,7 @@ using Xunit;
 using BleakwindBuffet.Data;
 using BleakwindBuffet.Data.Enums;
 using BleakwindBuffet.Data.Drinks;
+using System.ComponentModel;
 
 namespace BleakwindBuffet.DataTests.UnitTests.DrinkTests
 {
@@ -24,6 +25,16 @@ namespace BleakwindBuffet.DataTests.UnitTests.DrinkTests
         {
             MarkarthMilk m = new MarkarthMilk();
             Assert.IsAssignableFrom<Drink>(m);
+        }
+
+        /// <summary>
+        /// Makes sure the markarth milk has the right name by default
+        /// </summary>
+        [Fact]
+        public void ShouldHaveCorrectNameByDefault()
+        {
+            MarkarthMilk m = new MarkarthMilk();
+            Assert.Equal(m.ToString(), m.Name);
         }
 
         /// <summary>
@@ -216,17 +227,13 @@ namespace BleakwindBuffet.DataTests.UnitTests.DrinkTests
             });
         }
 
-        [Theory]
-        [InlineData(Size.Small)]
-        [InlineData(Size.Medium)]
-        [InlineData(Size.Large)]
-        public void ChangingSizeShouldNotifyToStringProperty(Size size)
+        /// <summary>
+        /// Checks to make sure markarth milk implements INotifyPropertyChanged interface
+        /// </summary>
+        [Fact]
+        public void ShouldImplementINotifyPropertyChanged()
         {
-            MarkarthMilk m = new MarkarthMilk();
-            Assert.PropertyChanged(m, "ToString", () =>
-            {
-                m.Size = size;
-            });
+            Assert.IsAssignableFrom<INotifyPropertyChanged>(new MarkarthMilk());
         }
     }
 }

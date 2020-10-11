@@ -9,6 +9,7 @@ using BleakwindBuffet.Data;
 using BleakwindBuffet.Data.Entrees;
 using NuGet.Frameworks;
 using System.Runtime.InteropServices;
+using System.ComponentModel;
 
 namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
 {
@@ -25,6 +26,16 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
         {
             ThalmorTriple t = new ThalmorTriple();
             Assert.IsAssignableFrom<Entree>(t);
+        }
+
+        /// <summary>
+        /// Makes sure the thalmor triple has the right name by default
+        /// </summary>
+        [Fact]
+        public void ShouldHaveCorrectNameByDefault()
+        {
+            ThalmorTriple t = new ThalmorTriple();
+            Assert.Equal(t.ToString(), t.Name);
         }
 
         /// <summary>
@@ -649,6 +660,15 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
             {
                 t.Egg = false;
             });
+        }
+
+        /// <summary>
+        /// Checks to make sure thalmor triple implements INotifyPropertyChanged interface
+        /// </summary>
+        [Fact]
+        public void ShouldImplementINotifyPropertyChanged()
+        {
+            Assert.IsAssignableFrom<INotifyPropertyChanged>(new ThalmorTriple());
         }
     }
 }

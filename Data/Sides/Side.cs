@@ -17,6 +17,16 @@ namespace BleakwindBuffet.Data.Sides
     /// </summary>
     public abstract class Side
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        /// <summary>
+        /// Property invokation method for this class and derived classes to use
+        /// </summary>
+        /// <param name="propertyName">Which property is being changed</param>
+        protected void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
 
         /// <summary>
         /// Size of a side item

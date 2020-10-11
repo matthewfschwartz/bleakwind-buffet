@@ -5,6 +5,8 @@
  * Allows the user to click into each drink option for customizability.
  */
 
+using BleakwindBuffet.Data;
+using BleakwindBuffet.Data.Drinks;
 using PointOfSale.CustomizeDrinks;
 using System;
 using System.Collections.Generic;
@@ -26,110 +28,120 @@ namespace PointOfSale
     /// </summary>
     public partial class SelectDrinks : UserControl
     {
-        private int sailorSodaCount = 0;
-        private int aretinoAppleJuiceCount = 0;
-        private int candlehearthCoffeeCount = 0;
-        private int warriorWaterCount = 0;
-        private int markarthMilkCount = 0;
-
+        ComboMeal c;
         public SelectDrinks()
         {
             InitializeComponent();
         }
 
-        void CustomizeSailorSoda(object sender, RoutedEventArgs e)
+        public SelectDrinks(ComboMeal CM, bool isCombo)
         {
-            CustomizeSailorSoda custom = new CustomizeSailorSoda();
-            OrderComponent order = this.FindAncestor<OrderComponent>();
-            order.Swap(custom);
+            InitializeComponent();
+            DataContext = CM;
+            c = CM;
+            IsCombo = isCombo;
         }
 
-        void CustomizeAretinoAppleJuice(object sender, RoutedEventArgs e)
-        {
-            CustomizeAretinoAppleJuice custom = new CustomizeAretinoAppleJuice();
-            OrderComponent order = this.FindAncestor<OrderComponent>();
-            order.Swap(custom);
-        }
-
-        void CustomizeMarkarthMilk(object sender, RoutedEventArgs e)
-        {
-            CustomizeMarkarthMilk custom = new CustomizeMarkarthMilk();
-            OrderComponent order = this.FindAncestor<OrderComponent>();
-            order.Swap(custom);
-        }
-
-        void CustomizeCandlehearthCoffee(object sender, RoutedEventArgs e)
-        {
-            CustomizeCandlehearthCoffee custom = new CustomizeCandlehearthCoffee();
-            OrderComponent order = this.FindAncestor<OrderComponent>();
-            order.Swap(custom);
-        }
-
-        void CustomizeWarriorWater(object sender, RoutedEventArgs e)
-        {
-            CustomizeWarriorWater custom = new CustomizeWarriorWater();
-            OrderComponent order = this.FindAncestor<OrderComponent>();
-            order.Swap(custom);
-        }
+        public bool IsCombo { get; set; } = false;
 
         void AddSailorSoda(object sender, RoutedEventArgs e)
         {
-            sailorSodaCount++;
-            sailorSodaQuantityTextBox.Text = sailorSodaCount.ToString();
-        }
+            if (IsCombo)
+            {
 
-        void RemoveSailorSoda(object sender, RoutedEventArgs e)
-        {
-            if (sailorSodaCount > 0) sailorSodaCount--;
-            sailorSodaQuantityTextBox.Text = sailorSodaCount.ToString();
+                c.Drink = new SailorSoda();
+                CustomizeComboMeal custom = new CustomizeComboMeal(c);
+                OrderComponent orderComponent = this.FindAncestor<OrderComponent>();
+                orderComponent.Swap(custom);
+            }
+            if (DataContext is Order order)
+            {
+                SailorSoda s = new SailorSoda();
+                order.Add(s);
+                CustomizeSailorSoda custom = new CustomizeSailorSoda(s, false);
+                OrderComponent orderComponent = this.FindAncestor<OrderComponent>();
+                orderComponent.Swap(custom);
+            }
         }
 
         void AddMarkarthMilk(object sender, RoutedEventArgs e)
         {
-            markarthMilkCount++;
-            markarthMilkQuantityTextBox.Text = markarthMilkCount.ToString();
-        }
+            if (IsCombo)
+            {
 
-        void RemoveMarkarthMilk(object sender, RoutedEventArgs e)
-        {
-            if (markarthMilkCount > 0) markarthMilkCount--;
-            markarthMilkQuantityTextBox.Text = markarthMilkCount.ToString();
+                c.Drink = new MarkarthMilk();
+                CustomizeComboMeal custom = new CustomizeComboMeal(c);
+                OrderComponent orderComponent = this.FindAncestor<OrderComponent>();
+                orderComponent.Swap(custom);
+            }
+            if (DataContext is Order order)
+            {
+                MarkarthMilk m = new MarkarthMilk();
+                order.Add(m);
+                CustomizeMarkarthMilk custom = new CustomizeMarkarthMilk(m, false);
+                OrderComponent orderComponent = this.FindAncestor<OrderComponent>();
+                orderComponent.Swap(custom);
+            }
         }
 
         void AddAretinoAppleJuice(object sender, RoutedEventArgs e)
         {
-            aretinoAppleJuiceCount++;
-            aretinoAppleJuiceQuantityTextBox.Text = aretinoAppleJuiceCount.ToString();
-        }
+            if (IsCombo)
+            {
 
-        void RemoveAretinoAppleJuice(object sender, RoutedEventArgs e)
-        {
-            if (aretinoAppleJuiceCount > 0) aretinoAppleJuiceCount--;
-            aretinoAppleJuiceQuantityTextBox.Text = aretinoAppleJuiceCount.ToString();
+                c.Drink = new AretinoAppleJuice();
+                CustomizeComboMeal custom = new CustomizeComboMeal(c);
+                OrderComponent orderComponent = this.FindAncestor<OrderComponent>();
+                orderComponent.Swap(custom);
+            }
+            if (DataContext is Order order)
+            {
+                AretinoAppleJuice a = new AretinoAppleJuice();
+                order.Add(a);
+                CustomizeAretinoAppleJuice custom = new CustomizeAretinoAppleJuice(a, false);
+                OrderComponent orderComponent = this.FindAncestor<OrderComponent>();
+                orderComponent.Swap(custom);
+            }
         }
 
         void AddWarriorWater(object sender, RoutedEventArgs e)
         {
-            warriorWaterCount++;
-            warriorWaterQuantityTextBox.Text = warriorWaterCount.ToString();
-        }
+            if (IsCombo)
+            {
 
-        void RemoveWarriorWater(object sender, RoutedEventArgs e)
-        {
-            if (warriorWaterCount > 0) warriorWaterCount--;
-            warriorWaterQuantityTextBox.Text = warriorWaterCount.ToString();
+                c.Drink = new WarriorWater();
+                CustomizeComboMeal custom = new CustomizeComboMeal(c);
+                OrderComponent orderComponent = this.FindAncestor<OrderComponent>();
+                orderComponent.Swap(custom);
+            }
+            if (DataContext is Order order)
+            {
+                WarriorWater w = new WarriorWater();
+                order.Add(w);
+                CustomizeWarriorWater custom = new CustomizeWarriorWater(w, false);
+                OrderComponent orderComponent = this.FindAncestor<OrderComponent>();
+                orderComponent.Swap(custom);
+            }
         }
 
         void AddCandlehearthCoffee(object sender, RoutedEventArgs e)
         {
-            candlehearthCoffeeCount++;
-            candlehearthCoffeeQuantityTextBox.Text = candlehearthCoffeeCount.ToString();
-        }
+            if (IsCombo)
+            {
 
-        void RemoveCandlehearthCoffee(object sender, RoutedEventArgs e)
-        {
-            if (candlehearthCoffeeCount > 0) candlehearthCoffeeCount--;
-            candlehearthCoffeeQuantityTextBox.Text = candlehearthCoffeeCount.ToString();
+                c.Drink = new CandlehearthCoffee();
+                CustomizeComboMeal custom = new CustomizeComboMeal(c);
+                OrderComponent orderComponent = this.FindAncestor<OrderComponent>();
+                orderComponent.Swap(custom);
+            }
+            if (DataContext is Order order)
+            {
+                CandlehearthCoffee c = new CandlehearthCoffee();
+                order.Add(c);
+                CustomizeCandlehearthCoffee custom = new CustomizeCandlehearthCoffee(c, false);
+                OrderComponent orderComponent = this.FindAncestor<OrderComponent>();
+                orderComponent.Swap(custom);
+            }
         }
     }
 }

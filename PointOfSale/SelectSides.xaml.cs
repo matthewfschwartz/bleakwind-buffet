@@ -5,6 +5,8 @@
  * Allows the user to click into each side option for customizability.
  */
 
+using BleakwindBuffet.Data;
+using BleakwindBuffet.Data.Sides;
 using PointOfSale.CustomizeSides;
 using System;
 using System.Collections.Generic;
@@ -26,87 +28,105 @@ namespace PointOfSale
     /// </summary>
     public partial class SelectSides : UserControl
     {
-        private int vokunSaladCount = 0;
-        private int friedMiraakCount = 0;
-        private int madOtarGritsCount = 0;
-        private int dragonbornFriesCount = 0;
-
+        ComboMeal c;
         public SelectSides()
         {
             InitializeComponent();
         }
 
-        void CustomizeVokunSalad(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// Constructor for when we are selecting a side for the combo box
+        /// </summary>
+        /// <param name="CM">The combo meal being passed in</param>
+        /// <param name="isCombo">boolean representing whether this is a combo meal or not</param>
+        public SelectSides(ComboMeal CM, bool isCombo)
         {
-            CustomizeVokunSalad custom = new CustomizeVokunSalad();
-            OrderComponent order = this.FindAncestor<OrderComponent>();
-            order.Swap(custom);
+            InitializeComponent();
+            DataContext = CM;
+            c = CM;
+            IsCombo = isCombo;
         }
-        void CustomizeFriedMiraak(object sender, RoutedEventArgs e)
-        {
-            CustomizeFriedMiraak custom = new CustomizeFriedMiraak();
-            OrderComponent order = this.FindAncestor<OrderComponent>();
-            order.Swap(custom);
-        }
-        void CustomizeMadOtarGrits(object sender, RoutedEventArgs e)
-        {
-            CustomizeMadOtarGrits custom = new CustomizeMadOtarGrits();
-            OrderComponent order = this.FindAncestor<OrderComponent>();
-            order.Swap(custom);
-        }
-        void CustomizeDragonbornWaffleFries(object sender, RoutedEventArgs e)
-        {
-            CustomizeDragonbornWaffleFries custom = new CustomizeDragonbornWaffleFries();
-            OrderComponent order = this.FindAncestor<OrderComponent>();
-            order.Swap(custom);
-        }
+
+        public bool IsCombo { get; set; } = false;
 
         void AddVokunSalad(object sender, RoutedEventArgs e)
         {
-            vokunSaladCount++;
-            vokunSaladQuantityTextBox.Text = vokunSaladCount.ToString();
-        }
+            if (IsCombo)
+            {
 
-        void RemoveVokunSalad(object sender, RoutedEventArgs e)
-        {
-            if (vokunSaladCount > 0) vokunSaladCount--;
-            vokunSaladQuantityTextBox.Text = vokunSaladCount.ToString();
+                c.Side = new VokunSalad();
+                CustomizeComboMeal custom = new CustomizeComboMeal(c);
+                OrderComponent orderComponent = this.FindAncestor<OrderComponent>();
+                orderComponent.Swap(custom);
+            }
+            if (DataContext is Order order)
+            {
+                VokunSalad v = new VokunSalad();
+                order.Add(v);
+                CustomizeVokunSalad custom = new CustomizeVokunSalad(v, false);
+                OrderComponent orderComponent = this.FindAncestor<OrderComponent>();
+                orderComponent.Swap(custom);
+            }
         }
 
         void AddFriedMiraak(object sender, RoutedEventArgs e)
         {
-            friedMiraakCount++;
-            friedMiraakQuantityTextBox.Text = friedMiraakCount.ToString();
-        }
+            if (IsCombo)
+            {
 
-        void RemoveFriedMiraak(object sender, RoutedEventArgs e)
-        {
-            if (friedMiraakCount > 0) friedMiraakCount--;
-            friedMiraakQuantityTextBox.Text = friedMiraakCount.ToString();
+                c.Side = new FriedMiraak();
+                CustomizeComboMeal custom = new CustomizeComboMeal(c);
+                OrderComponent orderComponent = this.FindAncestor<OrderComponent>();
+                orderComponent.Swap(custom);
+            }
+            if (DataContext is Order order)
+            {
+                FriedMiraak f = new FriedMiraak();
+                order.Add(f);
+                CustomizeFriedMiraak custom = new CustomizeFriedMiraak(f, false);
+                OrderComponent orderComponent = this.FindAncestor<OrderComponent>();
+                orderComponent.Swap(custom);
+            }
         }
 
         void AddMadOtarGrits(object sender, RoutedEventArgs e)
         {
-            madOtarGritsCount++;
-            madOtarGritsQuantityTextBox.Text = madOtarGritsCount.ToString();
-        }
+            if (IsCombo)
+            {
 
-        void RemoveMadOtarGrits(object sender, RoutedEventArgs e)
-        {
-            if (madOtarGritsCount > 0) madOtarGritsCount--;
-            madOtarGritsQuantityTextBox.Text = madOtarGritsCount.ToString();
+                c.Side = new MadOtarGrits();
+                CustomizeComboMeal custom = new CustomizeComboMeal(c);
+                OrderComponent orderComponent = this.FindAncestor<OrderComponent>();
+                orderComponent.Swap(custom);
+            }
+            if (DataContext is Order order)
+            {
+                MadOtarGrits m = new MadOtarGrits();
+                order.Add(m);
+                CustomizeMadOtarGrits custom = new CustomizeMadOtarGrits(m, false);
+                OrderComponent orderComponent = this.FindAncestor<OrderComponent>();
+                orderComponent.Swap(custom);
+            }
         }
 
         void AddDragonbornFries(object sender, RoutedEventArgs e)
         {
-            dragonbornFriesCount++;
-            dragonbornFriesQuantityTextBox.Text = dragonbornFriesCount.ToString();
-        }
+            if (IsCombo)
+            {
 
-        void RemoveDragonbornFries(object sender, RoutedEventArgs e)
-        {
-            if (dragonbornFriesCount > 0) dragonbornFriesCount--;
-            dragonbornFriesQuantityTextBox.Text = dragonbornFriesCount.ToString();
+                c.Side = new DragonbornWaffleFries();
+                CustomizeComboMeal custom = new CustomizeComboMeal(c);
+                OrderComponent orderComponent = this.FindAncestor<OrderComponent>();
+                orderComponent.Swap(custom);
+            }
+            if (DataContext is Order order)
+            {
+                DragonbornWaffleFries d = new DragonbornWaffleFries();
+                order.Add(d);
+                CustomizeDragonbornWaffleFries custom = new CustomizeDragonbornWaffleFries(d, false);
+                OrderComponent orderComponent = this.FindAncestor<OrderComponent>();
+                orderComponent.Swap(custom);
+            }
         }
     }
 }

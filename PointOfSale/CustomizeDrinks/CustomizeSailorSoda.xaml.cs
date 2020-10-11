@@ -4,6 +4,7 @@
  * Purpose: Initializes the customization view for sailor soda and allows navigation back to the select drinks view
  */
 
+using BleakwindBuffet.Data;
 using BleakwindBuffet.Data.Drinks;
 using BleakwindBuffet.Data.Enums;
 using System;
@@ -27,78 +28,41 @@ namespace PointOfSale.CustomizeDrinks
     /// </summary>
     public partial class CustomizeSailorSoda : UserControl
     {
-        private SailorSoda s = new SailorSoda();
-        public CustomizeSailorSoda()
+        private SailorSoda s;
+        ComboMeal c;
+        public CustomizeSailorSoda(SailorSoda SS, bool isCombo)
         {
             InitializeComponent();
-            DataContext = new SailorSoda();
+            DataContext = SS;
+            s = SS;
+            IsCombo = isCombo;
         }
+
+        public CustomizeSailorSoda(SailorSoda SS, ComboMeal CM, bool isCombo)
+        {
+            InitializeComponent();
+            DataContext = SS;
+            s = SS;
+            IsCombo = isCombo;
+            c = CM;
+        }
+
+        public bool IsCombo { get; set; } = false;
+
         void ClickDone(object sender, RoutedEventArgs e)
         {
-            SelectDrinks custom = new SelectDrinks();
-            OrderComponent order = this.FindAncestor<OrderComponent>();
-            order.Swap(custom);
-            
-        }
-
-        void OnIceSelect(object sender, EventArgs e)
-        {
-            if (IceSelect.IsChecked == false) IceSelect.IsChecked = false;
-            else IceSelect.IsChecked = true;
-            s.Ice = (bool)IceSelect.IsChecked;
-            DataContext = s;
-        }
-
-        void OnFlavorSelection(object sender, RoutedEventArgs e)
-        {
-            SodaFlavor flavor = SodaFlavor.Cherry;
-            if ((bool)WatermelonOption.IsChecked)
+            if (IsCombo)
             {
-                flavor = SodaFlavor.Watermelon;
-            }
-            else if ((bool)PeachOption.IsChecked)
-            {
-                flavor = SodaFlavor.Peach;
-            }
-            else if ((bool)GrapefruitOption.IsChecked)
-            {
-                flavor = SodaFlavor.Grapefruit;
-            }
-            else if ((bool)LemonOption.IsChecked)
-            {
-                flavor = SodaFlavor.Lemon;
-            }
-            else if ((bool)BlackberryOption.IsChecked)
-            {
-                flavor = SodaFlavor.Blackberry;
+                CustomizeComboMeal custom = new CustomizeComboMeal(c);
+                OrderComponent orderComponent = this.FindAncestor<OrderComponent>();
+                orderComponent.Swap(custom);
             }
             else
             {
-                flavor = SodaFlavor.Cherry;
+                SelectDrinks custom = new SelectDrinks();
+                OrderComponent orderComponent = this.FindAncestor<OrderComponent>();
+                orderComponent.Swap(custom);
             }
-            s.Flavor = flavor;
-            DataContext = s;
-        }
-
-        void SizeSelectionChanged(object sender, RoutedEventArgs e)
-        {
-            Size size = Size.Small;
-            if ((bool)SmallRadio.IsChecked)
-            {
-                size = Size.Small;
-            }
-            else if ((bool)MedRadio.IsChecked)
-            {
-                size = Size.Medium;
-            }
-            else
-            {
-                size = Size.Large;
-            }
-            // Data binding for milk
-            s.Size = size;
-            // Assigning the DataContext makes sure we don't lose the new size that we have assigned
-            DataContext = s;
         }
     }
 }

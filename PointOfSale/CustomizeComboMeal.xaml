@@ -1,0 +1,64 @@
+﻿<UserControl x:Class="PointOfSale.CustomizeComboMeal"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PointOfSale"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid Name="customizeComboMeal">
+        <DockPanel>
+            <Label HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="40" DockPanel.Dock="Top">Customize Combo Meal</Label>
+            <Label FontSize="30" FontWeight="Bold" DockPanel.Dock="Top">Current Combo Meal: </Label>
+            <Grid DockPanel.Dock="Top">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width=".2*"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Label HorizontalAlignment="Right" FontSize="20">Entree:</Label>
+                <Label HorizontalAlignment="Right" FontSize="20" Grid.Row="1">Drink:</Label>
+                <Label HorizontalAlignment="Right" FontSize="20" Grid.Row="2">Side:</Label>
+                <Label Content="{Binding Path=Entree}" HorizontalAlignment="Left" FontSize="20" Grid.Column="1"/>
+                <Label Content="{Binding Path=Drink}" HorizontalAlignment="Left" FontSize="20" Grid.Column="1" Grid.Row="1"/>
+                <Label Content="{Binding Path=Side}" HorizontalAlignment="Left" FontSize="20" Grid.Column="1" Grid.Row="2"/>
+            </Grid>
+            <Grid DockPanel.Dock="Bottom">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width=".2*"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Label HorizontalAlignment="Right" FontSize="20">Price:</Label>
+                <Label HorizontalAlignment="Right" FontSize="20" Grid.Row="1">Calories:</Label>
+                <TextBlock Text="{Binding Path=Price, StringFormat='C'}" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="20" Grid.Column="1"/>
+                <TextBlock Text="{Binding Path=Calories}" HorizontalAlignment="Left" FontSize="20" VerticalAlignment="Center" Grid.Column="1" Grid.Row="1"/>
+            </Grid>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Button Click="ChangeEntreeClick">Change Entree</Button>
+                <Button Click="ChangeDrinkClick" Grid.Row="1">Change Drink</Button>
+                <Button Click="ChangeSideClick" Grid.Row="2">Change Side</Button>
+                <Button Click="CustomizeEntreeClick" Grid.Column="1">Customize Entree</Button>
+                <Button Click="CustomizeDrinkClick" Grid.Column="1" Grid.Row="1">Customize Drink</Button>
+                <Button Click="CustomizeSideClick" Grid.Column="1" Grid.Row="2">Customize Side</Button>
+            </Grid>
+        </DockPanel>
+    </Grid>
+</UserControl>
