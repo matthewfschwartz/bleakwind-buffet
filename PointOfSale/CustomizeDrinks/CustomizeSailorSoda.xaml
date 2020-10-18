@@ -44,7 +44,7 @@
             <ComboBox ItemsSource="{Binding Source={StaticResource sizes}}" SelectedItem="{Binding Path=Size}"/>
             <Label/>
             <Label HorizontalAlignment="Center" FontSize="30" >Special Instructions:</Label>
-            <CheckBox Name="IceSelect" FontSize="30" IsChecked="True">Ice</CheckBox>
+            <CheckBox Name="IceSelect" FontSize="30" IsChecked="{Binding Path=Ice}">Ice</CheckBox>
         </StackPanel>
 
         <Button Click="ClickDone" Grid.Row="2" Grid.Column="2" FontSize="30">Done</Button>

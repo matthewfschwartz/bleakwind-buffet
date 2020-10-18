@@ -6,6 +6,12 @@
  */
 
 using BleakwindBuffet.Data;
+using BleakwindBuffet.Data.Drinks;
+using BleakwindBuffet.Data.Entrees;
+using BleakwindBuffet.Data.Sides;
+using PointOfSale.CustomizeDrinks;
+using PointOfSale.CustomizeEntrees;
+using PointOfSale.CustomizeSides;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -55,12 +61,9 @@ namespace PointOfSale
         /// <param name="e"></param>
         public void OnFinishClick(object sender, RoutedEventArgs e)
         {
-            Order newOrder = new Order(true);
-
-            MainMenuSelection main = new MainMenuSelection();
+            PaymentOptions pay = new PaymentOptions();
             OrderComponent orderComponent = this.FindAncestor<OrderComponent>(); // Find the Order Component that is a parent of the current order summary
-            orderComponent.DataContext = newOrder; // Set the data context of the order component to be the new order
-            orderComponent.Swap(main);
+            orderComponent.Swap(pay);
         }
 
         /// <summary>
@@ -71,17 +74,15 @@ namespace PointOfSale
         /// <param name="e"></param>
         public void OnCancelClick(object sender, RoutedEventArgs e)
         {
-            Order newOrder = new Order(false);
-            newOrder.Number = Convert.ToInt32(orderNumber.Text);
-
+            Order newOrder = new Order();
             MainMenuSelection main = new MainMenuSelection();
-            OrderComponent orderComponent = this.FindAncestor<OrderComponent>();
-            orderComponent.DataContext = newOrder;
+            OrderComponent orderComponent = this.FindAncestor<OrderComponent>(); // Find the Order Component that is a parent of the current order summary
+            orderComponent.DataContext = newOrder; // Set the data context of the order component to be the new order
             orderComponent.Swap(main);
         }
 
         /// <summary>
-        /// Event
+        /// Event for when a user wants to remvoe an item from their order
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -91,6 +92,128 @@ namespace PointOfSale
             {
                 var itemToRemove = (IOrderItem)orderList.SelectedItem;
                 order.Remove(itemToRemove);
+            }
+        }
+
+        /// <summary>
+        /// Event for when the user wants to customize an item that is already in their order
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public void OnCustomizeClick(object sender, RoutedEventArgs e)
+        {
+            var item = orderList.SelectedItem;
+            if (item is ComboMeal combo)
+            {
+                CustomizeComboMeal custom = new CustomizeComboMeal(combo);
+                OrderComponent orderComponent = this.FindAncestor<OrderComponent>();
+                orderComponent.Swap(custom);
+            }
+            else if (item is Drink drink)
+            {
+                if (drink is AretinoAppleJuice a)
+                {
+                    CustomizeAretinoAppleJuice custom = new CustomizeAretinoAppleJuice(a, false);
+                    OrderComponent orderComponent = this.FindAncestor<OrderComponent>();
+                    orderComponent.Swap(custom);
+                }
+                else if (drink is MarkarthMilk m)
+                {
+                    CustomizeMarkarthMilk custom = new CustomizeMarkarthMilk(m, false);
+                    OrderComponent orderComponent = this.FindAncestor<OrderComponent>();
+                    orderComponent.Swap(custom);
+                }
+                else if (drink is CandlehearthCoffee c)
+                {
+                    CustomizeCandlehearthCoffee custom = new CustomizeCandlehearthCoffee(c, false);
+                    OrderComponent orderComponent = this.FindAncestor<OrderComponent>();
+                    orderComponent.Swap(custom);
+                }
+                else if (drink is SailorSoda s)
+                {
+                    CustomizeSailorSoda custom = new CustomizeSailorSoda(s, false);
+                    OrderComponent orderComponent = this.FindAncestor<OrderComponent>();
+                    orderComponent.Swap(custom);
+                }
+                else if (drink is WarriorWater w)
+                {
+                    CustomizeWarriorWater custom = new CustomizeWarriorWater(w, false);
+                    OrderComponent orderComponent = this.FindAncestor<OrderComponent>();
+                    orderComponent.Swap(custom);
+                }
+            }
+
+            else if (item is Entree entree)
+            {
+                if (entree is BriarheartBurger b)
+                {
+                    CustomizeBriarheartBurger custom = new CustomizeBriarheartBurger(b, false);
+                    OrderComponent orderComponent = this.FindAncestor<OrderComponent>();
+                    orderComponent.Swap(custom);
+                }
+                else if (entree is DoubleDraugr d)
+                {
+                    CustomizeDoubleDraugr custom = new CustomizeDoubleDraugr(d, false);
+                    OrderComponent orderComponent = this.FindAncestor<OrderComponent>();
+                    orderComponent.Swap(custom);
+                }
+                else if (entree is ThalmorTriple t)
+                {
+                    CustomizeThalmorTriple custom = new CustomizeThalmorTriple(t, false);
+                    OrderComponent orderComponent = this.FindAncestor<OrderComponent>();
+                    orderComponent.Swap(custom);
+                }
+                else if (entree is GardenOrcOmelette g)
+                {
+                    CustomizeGardenOrcOmelette custom = new CustomizeGardenOrcOmelette(g, false);
+                    OrderComponent orderComponent = this.FindAncestor<OrderComponent>();
+                    orderComponent.Swap(custom);
+                }
+                else if (entree is ThugsTBone tb)
+                {
+                    CustomizeThugsTBone custom = new CustomizeThugsTBone(tb, false);
+                    OrderComponent orderComponent = this.FindAncestor<OrderComponent>();
+                    orderComponent.Swap(custom);
+                }
+                else if (entree is SmokehouseSkeleton s)
+                {
+                    CustomizeSmokehouseSkeleton custom = new CustomizeSmokehouseSkeleton(s, false);
+                    OrderComponent orderComponent = this.FindAncestor<OrderComponent>();
+                    orderComponent.Swap(custom);
+                }
+                else if (entree is PhillyPoacher p)
+                {
+                    CustomizePhillyPoacher custom = new CustomizePhillyPoacher(p, false);
+                    OrderComponent orderComponent = this.FindAncestor<OrderComponent>();
+                    orderComponent.Swap(custom);
+                }
+            }
+            else if (item is Side side)
+            {
+                if (side is DragonbornWaffleFries d)
+                {
+                    CustomizeDragonbornWaffleFries custom = new CustomizeDragonbornWaffleFries(d, false);
+                    OrderComponent orderComponent = this.FindAncestor<OrderComponent>();
+                    orderComponent.Swap(custom);
+                }
+                else if (side is FriedMiraak f)
+                {
+                    CustomizeFriedMiraak custom = new CustomizeFriedMiraak(f, false);
+                    OrderComponent orderComponent = this.FindAncestor<OrderComponent>();
+                    orderComponent.Swap(custom);
+                }
+                else if (side is MadOtarGrits m)
+                {
+                    CustomizeMadOtarGrits custom = new CustomizeMadOtarGrits(m, false);
+                    OrderComponent orderComponent = this.FindAncestor<OrderComponent>();
+                    orderComponent.Swap(custom);
+                }
+                else if (side is VokunSalad v)
+                {
+                    CustomizeVokunSalad custom = new CustomizeVokunSalad(v, false);
+                    OrderComponent orderComponent = this.FindAncestor<OrderComponent>();
+                    orderComponent.Swap(custom);
+                }
             }
         }
     }

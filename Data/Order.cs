@@ -25,18 +25,10 @@ namespace BleakwindBuffet.Data
         /// <summary>
         /// Constructor for an Order
         /// </summary>
-        /// <param name="newOrder">Boolean representing whether this order is new or not. Will be true if user clicked "Finish Order", false if they canceled</param>
-        public Order(bool newOrder)
+        public Order()
         {
             Number = nextOrderNumber;
-            if (newOrder)
-            {
-                nextOrderNumber++;
-                Number = nextOrderNumber;
-                
-            }
-            
-            
+            nextOrderNumber++;
             CollectionChanged += CollectionChangedListener;
         }
 
@@ -113,10 +105,10 @@ namespace BleakwindBuffet.Data
         void CollectionChangedListener(object sender, NotifyCollectionChangedEventArgs e)
         {
             
-            OnPropertyChanged(new PropertyChangedEventArgs("Tax"));
-            OnPropertyChanged(new PropertyChangedEventArgs("Total"));
-            OnPropertyChanged(new PropertyChangedEventArgs("Calories"));
-            OnPropertyChanged(new PropertyChangedEventArgs("Subtotal"));
+            //OnPropertyChanged(new PropertyChangedEventArgs("Tax"));
+            //OnPropertyChanged(new PropertyChangedEventArgs("Total"));
+            //OnPropertyChanged(new PropertyChangedEventArgs("Calories"));
+            //OnPropertyChanged(new PropertyChangedEventArgs("Subtotal"));
             switch (e.Action)
             {
                 
@@ -124,20 +116,20 @@ namespace BleakwindBuffet.Data
                     foreach (IOrderItem item in e.NewItems)
                     {
                         item.PropertyChanged += CollectionItemChangedListener;
-                        //OnPropertyChanged(new PropertyChangedEventArgs("Subtotal"));
-                        //OnPropertyChanged(new PropertyChangedEventArgs("Tax"));
-                        //OnPropertyChanged(new PropertyChangedEventArgs("Total"));
-                        //OnPropertyChanged(new PropertyChangedEventArgs("Calories"));
+                        OnPropertyChanged(new PropertyChangedEventArgs("Subtotal"));
+                        OnPropertyChanged(new PropertyChangedEventArgs("Tax"));
+                        OnPropertyChanged(new PropertyChangedEventArgs("Total"));
+                        OnPropertyChanged(new PropertyChangedEventArgs("Calories"));
                     }
                     break;
                 case NotifyCollectionChangedAction.Remove: // If the item is removed from the list, remove the event listener
                     foreach (IOrderItem item in e.OldItems)
                     {
                         item.PropertyChanged -= CollectionItemChangedListener;
-                        //OnPropertyChanged(new PropertyChangedEventArgs("Subtotal"));
-                        //OnPropertyChanged(new PropertyChangedEventArgs("Tax"));
-                        //OnPropertyChanged(new PropertyChangedEventArgs("Total"));
-                        //OnPropertyChanged(new PropertyChangedEventArgs("Calories"));
+                        OnPropertyChanged(new PropertyChangedEventArgs("Subtotal"));
+                        OnPropertyChanged(new PropertyChangedEventArgs("Tax"));
+                        OnPropertyChanged(new PropertyChangedEventArgs("Total"));
+                        OnPropertyChanged(new PropertyChangedEventArgs("Calories"));
                     }
                     break;
                 case NotifyCollectionChangedAction.Reset: // Big change, start over from scratch

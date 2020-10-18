@@ -24,7 +24,7 @@ namespace BleakwindBuffet.DataTests.UnitTests
         [Fact]
         public void ShouldImplementINotifyPropertyChanged()
         {
-            Assert.IsAssignableFrom <ObservableCollection<IOrderItem>>(new Order(false));
+            Assert.IsAssignableFrom <ObservableCollection<IOrderItem>>(new Order());
         }
 
         /// <summary>
@@ -33,7 +33,7 @@ namespace BleakwindBuffet.DataTests.UnitTests
         [Fact]
         public void SalesTaxRateShouldBeTwelvePercentByDefault()
         {
-            Order o = new Order(false);
+            Order o = new Order();
             Assert.Equal(0.12, o.SalesTaxRate);
         }
 
@@ -43,7 +43,7 @@ namespace BleakwindBuffet.DataTests.UnitTests
         [Fact]
         public void ShouldBeAbleToSetSalesTaxRate()
         {
-            Order o = new Order(false);
+            Order o = new Order();
             o.SalesTaxRate = 0.2;
             Assert.Equal(0.2, o.SalesTaxRate);
         }
@@ -54,7 +54,7 @@ namespace BleakwindBuffet.DataTests.UnitTests
         [Fact]
         public void SubtotalShouldBeZeroByDefault()
         {
-            Order o = new Order(false);
+            Order o = new Order();
             Assert.Equal(0, o.Subtotal);
         }
 
@@ -64,7 +64,7 @@ namespace BleakwindBuffet.DataTests.UnitTests
         [Fact]
         public void TotalShouldBeZeroByDefault()
         {
-            Order o = new Order(false);
+            Order o = new Order();
             Assert.Equal(0, o.Total);
         }
 
@@ -74,14 +74,14 @@ namespace BleakwindBuffet.DataTests.UnitTests
         [Fact]
         public void TaxShouldBeZeroByDefault()
         {
-            Order o = new Order(false);
+            Order o = new Order();
             Assert.Equal(0, o.Tax);
         }
 
         [Fact]
         public void SubtotalShouldBeSumOfOrderItemPrices()
         {
-            Order o = new Order(false);
+            Order o = new Order();
             BriarheartBurger b = new BriarheartBurger();
             SailorSoda s = new SailorSoda();
             FriedMiraak f = new FriedMiraak();
@@ -94,7 +94,7 @@ namespace BleakwindBuffet.DataTests.UnitTests
         [Fact]
         public void TaxShouldBeSubtotalTimesTaxRate()
         {
-            Order o = new Order(false);
+            Order o = new Order();
             BriarheartBurger b = new BriarheartBurger();
             SailorSoda s = new SailorSoda();
             FriedMiraak f = new FriedMiraak();
@@ -108,7 +108,7 @@ namespace BleakwindBuffet.DataTests.UnitTests
         [Fact]
         public void TotalShouldBeSubtotalPlusTax()
         {
-            Order o = new Order(false);
+            Order o = new Order();
             BriarheartBurger b = new BriarheartBurger();
             SailorSoda s = new SailorSoda();
             FriedMiraak f = new FriedMiraak();
@@ -127,7 +127,7 @@ namespace BleakwindBuffet.DataTests.UnitTests
         [Fact]
         public void CaloriesShouldBeSumOfAllCaloriesInTheOrder()
         {
-            Order o = new Order(false);
+            Order o = new Order();
             BriarheartBurger b = new BriarheartBurger();
             SailorSoda s = new SailorSoda();
             FriedMiraak f = new FriedMiraak();
@@ -138,21 +138,126 @@ namespace BleakwindBuffet.DataTests.UnitTests
         }
 
         /// <summary>
-        /// Makes sure order number is 1 by default
+        /// Makes sure each consecutive order number increases by one
         /// </summary>
-        [Fact]
-        public void OrderNumberShouldBeOneByDefault()
-        {
-            Order o = new Order(false);
-            Assert.Equal(1, o.Number);
-        }
-
         [Fact]
         public void OrderNumberShouldIncrementWithANewOrder()
         {
-            Order o = new Order(false);
-            Order o2 = new Order(true);
-            Assert.Equal(2, o2.Number);
+            Order o = new Order();
+            Order o2 = new Order();
+            Assert.Equal(1, o2.Number - o.Number);
+        }
+
+        /// <summary>
+        /// Makes sure adding an item notifies the order subtotal property
+        /// </summary>
+        [Fact]
+        public void AddingItemShouldNotifySubtotalProperty()
+        {
+            Order o = new Order();
+            Assert.PropertyChanged(o, "Subtotal", () =>
+            {
+                o.Add(new DoubleDraugr());
+            });
+        }
+
+        /// <summary>
+        /// Makes sure adding an item notifies the order tax property
+        /// </summary>
+        [Fact]
+        public void AddingItemShouldNotifyTaxProperty()
+        {
+            Order o = new Order();
+            Assert.PropertyChanged(o, "Tax", () =>
+            {
+                o.Add(new DoubleDraugr());
+            });
+        }
+
+        /// <summary>
+        /// Makes sure adding an item notifies the order total property
+        /// </summary>
+        [Fact]
+        public void AddingItemShouldNotifyTotalProperty()
+        {
+            Order o = new Order();
+            Assert.PropertyChanged(o, "Total", () =>
+            {
+                o.Add(new DoubleDraugr());
+            });
+        }
+
+        /// <summary>
+        /// Makes sure adding an item notifies the order calories property
+        /// </summary>
+        [Fact]
+        public void AddingItemShouldNotifyCaloriesProperty()
+        {
+            Order o = new Order();
+            Assert.PropertyChanged(o, "Calories", () =>
+            {
+                o.Add(new DoubleDraugr());
+            });
+        }
+
+        /// <summary>
+        /// Makes sure changing an item notifies the order subtotal property
+        /// </summary>
+        [Fact]
+        public void ChangingItemShouldNotifySubtotalProperty()
+        {
+            Order o = new Order();
+            SailorSoda s = new SailorSoda();
+            o.Add(s);
+            Assert.PropertyChanged(o, "Subtotal", () =>
+            {
+                s.Size = Data.Enums.Size.Large;
+            });
+        }
+
+        /// <summary>
+        /// Makes sure changing an item notifies the order tax property
+        /// </summary>
+        [Fact]
+        public void ChangingItemShouldNotifyTaxProperty()
+        {
+            Order o = new Order();
+            SailorSoda s = new SailorSoda();
+            o.Add(s);
+            Assert.PropertyChanged(o, "Tax", () =>
+            {
+                s.Size = Data.Enums.Size.Large;
+            });
+        }
+
+        /// <summary>
+        /// Makes sure changing an item notifies the order total property
+        /// </summary>
+        [Fact]
+        public void ChangingItemShouldNotifyTotalProperty()
+        {
+            Order o = new Order();
+            SailorSoda s = new SailorSoda();
+            o.Add(s);
+            Assert.PropertyChanged(o, "Total", () =>
+            {
+                s.Size = Data.Enums.Size.Large;
+            });
+        }
+
+        /// <summary>
+        /// Makes sure changing an item notifies the order calories property
+        /// </summary>
+        [Fact]
+        public void ChangingItemShouldNotifyCaloriesProperty()
+        {
+            Order o = new Order();
+            SailorSoda s = new SailorSoda();
+            o.Add(s);
+            Assert.PropertyChanged(o, "Calories", () =>
+            {
+                s.Size = Data.Enums.Size.Large;
+            });
         }
     }
 }

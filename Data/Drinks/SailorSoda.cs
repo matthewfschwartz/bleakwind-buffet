@@ -118,6 +118,8 @@ namespace BleakwindBuffet.Data.Drinks
             {
                 flavor = value;
                 OnPropertyChanged("Flavor");
+                OnPropertyChanged("SpecialInstructions");
+                OnPropertyChanged("Name");
             }
         }
 

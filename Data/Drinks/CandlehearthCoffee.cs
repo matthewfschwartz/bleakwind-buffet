@@ -154,7 +154,7 @@ namespace BleakwindBuffet.Data.Drinks
                 }
                 else
                 {
-                    SpecialInstructions.Remove("Decaf");
+                    specialInstructions.Remove("Decaf");
                 }
                 OnPropertyChanged("SpecialInstructions");
             }

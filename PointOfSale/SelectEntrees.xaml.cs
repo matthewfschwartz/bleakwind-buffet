@@ -49,7 +49,7 @@ namespace PointOfSale
             if (IsCombo)
             {
                 
-                c.Entree = new DoubleDraugr();
+                c.Entree = new BriarheartBurger();
                 CustomizeComboMeal custom = new CustomizeComboMeal(c);
                 OrderComponent orderComponent = this.FindAncestor<OrderComponent>();
                 orderComponent.Swap(custom);
