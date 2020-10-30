@@ -1,0 +1,194 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+h3 {
+    text-align: center;
+    margin: auto;
+}
+
+.description {
+    font-style: italic;
+}
+
+ul.menu-list {
+    padding: 0;
+    margin: 0;
+}
+
+ul.menu-list > li {
+    list-style-type: none; /* Take the bullets out */
+    border: 2px solid lightgrey;
+    margin: 10px;
+    padding: 10px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 50px;
+}
+
+.category-name {
+    font-size: 2.5rem;
+    color: rebeccapurple;
+    text-align: center;
+}
+
+.menu-item {
+    display: block;
+    color: darkslategray;
+    border: 1px dashed lightslategray;
+    padding: 2px;
+    margin: 2px;
+}
+
+.menu-notes {
+    font-style: italic;
+    grid-column-start:1;
+    grid-column-end: 5;
+    text-align: left;
+}
+
+.entrees {
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.sides {
+    display: grid;
+    grid-template-rows: [DragonbornWaffleFries] 1fr [FriedMiraak] 1fr [MadOtarGrits] 1fr [VokunSalad] 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.drinks {
+    display: grid;
+    grid-template-rows: [AretinoAppleJuice] 1fr [CandlehearthCoffee] 1fr [MarkarthMilk] 1fr [WarriorWater] 1fr [SailorSoda] 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.price-col {
+    grid-column: 3;
+}
+
+.calories-col {
+    grid-column: 4;
+}
+
+.dragonborn-fries {
+    grid-row-start: 2;
+}
+
+.fried-miraak {
+    grid-row-start: 3;
+}
+
+.mad-otar-grits {
+    grid-row-start: 4;
+}
+
+.vokun-salad {
+    grid-row-start: 1;
+}
+
+.apple-juice {
+    grid-row-start: 1;
+
+}
+
+.coffee {
+    grid-row-start: 2;
+}
+
+.milk {
+    grid-row-start: 3;
+}
+
+.water {
+    grid-row-start: 4;
+}
+
+.soda {
+    grid-row-start: 5;
+}
+
+.size-col {
+    grid-column: 2;
+}
+
+.name-col {
+    grid-column: 1;
+}
+
+.item-details {
+    color: lightslategray;
+}
+
+a.navbar-brand {
+  white-space: normal;
+  text-align: center;
+  word-break: break-all;
+}
+
+/* Provide sufficient contrast against white background */
+a {
+  color: #0366d6;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  font-size: 14px;
+}
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.border-top {
+  border-top: 1px solid #e5e5e5;
+}
+.border-bottom {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+  font-size: 1rem;
+  line-height: inherit;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  white-space: nowrap;
+  line-height: 60px; /* Vertically center the text there */
+}
