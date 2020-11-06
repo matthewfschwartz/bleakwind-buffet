@@ -7,88 +7,103 @@
 <div class="text-center">
     <h1 class="display-4">Welcome to Bleakwind Buffet!</h1>
     <p class="description">
-        We at Bleakwind Buffet are proud to bring you authentic fantasy meals straight from the world of Skyrim. 
-        Shake the blood off your sword and sake your thirst with one of our old-fashioned sailor sodas. 
-        Hack into a Smokehouse Skeleton with your dagger. Or vanquish the the mighty Thalmor Triple Burger! 
+        We at Bleakwind Buffet are proud to bring you authentic fantasy meals straight from the world of Skyrim.
+        Shake the blood off your sword and sake your thirst with one of our old-fashioned sailor sodas.
+        Hack into a Smokehouse Skeleton with your dagger. Or vanquish the the mighty Thalmor Triple Burger!
         You’ve had a hard adventure and earned your loot, so spend it with us!.
     </p>
 
-    <ul class="menu-list">
-        <li>
+    <form>
+        <div id="search">
+            <input type="text" name="SearchTerms" value="@Model.SearchTerms" />
+            <input type="submit" value="Search" />
+        </div>
+        <div id="filters">
+            <h4>Category of Item</h4>
+            @foreach (string category in BleakwindBuffet.Data.Menu.ItemCategory)
+            {
+                <label>
+                    <input type="checkbox" value="@category" name="ItemCategory" checked="@Model.ItemCategory.Contains(category)" />
+                    @category
+                </label>
+            }
+            <h4>Calories</h4>
             <div>
-                <h2 class="category-name">Combo Meal</h2>
-                <p class="menu-notes">*A Combo Meal is composed of an Entree, Side, and Drink of choice. These options are listed below.</p>
-                <p class="menu-notes">*Each Combo Meal comes with a discount of $1.00 off the total cost of their Combo Items.</p>
+                Between
+                <input type="number" name="CaloriesMin" value="@Model.CaloriesMin" min="0" />
+                and
+                <input type="number" name="CaloriesMax" value="@Model.CaloriesMax" min="0" />
             </div>
-        </li>
-
-        <li>
+            <h4>Price</h4>
             <div>
-                <h2 class="category-name">Entrees</h2>
-                <div class="entrees">
-                    @foreach (BleakwindBuffet.Data.IOrderItem entree in BleakwindBuffet.Data.Menu.Entrees())
-                    {
-                        <div class="menu-item">
-                            <h3>@entree.ToString()</h3>
-                            <div class="item-details">Price: $@entree.Price</div>
-                            <div class="item-details">Calories: @entree.Calories</div>
-                        </div>
-                    }
-                </div>
-                
+                Between
+                <input type="number" name="PriceMin" value="@Model.PriceMin" step="0.01" min="0" />
+                and
+                <input type="number" name="PriceMax" value="@Model.PriceMax" step="0.01" min="0" />
             </div>
 
-        </li>
+        </div>
+    </form>
 
-        <li>
-            <div>
-                <h2 class="category-name">Sides</h2>
-                <div class="sides">
-                    <h3 class="dragonborn-fries name-col">Dragonborn Waffle Fries</h3>
-                    <h3 class="fried-miraak name-col">Fried Miraak</h3>
-                    <h3 class="mad-otar-grits name-col">Mad Otar Grits</h3>
-                    <h3 class="vokun-salad name-col">Vokun Salad</h3>
-                    @foreach (BleakwindBuffet.Data.IOrderItem side in BleakwindBuffet.Data.Menu.Sides())
-                    {
-                        <div class="menu-item">
-                            <div class="size-col">@side.ToString()</div>
-                            <div class="price-col">Price: $@side.Price</div>
-                            <div class="calories-col">Calories: @side.Calories</div>
-                        </div>
+    <div class="category-border">
+        <h2 class="category-name">Combo Meal</h2>
+        <p class="menu-notes">*A Combo Meal is composed of an Entree, Side, and Drink of choice. These options are listed below.</p>
+        <p class="menu-notes">*Each Combo Meal comes with a discount of $1.00 off the total cost of their Combo Items.</p>
+    </div>
 
-                    }
-
-                    <div class="menu-notes">
-                        <p>*Each side can be purchased in sizes: Small, Medium, or Large.</p>
+    <div class="category-border">
+        <h2 class="category-name">Entrees</h2>
+        <div class="entrees">
+            @foreach (BleakwindBuffet.Data.IOrderItem item in Model.Items)
+            {
+                if (item is BleakwindBuffet.Data.Entrees.Entree entree)
+                {
+                    <div class="menu-item">
+                        <h3>@entree.ToString()</h3>
+                        <div class="item-details">Price: $@entree.Price</div>
+                        <div class="item-details">Calories: @entree.Calories</div>
                     </div>
-                </div>
+                }
 
-            </div>
+            }
+        </div>
 
-        </li>
-        <li>
-            <div>
-                <h2 class="category-name">Drinks</h2>
-                <div class="drinks">
-                    <h3 class="apple-juice name-col">Aretino Apple Juice</h3>
-                    <h3 class="coffee name-col">Candlehearth Coffee</h3>
-                    <h3 class="milk name-col">Markarth Milk</h3>
-                    <h3 class="water name-col">Warrior Water</h3>
-                    <h3 class="soda name-col">Sailor Soda</h3>
-                    @foreach (BleakwindBuffet.Data.IOrderItem drink in BleakwindBuffet.Data.Menu.Drinks())
+    </div>
+
+    <div class="category-border">
+        <h2 class="category-name">Sides</h2>
+        <div class="sides">
+
+            @foreach (BleakwindBuffet.Data.IOrderItem item in Model.Items)
+            {
+                if (item is BleakwindBuffet.Data.Sides.Side side)
+                {
+                    <div class="menu-item">
+                        <div class="size-col">@side.ToString()</div>
+                        <div class="price-col">Price: $@side.Price</div>
+                        <div class="calories-col">Calories: @side.Calories</div>
+                    </div>
+                }
+
+
+            }
+        </div>
+        <div class="menu-notes">
+            <p>*Each side can be purchased in sizes: Small, Medium, or Large.</p>
+        </div>
+    </div>
+    
+    <div class="category-border">
+        <h2 class="category-name">Drinks</h2>
+        <div class="drinks">
+
+            @foreach (BleakwindBuffet.Data.IOrderItem item in Model.Items)
+            {
+                if (item is BleakwindBuffet.Data.Drinks.Drink drink)
+                {
+                    if (drink is BleakwindBuffet.Data.Drinks.SailorSoda s)
                     {
-                        if (drink is BleakwindBuffet.Data.Drinks.SailorSoda s)
-                        {
-                            if (s.Flavor is BleakwindBuffet.Data.Enums.SodaFlavor.Cherry)
-                            {
-                                <div class="menu-item">
-                                    <div class="size-col">@drink.ToString()</div>
-                                    <div class="price-col">Price: $@drink.Price</div>
-                                    <div class="calories-col">Calories: @drink.Calories</div>
-                                </div>
-                            }
-                        }
-                        else
+                        if (s.Flavor is BleakwindBuffet.Data.Enums.SodaFlavor.Cherry)
                         {
                             <div class="menu-item">
                                 <div class="size-col">@drink.ToString()</div>
@@ -96,19 +111,21 @@
                                 <div class="calories-col">Calories: @drink.Calories</div>
                             </div>
                         }
-
                     }
-
-                    <div class="menu-notes">
-                        <p>*Each drink can be purchased in sizes: Small, Medium, or Large.</p>
-                        <p>*Sailor Soda flavors available are: Blackberry, Cherry, Grapefruit, Lemon, Peach, Watermelon.</p>
-                    </div>
-                </div>
-
-            </div>
-        </li>
-
-    </ul>
-
-
+                    else
+                    {
+                        <div class="menu-item">
+                            <div class="size-col">@drink.ToString()</div>
+                            <div class="price-col">Price: $@drink.Price</div>
+                            <div class="calories-col">Calories: @drink.Calories</div>
+                        </div>
+                    }
+                }
+            }
+        </div>
+        <div class="menu-notes">
+            <p>*Each drink can be purchased in sizes: Small, Medium, or Large.</p>
+            <p>*Sailor Soda flavors available are: Blackberry, Cherry, Grapefruit, Lemon, Peach, Watermelon.</p>
+        </div>
+    </div>
 </div>

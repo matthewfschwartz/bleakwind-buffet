@@ -18,6 +18,8 @@ namespace BleakwindBuffet.Data.Entrees
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
+        public string ItemCategory = "Entree";
+
         /// <summary>
         /// Property invokation method for this class and derived classes to use
         /// </summary>

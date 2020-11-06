@@ -10,21 +10,12 @@ h3 {
     font-style: italic;
 }
 
-ul.menu-list {
-    padding: 0;
-    margin: 0;
-}
-
-ul.menu-list > li {
-    list-style-type: none; /* Take the bullets out */
+.category-border {
     border: 2px solid lightgrey;
     margin: 10px;
     padding: 10px;
     text-align: center;
-    display: flex;
-    flex-direction: column;
     justify-content: center;
-    align-items: flex-start;
     min-height: 50px;
 }
 
@@ -51,72 +42,28 @@ ul.menu-list > li {
 
 .entrees {
     display: grid;
-    grid-template-rows: 1fr 1fr 1fr;
     grid-template-columns: 1fr 1fr 1fr;
 }
 
 .sides {
     display: grid;
-    grid-template-rows: [DragonbornWaffleFries] 1fr [FriedMiraak] 1fr [MadOtarGrits] 1fr [VokunSalad] 1fr;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
 }
 
 .drinks {
     display: grid;
-    grid-template-rows: [AretinoAppleJuice] 1fr [CandlehearthCoffee] 1fr [MarkarthMilk] 1fr [WarriorWater] 1fr [SailorSoda] 1fr;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
 }
 
 .price-col {
-    grid-column: 3;
-}
-
-.calories-col {
-    grid-column: 4;
-}
-
-.dragonborn-fries {
-    grid-row-start: 2;
-}
-
-.fried-miraak {
-    grid-row-start: 3;
-}
-
-.mad-otar-grits {
-    grid-row-start: 4;
-}
-
-.vokun-salad {
-    grid-row-start: 1;
-}
-
-.apple-juice {
-    grid-row-start: 1;
-
-}
-
-.coffee {
-    grid-row-start: 2;
-}
-
-.milk {
-    grid-row-start: 3;
-}
-
-.water {
-    grid-row-start: 4;
-}
-
-.soda {
-    grid-row-start: 5;
-}
-
-.size-col {
     grid-column: 2;
 }
 
-.name-col {
+.calories-col {
+    grid-column: 3;
+}
+
+.size-col {
     grid-column: 1;
 }
 
