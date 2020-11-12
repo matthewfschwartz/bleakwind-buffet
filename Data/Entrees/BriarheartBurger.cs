@@ -24,6 +24,10 @@ namespace BleakwindBuffet.Data.Entrees
         /// </summary>
         public string Name { get { return this.ToString(); } }
 
+        public string Description { get; } = "Single patty burger on a brioche bun. Comes with ketchup, mustard, pickle, and cheese.";
+
+        public string ItemCategory { get; } = "Entree";
+
         /// <summary>
         /// Gets the price of the burger
         /// </summary>

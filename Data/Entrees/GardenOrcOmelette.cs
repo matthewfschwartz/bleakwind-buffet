@@ -24,6 +24,10 @@ namespace BleakwindBuffet.Data.Entrees
         /// </summary>
         public string Name { get { return this.ToString(); } }
 
+        public string Description { get; } = "Vegetarian. Two egg omelette packed with a mix of broccoli, mushrooms, and tomatoes. Topped with cheddar cheese.";
+
+        public string ItemCategory { get; } = "Entree";
+
         /// <summary>
         /// Gets the price of the omelette
         /// </summary>

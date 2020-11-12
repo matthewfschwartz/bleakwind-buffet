@@ -23,6 +23,10 @@ namespace BleakwindBuffet.Data
         /// </summary>
         public string Name { get { return "Combo Meal"; } }
 
+        public string ItemCategory { get; } = "Combo Meal";
+
+        public string Description { get; } = "A Combo Meal is composed of an Entree, Side, and Drink of choice. These options are listed below. Each Combo Meal comes with a discount of $1.00 off the total cost of their Combo Items.";
+
         /// <summary>
         /// Constructor for Combo meal. Attaches listeners for the current drink, side, and entree
         /// </summary>

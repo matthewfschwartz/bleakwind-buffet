@@ -53,13 +53,14 @@
 
     <div class="category-border">
         <h2 class="category-name">Entrees</h2>
-        <div class="entrees">
+        <div class="entrees flex-columns">
             @foreach (BleakwindBuffet.Data.IOrderItem item in Model.Items)
             {
                 if (item is BleakwindBuffet.Data.Entrees.Entree entree)
                 {
-                    <div class="menu-item">
+                    <div class="menu-item flex-rows">
                         <h3>@entree.ToString()</h3>
+                        <p class="item-description">@item.Description</p>
                         <div class="item-details">Price: $@entree.Price</div>
                         <div class="item-details">Calories: @entree.Calories</div>
                     </div>
@@ -72,17 +73,18 @@
 
     <div class="category-border">
         <h2 class="category-name">Sides</h2>
-        <div class="sides">
+        <div class="sides flex-columns">
 
             @foreach (BleakwindBuffet.Data.IOrderItem item in Model.Items)
             {
                 if (item is BleakwindBuffet.Data.Sides.Side side)
                 {
-                    <div class="menu-item">
-                        <div class="size-col">@side.ToString()</div>
-                        <div class="price-col">Price: $@side.Price</div>
-                        <div class="calories-col">Calories: @side.Calories</div>
-                    </div>
+                <div class="menu-item flex-rows;">
+                    <h3 class="size-col">@side.ToString()</h3>
+                    <p class="item-description">@item.Description</p>
+                    <div class="price-col">Price: $@side.Price</div>
+                    <div class="calories-col">Calories: @side.Calories</div>
+                </div>
                 }
 
 
@@ -95,7 +97,7 @@
     
     <div class="category-border">
         <h2 class="category-name">Drinks</h2>
-        <div class="drinks">
+        <div class="drinks flex-columns">
 
             @foreach (BleakwindBuffet.Data.IOrderItem item in Model.Items)
             {
@@ -106,7 +108,8 @@
                         if (s.Flavor is BleakwindBuffet.Data.Enums.SodaFlavor.Cherry)
                         {
                             <div class="menu-item">
-                                <div class="size-col">@drink.ToString()</div>
+                                <h3 class="size-col">@drink.ToString()</h3>
+                                <p class="item-description">@item.Description</p>
                                 <div class="price-col">Price: $@drink.Price</div>
                                 <div class="calories-col">Calories: @drink.Calories</div>
                             </div>
@@ -115,7 +118,8 @@
                     else
                     {
                         <div class="menu-item">
-                            <div class="size-col">@drink.ToString()</div>
+                            <h3 class="size-col">@drink.ToString()</h3>
+                            <p class="item-description">@item.Description</p>
                             <div class="price-col">Price: $@drink.Price</div>
                             <div class="calories-col">Calories: @drink.Calories</div>
                         </div>

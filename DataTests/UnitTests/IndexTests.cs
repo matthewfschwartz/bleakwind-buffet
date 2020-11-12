@@ -61,8 +61,7 @@ namespace BleakwindBuffet.DataTests.UnitTests
             IndexModel index = new IndexModel(new ILoggerMock<IndexModel>());
             index.SearchTerms = terms;
             index.OnGet();
-            List<IOrderItem> menu = Menu.FullMenu();
-            menu = index.Items as List<IOrderItem>;
+            var menu = index.Items;
             foreach (IOrderItem menuItem in menu)
             {
                 Assert.Contains(menu, item =>
@@ -199,8 +198,7 @@ namespace BleakwindBuffet.DataTests.UnitTests
             index.CaloriesMin = min;
             index.CaloriesMax = max;
             index.OnGet();
-            List<IOrderItem> menu = Menu.FullMenu();
-            menu = index.Items as List<IOrderItem>;
+            var menu = index.Items;
             foreach (IOrderItem menuItem in menu)
             {
                 Assert.Contains(menu, item =>
@@ -216,8 +214,7 @@ namespace BleakwindBuffet.DataTests.UnitTests
         [Fact]
         public void NullPriceMinPriceMaxShouldReturnFullMenu()
         {
-            List<IOrderItem> menu = Menu.FullMenu();
-            menu = Menu.FilterByPrice(menu, null, null) as List<IOrderItem>;
+            var menu = Menu.FilterByPrice(Menu.FullMenu(), null, null);
             foreach (IOrderItem menuItem in Menu.FullMenu())
             {
                 Assert.Contains(menu, item =>
@@ -242,8 +239,7 @@ namespace BleakwindBuffet.DataTests.UnitTests
             index.PriceMin = min;
             index.PriceMax = max;
             index.OnGet();
-            List<IOrderItem> menu = Menu.FullMenu();
-            menu = index.Items as List<IOrderItem>;
+            var menu = index.Items;
             foreach (IOrderItem menuItem in menu)
             {
                 Assert.Contains(menu, item =>

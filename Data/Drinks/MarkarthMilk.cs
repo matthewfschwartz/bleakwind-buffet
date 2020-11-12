@@ -29,6 +29,10 @@ namespace BleakwindBuffet.Data.Drinks
         /// </summary>
         public string Name { get { return this.ToString(); } }
 
+        public string Description { get; } = "Hormone-free organic 2% milk.";
+
+        public string ItemCategory { get; } = "Drink";
+
         private new Size size = Size.Small;
         public override Size Size
         {

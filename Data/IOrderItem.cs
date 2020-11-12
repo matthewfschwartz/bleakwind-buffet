@@ -16,6 +16,10 @@ namespace BleakwindBuffet.Data
     /// </summary>
     public interface IOrderItem : INotifyPropertyChanged
     {
+        string ItemCategory { get; }
+
+        string Description { get; }
+
         /// <summary>
         /// Price of an order item
         /// </summary>

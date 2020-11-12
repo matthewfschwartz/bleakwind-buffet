@@ -29,6 +29,10 @@ namespace BleakwindBuffet.Data.Sides
         /// </summary>
         public string Name { get { return this.ToString(); } }
 
+        public string Description { get; } = "Crispy fried potato waffle fries.";
+
+        public string ItemCategory { get; } = "Side";
+
         private new Size size = Size.Small;
         public override Size Size
         {

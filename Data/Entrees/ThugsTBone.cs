@@ -26,6 +26,10 @@ namespace BleakwindBuffet.Data.Entrees
         /// </summary>
         public string Name { get { return this.ToString(); } }
 
+        public string Description { get; } = "Juicy T-Bone, not much else to say.";
+
+        public string ItemCategory { get; } = "Entree";
+
         /// <summary>
         /// Gets the price of the t-bone
         /// </summary>

@@ -192,5 +192,15 @@ namespace BleakwindBuffet.DataTests.UnitTests.SideTests
         {
             Assert.IsAssignableFrom<INotifyPropertyChanged>(new MadOtarGrits());
         }
+
+        /// <summary>
+        /// Makes sure Description getter returns the correct description
+        /// </summary>
+        [Fact]
+        public void ShouldHaveCorrectDescription()
+        {
+            MadOtarGrits m = new MadOtarGrits();
+            Assert.Equal("Cheesey Grits.", m.Description);
+        }
     }
 }

@@ -54,7 +54,7 @@ h3 {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
 }
-
+/*
 .price-col {
     grid-column: 2;
 }
@@ -65,7 +65,7 @@ h3 {
 
 .size-col {
     grid-column: 1;
-}
+}*/
 
 .item-details {
     color: lightslategray;
@@ -138,4 +138,14 @@ body {
   width: 100%;
   white-space: nowrap;
   line-height: 60px; /* Vertically center the text there */
+}
+
+.item-description {
+    font-style: italic;
+}
+
+@media (max-width: 490px) {
+    .entrees, .drinks, .sides {
+        grid-template-columns: 1fr;
+    }
 }
